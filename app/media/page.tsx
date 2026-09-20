@@ -10,7 +10,7 @@ export default function Media() {
       {
         name: "SuperReturn International",
         logo: "/images/superreturn-podcast.jpeg",
-        url: "https://www.youtube.com/watch?v=BiCRtP8yuC0",
+        url: "https://youtube.com/@AIx2_Videos",
         alt: "Mohammad Rasouli - AI for investment at SuperReturn International",
       },
       {
@@ -122,12 +122,7 @@ export default function Media() {
           </div>
         </section>
         <section className="py-16 md:py-24">
-          <div className="container max-w-6xl mx-auto">
-            <div className="mb-14 grid gap-8 md:grid-cols-[.7fr_1.3fr]">
-              <div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">Selected perspective</p><h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] md:text-4xl">Ideas with a point of view.</h2></div>
-              <p className="max-w-2xl text-lg leading-8 text-[#526575]">Our media work translates complex AI and investment questions into conversations that help leaders decide what to do next.</p>
-            </div>
-
+          <div className="container mx-auto flex max-w-6xl flex-col">
             <div className="grid gap-10 border-y border-[#102b3f]/15 py-10 md:grid-cols-[1.1fr_.9fr] md:gap-16">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">A point of view earned in practice</p>
@@ -148,7 +143,7 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-20">
+            <div className="order-2 mt-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">Industry Journals</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
@@ -199,7 +194,7 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-20">
+            <div className="order-3 mt-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">Academic Lectures</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
@@ -250,7 +245,7 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-20">
+            <div className="order-4 mt-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Podcasts and Interviews
               </h2>
@@ -298,7 +293,7 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-20">
+            <div className="order-5 mt-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Conference Keynotes and Speakerships
               </h2>
@@ -602,7 +597,7 @@ export default function Media() {
             </div>
 
             {/* Stanford AI and Investment Series section with four sessions */}
-            <div className="mt-20">
+            <div className="order-1 mt-20">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Stanford AI and Investment Series
               </h2>
@@ -678,7 +673,7 @@ export default function Media() {
                 {/* Session 2 */}
                 <div className="order-9 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
-                    href="https://www.youtube.com/watch?v=ymd4sDXFXWc&feature=youtu.be"
+                    href="https://youtube.com/@AIx2_Videos"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -705,7 +700,7 @@ export default function Media() {
 
                 {/* Session 3 */}
                 <div className="order-8 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
-                  <Link href="https://www.youtube.com/watch?v=Bu0kzgMDW0o" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
                         src="/images/screenshot-202025-11-30-20at-2010.png"
@@ -731,7 +726,7 @@ export default function Media() {
                 {/* Session 4 */}
                 <div className="order-7 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
-                    href="https://www.youtube.com/watch?v=wCex47BVv_s&feature=youtu.be"
+                    href="https://youtube.com/@AIx2_Videos"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -782,7 +777,7 @@ export default function Media() {
 
                 {/* Session 6 */}
                 <div className="order-5 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
-                  <Link href="https://youtu.be/8fQ_SXuEg84" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
                         src="/images/stanford-ai-and-investment-series-session-6.png"
@@ -808,7 +803,7 @@ export default function Media() {
 
                 {/* Session 7 */}
                 <div className="order-4 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
-                  <Link href="https://www.youtube.com/watch?v=-RXXb_UxF34" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
                         src="/images/stanford-ai-and-investment-series-session-7.png"
@@ -835,7 +830,7 @@ export default function Media() {
                 {/* Session 8 */}
                 <div className="order-3 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
-                    href="https://www.youtube.com/watch?v=X53iozJwAoY"
+                    href="https://youtube.com/@AIx2_Videos"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
