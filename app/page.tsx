@@ -28,7 +28,7 @@ function Header() {
           <Link href="/research" className="transition hover:text-white">AI Research</Link>
           <Link href="/blog" className="transition hover:text-white">Blog</Link>
         </nav>
-        <a href="mailto:admin@aix2.ai">
+        <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6">
           <Button className="rounded-full bg-[#d7e8ee] px-5 text-[#071b2b] hover:bg-white">Contact us <ArrowUpRight data-icon="inline-end" /></Button>
         </a>
       </div>
@@ -50,7 +50,7 @@ export default function Home() {
               <h1 className="max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.04em] md:text-7xl lg:text-[6.7rem]">Transform the organization.<br /><span className="text-[#a8d7dc]">Connect to capital.</span></h1>
               <div className="mt-12 grid max-w-4xl gap-8 border-t border-white/20 pt-8 md:grid-cols-[1fr_280px]">
                 <p className="max-w-2xl text-xl leading-relaxed text-white/75 md:text-2xl">AIx2 works with leadership teams to turn artificial intelligence into operating advantage, stronger decisions, and measurable enterprise value — connected to the capital market.</p>
-                <div className="flex items-end"><a href="mailto:admin@aix2.ai"><Button className="rounded-full bg-[#d7e8ee] px-7 py-6 text-base text-[#071b2b] hover:bg-white">Start a conversation <ArrowUpRight data-icon="inline-end" /></Button></a></div>
+                <div className="flex items-end"><a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"><Button className="rounded-full bg-[#d7e8ee] px-7 py-6 text-base text-[#071b2b] hover:bg-white">Start a conversation <ArrowUpRight data-icon="inline-end" /></Button></a></div>
               </div>
             </div>
             <div className="mt-20 grid max-w-5xl grid-cols-2 border-y border-white/20 md:grid-cols-4">
@@ -76,7 +76,7 @@ export default function Home() {
 
         <section className="overflow-hidden bg-white py-14"><div className="mx-auto max-w-7xl px-6 lg:px-10"><p className="mb-8 text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">Trusted by leaders building what comes next</p></div><div className="flex w-max animate-scroll-seamless">{[...clientLogos, ...clientLogos, ...clientLogos].map(([src, alt], index) => <div key={`${src}-${index}`} className="flex h-20 w-52 items-center justify-center px-8"><Image src={src} alt={alt} width={140} height={60} className="h-12 w-auto object-contain grayscale opacity-65" /></div>)}</div></section>
 
-        <section className="bg-[#d7e8ee] py-20 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_1.3fr] lg:px-10"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">The next chapter</p><div><h2 className="max-w-4xl text-4xl font-medium leading-tight tracking-[-0.04em] md:text-6xl">The organizations that lead with AI will shape the markets around them.</h2><div className="mt-10 flex flex-wrap gap-4"><a href="mailto:admin@aix2.ai"><Button className="rounded-full bg-[#071b2b] px-7 py-6 text-white hover:bg-[#12334a]">Contact us <ArrowUpRight data-icon="inline-end" /></Button></a><Link href="/research"><Button variant="outline" className="rounded-full border-[#071b2b]/30 px-7 py-6 text-[#071b2b] hover:bg-white">Explore our research</Button></Link></div></div></div></section>
+        <section className="bg-[#d7e8ee] py-20 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_1.3fr] lg:px-10"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">The next chapter</p><div><h2 className="max-w-4xl text-4xl font-medium leading-tight tracking-[-0.04em] md:text-6xl">The organizations that lead with AI will shape the markets around them.</h2><div className="mt-10 flex flex-wrap gap-4"><a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"><Button className="rounded-full bg-[#071b2b] px-7 py-6 text-white hover:bg-[#12334a]">Contact us <ArrowUpRight data-icon="inline-end" /></Button></a><Link href="/research"><Button variant="outline" className="rounded-full border-[#071b2b]/30 px-7 py-6 text-[#071b2b] hover:bg-white">Explore our research</Button></Link></div></div></div></section>
       </main>
       <footer className="bg-[#071b2b] py-10 text-white"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-6 text-sm text-white/60 md:flex-row lg:px-10"><p>© {new Date().getFullYear()} AIx2. Intelligence for what comes next.</p><div className="flex gap-6"><Link href="/privacy" className="hover:text-white">Privacy</Link><Link href="/terms" className="hover:text-white">Terms</Link></div></div></footer>
     </div>
