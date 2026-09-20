@@ -59,9 +59,19 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-b border-[#102433]/10 bg-[#f5f6f2] py-16">
+        <section className="border-b border-[#102433]/10 bg-[#f5f6f2] py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:items-end"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">A different kind of partner</p><p className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] md:text-5xl">We bring the rigor of a consultancy, the depth of an engineering team, and the perspective of the capital markets.</p></div>
+            <div className="grid gap-10 md:grid-cols-[0.75fr_1.5fr] md:items-start">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">The AIx2 perspective</p>
+              <div>
+                <p className="max-w-4xl text-3xl font-medium leading-tight tracking-[-0.03em] md:text-5xl">Where frontier research meets institutional judgment.</p>
+                <div className="mt-10 grid gap-8 border-t border-[#102433]/15 pt-6 md:grid-cols-3">
+                  <div><p className="text-sm font-semibold text-[#102433]">Research-led</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">PhD-level AI expertise from Stanford and leading research institutions.</p></div>
+                  <div><p className="text-sm font-semibold text-[#102433]">Operator-tested</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">Experience across top-tier consulting, engineering, and technology organizations.</p></div>
+                  <div><p className="text-sm font-semibold text-[#102433]">Capital Market-connected</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">A direct understanding of GPs, LPs, and the institutions that allocate capital.</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

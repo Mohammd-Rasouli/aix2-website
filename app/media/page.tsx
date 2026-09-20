@@ -128,22 +128,24 @@ export default function Media() {
               <p className="max-w-2xl text-lg leading-8 text-[#526575]">Our media work translates complex AI and investment questions into conversations that help leaders decide what to do next.</p>
             </div>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-gray-700 mb-6">
-                As pioneer in private market AI, AIx2 advance the industry through research (e.g. Stanford AI and
-                Investment Series), global keynotes (e.g. SuperReturn), and strategic partnerships (e.g. AIMA).
-              </p>
-
-              <p className="text-[#004976] font-medium">
-                <Link
-                  href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004976] hover:text-[#003557] underline"
-                >
-                  Contact us for speaker line up for Stanford AI and Investment Series, or other collaborations.
-                </Link>
-              </p>
+            <div className="grid gap-10 border-y border-[#102b3f]/15 py-10 md:grid-cols-[1.1fr_.9fr] md:gap-16">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">A point of view earned in practice</p>
+                <h3 className="mt-4 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#102b3f] md:text-4xl">
+                  Research-led perspective for leaders navigating transformation and capital.
+                </h3>
+              </div>
+              <div className="flex flex-col gap-5 text-base leading-8 text-[#526575]">
+                <p>
+                  AIx2 brings together Stanford-trained AI researchers, PhDs and engineers from leading universities, and experience across top-tier consulting and technology organizations.
+                </p>
+                <p>
+                  Our work sits where enterprise transformation meets the capital markets — informed by close work with general partners, limited partners, and the institutions allocating capital to what comes next.
+                </p>
+                <p>
+                  We contribute this perspective through keynote conversations, executive briefings, and the <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="font-medium text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">Stanford AI and Investment Series</Link>.
+                </p>
+              </div>
             </div>
 
             <div className="mt-20">
@@ -610,8 +612,52 @@ export default function Media() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Session 10 — September 16, 2026 */}
+                <div className="order-1 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                  <Link href="https://luma.com/3w5x9br3" target="_blank" rel="noopener noreferrer">
+                    <div className="relative w-full aspect-[16/9] bg-gray-100">
+                      <Image
+                        src="/images/stanford-ai-and-investment-series-session-8.png"
+                        alt="Stanford LP Seminar, September 16, 2026"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0d7a83] mb-2">September 16, 2026</p>
+                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 10</h3>
+                      <p className="text-gray-700 text-sm leading-6 mb-3">
+                        <strong>Featured allocators:</strong> Alifia Doriwala, Octavio Sandoval, Aakar Vachhani, Solly Matheba, Manuel Ramirez, and David Trevino.
+                      </p>
+                      <p className="text-gray-500 text-sm">A curated conversation on how leading LPs and allocators evaluate managers, build portfolios, and make investment decisions.</p>
+                    </div>
+                  </Link>
+                </div>
+
+                {/* Session 9 — September 10, 2026 */}
+                <div className="order-2 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                  <Link href="https://luma.com/tmp1kqvt" target="_blank" rel="noopener noreferrer">
+                    <div className="relative w-full aspect-[16/9] bg-gray-100">
+                      <Image
+                        src="/images/stanford-ai-and-investment-series-session-7.png"
+                        alt="Stanford LP Seminar, September 10, 2026"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0d7a83] mb-2">September 10, 2026</p>
+                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 9</h3>
+                      <p className="text-gray-700 text-sm leading-6 mb-3">
+                        <strong>Featured allocators:</strong> Rahul Khandelwal, Wendy Craft, Valerie Red-Horse Mohl, Sam Levens, Alex Tonelli, and Ahmed Hossam.
+                      </p>
+                      <p className="text-gray-500 text-sm">The opening conversation in the Stanford LP Seminar on capital allocation, manager selection, and portfolio construction.</p>
+                    </div>
+                  </Link>
+                </div>
+
                 {/* Session 1 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-10 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/b9f0b1c8-0371-41a9-ace8-349d942ff255.avif"
@@ -630,7 +676,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 2 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-9 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=ymd4sDXFXWc&feature=youtu.be"
                     target="_blank"
@@ -658,7 +704,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 3 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-8 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=Bu0kzgMDW0o" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -683,7 +729,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 4 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-7 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=wCex47BVv_s&feature=youtu.be"
                     target="_blank"
@@ -712,7 +758,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 5 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-6 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/stanford-ai-and-investment-series-session-5.png"
@@ -735,7 +781,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 6 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-5 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://youtu.be/8fQ_SXuEg84" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -761,7 +807,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 7 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-4 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=-RXXb_UxF34" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -787,7 +833,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 8 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-3 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=X53iozJwAoY"
                     target="_blank"
@@ -832,7 +878,7 @@ export default function Media() {
       <footer className="bg-[#003557] text-white py-12">
         <div className="container">
           <div className="border-t border-white/20 mt-8 pt-8 text-sm text-gray-300 text-center">
-            <p>© 2025 AIx2. All rights reserved.</p>
+            <p>�� 2025 AIx2. All rights reserved.</p>
           </div>
         </div>
       </footer>
