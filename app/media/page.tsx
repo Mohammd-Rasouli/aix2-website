@@ -128,22 +128,24 @@ export default function Media() {
               <p className="max-w-2xl text-lg leading-8 text-[#526575]">Our media work translates complex AI and investment questions into conversations that help leaders decide what to do next.</p>
             </div>
 
-            <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-gray-700 mb-6">
-                As pioneer in private market AI, AIx2 advance the industry through research (e.g. Stanford AI and
-                Investment Series), global keynotes (e.g. SuperReturn), and strategic partnerships (e.g. AIMA).
-              </p>
-
-              <p className="text-[#004976] font-medium">
-                <Link
-                  href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004976] hover:text-[#003557] underline"
-                >
-                  Contact us for speaker line up for Stanford AI and Investment Series, or other collaborations.
-                </Link>
-              </p>
+            <div className="grid gap-10 border-y border-[#102b3f]/15 py-10 md:grid-cols-[1.1fr_.9fr] md:gap-16">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">A point of view earned in practice</p>
+                <h3 className="mt-4 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.03em] text-[#102b3f] md:text-4xl">
+                  Research-led perspective for leaders navigating transformation and capital.
+                </h3>
+              </div>
+              <div className="flex flex-col gap-5 text-base leading-8 text-[#526575]">
+                <p>
+                  AIx2 brings together Stanford-trained AI researchers, PhDs and engineers from leading universities, and experience across top-tier consulting and technology organizations.
+                </p>
+                <p>
+                  Our work sits where enterprise transformation meets the capital markets — informed by close work with general partners, limited partners, and the institutions allocating capital to what comes next.
+                </p>
+                <p>
+                  We contribute this perspective through keynote conversations, executive briefings, and the <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="font-medium text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">Stanford AI and Investment Series</Link>.
+                </p>
+              </div>
             </div>
 
             <div className="mt-20">
