@@ -612,8 +612,8 @@ export default function Media() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* September 16, 2026 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                {/* Session 10 — September 16, 2026 */}
+                <div className="order-1 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://luma.com/3w5x9br3" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -625,7 +625,7 @@ export default function Media() {
                     </div>
                     <div className="p-6">
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0d7a83] mb-2">September 16, 2026</p>
-                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 02</h3>
+                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 10</h3>
                       <p className="text-gray-700 text-sm leading-6 mb-3">
                         <strong>Featured allocators:</strong> Alifia Doriwala, Octavio Sandoval, Aakar Vachhani, Solly Matheba, Manuel Ramirez, and David Trevino.
                       </p>
@@ -634,8 +634,8 @@ export default function Media() {
                   </Link>
                 </div>
 
-                {/* September 10, 2026 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                {/* Session 9 — September 10, 2026 */}
+                <div className="order-2 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://luma.com/tmp1kqvt" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -647,7 +647,7 @@ export default function Media() {
                     </div>
                     <div className="p-6">
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#0d7a83] mb-2">September 10, 2026</p>
-                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 01</h3>
+                      <h3 className="text-lg font-semibold text-[#004976] mb-3">Stanford LP Seminar · Session 9</h3>
                       <p className="text-gray-700 text-sm leading-6 mb-3">
                         <strong>Featured allocators:</strong> Rahul Khandelwal, Wendy Craft, Valerie Red-Horse Mohl, Sam Levens, Alex Tonelli, and Ahmed Hossam.
                       </p>
@@ -656,12 +656,8 @@ export default function Media() {
                   </Link>
                 </div>
 
-                <div className="md:col-span-2 border-t border-[#102b3f]/10 pt-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0d7a83]">Earlier sessions</p>
-                </div>
-
                 {/* Session 1 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-10 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/b9f0b1c8-0371-41a9-ace8-349d942ff255.avif"
@@ -680,7 +676,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 2 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-9 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=ymd4sDXFXWc&feature=youtu.be"
                     target="_blank"
@@ -708,7 +704,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 3 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-8 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=Bu0kzgMDW0o" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -733,7 +729,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 4 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-7 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=wCex47BVv_s&feature=youtu.be"
                     target="_blank"
@@ -762,7 +758,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 5 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-6 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/stanford-ai-and-investment-series-session-5.png"
@@ -785,7 +781,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 6 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-5 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://youtu.be/8fQ_SXuEg84" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -811,7 +807,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 7 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-4 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=-RXXb_UxF34" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -837,7 +833,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 8 */}
-                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
+                <div className="order-3 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=X53iozJwAoY"
                     target="_blank"
@@ -882,7 +878,7 @@ export default function Media() {
       <footer className="bg-[#003557] text-white py-12">
         <div className="container">
           <div className="border-t border-white/20 mt-8 pt-8 text-sm text-gray-300 text-center">
-            <p>© 2025 AIx2. All rights reserved.</p>
+            <p>�� 2025 AIx2. All rights reserved.</p>
           </div>
         </div>
       </footer>
