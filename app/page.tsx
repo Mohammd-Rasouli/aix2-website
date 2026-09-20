@@ -1,756 +1,85 @@
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowUpRight, ChevronRight, Network, ScanSearch, Waypoints } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { ShieldCheck, Lock, FileCheck, Shield } from "lucide-react"
-import { VideoEmbed } from "@/components/video-embed"
+
+const clientLogos = [
+  ["/images/ahp.png", "AHP"],
+  ["/images/r136-20ventures.png", "R136 Ventures"],
+  ["/images/marvin-20ventures.jpeg", "Marvin Ventures"],
+  ["/images/prime-20unicorn-20index.jpeg", "Prime Unicorn Index"],
+  ["/images/cancer-20focus-20fund.png", "Cancer Focus Fund"],
+  ["/images/inception-20studio.png", "Inception Studio"],
+  ["/images/nathan-20logo.png", "Nathan"],
+  ["/images/zaka-logo.jpeg", "Zaka VC"],
+  ["/images/sinbad-logo.png", "Sinbad Capital"],
+] as const
+
+function Header() {
+  return (
+    <header className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-[#071b2b]/90 text-white backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
+        <Link href="/" className="flex items-center gap-3" aria-label="AIx2 home">
+          <Image src="/images/aix2-logo-official.png" alt="AIx2" width={180} height={40} className="h-9 w-auto brightness-0 invert" />
+        </Link>
+        <nav className="hidden items-center gap-8 text-sm text-white/75 lg:flex">
+          <Link href="/" className="text-white">Home</Link>
+          <Link href="/media" className="transition hover:text-white">Media and Conferences</Link>
+          <Link href="/research" className="transition hover:text-white">AI Research</Link>
+          <Link href="/blog" className="transition hover:text-white">Blog</Link>
+        </nav>
+        <a href="mailto:admin@aix2.ai">
+          <Button className="rounded-full bg-[#d7e8ee] px-5 text-[#071b2b] hover:bg-white">Contact us <ArrowUpRight data-icon="inline-end" /></Button>
+        </a>
+      </div>
+    </header>
+  )
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="border-b bg-white">
-        <div className="container flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/aix2-logo-official.png"
-              alt="AIx2 Logo"
-              width={180}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-[#004976] hover:text-[#003557] font-medium">
-              Home
-            </Link>
-            <Link href="/use-cases" className="text-[#004976] hover:text-[#003557] font-medium">
-              Use Cases
-            </Link>
-            <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium">
-              Media and Conferences
-            </Link>
-            <Link href="/research" className="text-[#004976] hover:text-[#003557] font-medium">
-              AI Research
-            </Link>
-            <Link href="/blog" className="text-[#004976] hover:text-[#003557] font-medium">
-              Blog
-            </Link>
-            <Link href="/privacy" className="text-[#004976] hover:text-[#003557] font-medium">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-[#004976] hover:text-[#003557] font-medium">
-              Terms
-            </Link>
-          </nav>
-          <a href="mailto:admin@aix2.ai">
-            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Contact Us</Button>
-          </a>
-        </div>
-      </header>
-
-      <main className="flex-1">
-        <section className="py-16 md:py-24">
-          <div className="container grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#004976] mb-6 leading-tight">
-                AI transformation for your organization, connected to the capital market
-              </h1>
-              <p className="text-lg mb-8 text-gray-700">
-                AIx2 helps organizations transform how they operate, make decisions, and create value — connecting people, intelligence, and strategy to the capital market.
-              </p>
-              <a href="mailto:admin@aix2.ai">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-6 text-lg rounded-full">
-                  CONTACT US
-                </Button>
-              </a>
+    <div className="min-h-screen bg-[#f5f6f2] text-[#102433]">
+      <Header />
+      <main>
+        <section className="relative overflow-hidden bg-[#071b2b] pt-36 text-white lg:pt-44">
+          <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(159,205,218,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(159,205,218,.18)_1px,transparent_1px)] [background-size:72px_72px]" />
+          <div className="absolute -right-40 top-20 size-[520px] rounded-full bg-[#1a7180]/25 blur-3xl" />
+          <div className="relative mx-auto max-w-7xl px-6 pb-24 lg:px-10 lg:pb-32">
+            <div className="max-w-5xl">
+              <p className="mb-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#a8d7dc]"><span className="h-px w-10 bg-[#a8d7dc]" /> AI transformation / capital markets</p>
+              <h1 className="max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.04em] md:text-7xl lg:text-[6.7rem]">Transform the organization.<br /><span className="text-[#a8d7dc]">Connect to capital.</span></h1>
+              <div className="mt-12 grid max-w-4xl gap-8 border-t border-white/20 pt-8 md:grid-cols-[1fr_280px]">
+                <p className="max-w-2xl text-xl leading-relaxed text-white/75 md:text-2xl">AIx2 works with leadership teams to turn artificial intelligence into operating advantage, stronger decisions, and measurable enterprise value — connected to the capital market.</p>
+                <div className="flex items-end"><a href="mailto:admin@aix2.ai"><Button className="rounded-full bg-[#d7e8ee] px-7 py-6 text-base text-[#071b2b] hover:bg-white">Start a conversation <ArrowUpRight data-icon="inline-end" /></Button></a></div>
+              </div>
             </div>
-
-          </div>
-        </section>
-
-        <section className="py-12 bg-white border-y border-gray-200 overflow-hidden">
-          <div className="container mx-auto mb-6">
-            <h3 className="text-center text-lg font-semibold text-[#004976]">Trusted by Leading Funds</h3>
-          </div>
-          <div className="relative w-full">
-            <div className="flex animate-scroll-seamless whitespace-nowrap">
-              {/* First set of logos */}
-              <div className="flex items-center shrink-0">
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/ahp.png"
-                    alt="AHP"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/r136-20ventures.png"
-                    alt="R136 Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/marvin-20ventures.jpeg"
-                    alt="Marvin Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/prime-20unicorn-20index.jpeg"
-                    alt="Prime Unicorn Index"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/cancer-20focus-20fund.png"
-                    alt="Cancer Focus Fund"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/inception-20studio.png"
-                    alt="Inception Studio"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/zaka-logo.jpeg"
-                    alt="Zaka VC"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/sinbad-logo.png"
-                    alt="Sinbad Capital"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>                                 
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/tau-20ventures-201.png"
-                    alt="Tau Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/nathan-20logo.png"
-                    alt="Nathan"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/omvp.jpeg"
-                    alt="Oscar Mike Venture Partners"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/zaka-logo.jpeg"
-                    alt="Zaka VC"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/sinbad-logo.png"
-                    alt="Sinbad Capital"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </div>
-              {/* Duplicate set for seamless loop */}
-              <div className="flex items-center shrink-0">
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/ahp.png"
-                    alt="AHP"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/r136-20ventures.png"
-                    alt="R136 Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/marvin-20ventures.jpeg"
-                    alt="Marvin Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/prime-20unicorn-20index.jpeg"
-                    alt="Prime Unicorn Index"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/cancer-20focus-20fund.png"
-                    alt="Cancer Focus Fund"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/inception-20studio.png"
-                    alt="Inception Studio"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/tau-20ventures-201.png"
-                    alt="Tau Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/nathan-20logo.png"
-                    alt="Nathan"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/omvp.jpeg"
-                    alt="Oscar Mike Venture Partners"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/zaka-logo.jpeg"
-                    alt="Zaka VC"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/sinbad-logo.png"
-                    alt="Sinbad Capital"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </div>
-              {/* Third set for extra smoothness on larger screens */}
-              <div className="flex items-center shrink-0">
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/ahp.png"
-                    alt="AHP"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/r136-20ventures.png"
-                    alt="R136 Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/marvin-20ventures.jpeg"
-                    alt="Marvin Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/prime-20unicorn-20index.jpeg"
-                    alt="Prime Unicorn Index"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/cancer-20focus-20fund.png"
-                    alt="Cancer Focus Fund"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/inception-20studio.png"
-                    alt="Inception Studio"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/tau-20ventures-201.png"
-                    alt="Tau Ventures"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/nathan-20logo.png"
-                    alt="Nathan"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/omvp.jpeg"
-                    alt="Oscar Mike Venture Partners"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/zaka-logo.jpeg"
-                    alt="Zaka VC"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center justify-center px-12">
-                  <Image
-                    src="/images/sinbad-logo.png"
-                    alt="Sinbad Capital"
-                    width={140}
-                    height={60}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              </div>
+            <div className="mt-20 grid max-w-5xl grid-cols-2 border-y border-white/20 md:grid-cols-4">
+              {[['01', 'Strategic clarity'], ['02', 'AI-native operations'], ['03', 'Engineering execution'], ['04', 'Capital-market signal']].map(([number, label]) => <div key={number} className="border-r border-white/20 px-4 py-5 first:pl-0 last:border-r-0"><p className="text-xs text-[#a8d7dc]">{number}</p><p className="mt-2 text-sm font-medium text-white/80">{label}</p></div>)}
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-[#004976] text-white">
-          <div className="container text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Sample Client Success Stories</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white/10 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-3">3x Faster Fundraising</h3>
-                <div className="mb-4 text-left">
-                  <p className="italic mb-2">
-                    "Within a week we had initial LP screening tailored to us that allows us to source the right LPs,
-                    run far more engaged meetings, and move 3x faster with successful fundraising."
-                  </p>
-                  <p className="text-sm text-white/80">— Ross Barrett, Managing Partner, Cancer Focus Fund</p>
-                </div>
-                <VideoEmbed
-                  src="https://drive.google.com/file/d/1jJoCxvUaYsdf0rftppcAfxBEMJywTTxa/preview"
-                  title="3x Faster Fundraising Success Story"
-                />
-              </div>
-              <div className="bg-white/10 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-3">5x Faster Screening and Diligence</h3>
-                <div className="mb-4 text-left">
-                  <p className="italic mb-2">
-                    "AIx2 partnered with us in a critical time to achieve 80% time savings with sharper insights for
-                    deals initial screening and due diligence in less than 1 week."
-                  </p>
-                  <p className="text-sm text-white/80">— Victor Orlovski, Founding Partner, R136</p>
-                </div>
-                <VideoEmbed
-                  src="https://drive.google.com/file/d/1hvRC55jZ8nDTLJxIJKLihPAkLdsUGvBM/preview"
-                  title="Venture Capital Success Story"
-                />
-              </div>
-              <div className="bg-white/10 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold mb-3">10x Faster Sourcing and Scoring</h3>
-                <div className="mb-4 text-left">
-                  <p className="italic mb-2">
-                    "In under a week, AIx2 built the backbone for our sourcing and scoring — something other major AI
-                    providers had failed to deliver."
-                  </p>
-                  <p className="text-sm text-white/80">— Will Ballard, Chief Data Officer, Prime Unicorn Index</p>
-                </div>
-                <VideoEmbed
-                  src="https://drive.google.com/file/d/1nA4L5mwtZEE0cyyq6WJh1dFuFXdvFPrM/preview"
-                  title="Private Equity Success Story"
-                />
-              </div>
+        <section className="border-b border-[#102433]/10 bg-[#f5f6f2] py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:items-end"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">A different kind of partner</p><p className="max-w-3xl text-3xl font-medium leading-tight tracking-[-0.03em] md:text-5xl">We bring the rigor of a consultancy, the depth of an engineering team, and the perspective of the capital markets.</p></div>
+          </div>
+        </section>
+
+        <section className="bg-[#f5f6f2] py-20 lg:py-28">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="mb-12 flex items-end justify-between border-b border-[#102433]/15 pb-5"><div><p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">How we create advantage</p><h2 className="text-4xl font-medium tracking-[-0.04em] md:text-6xl">From ambition to infrastructure.</h2></div><span className="hidden text-sm text-[#52717b] md:block">AIx2 / 2026</span></div>
+            <div className="grid gap-px overflow-hidden border border-[#102433]/15 bg-[#102433]/15 md:grid-cols-3">
+              {[{icon: ScanSearch, title: 'See the signal', text: 'Map the forces shaping your business, customers, competitors, and sources of capital.'}, {icon: Network, title: 'Build the system', text: 'Design the data, intelligence, and operating architecture that makes better decisions repeatable.'}, {icon: Waypoints, title: 'Move with confidence', text: 'Put AI into the hands of teams and leaders with the governance to scale it responsibly.'}].map(({ icon: Icon, title, text }, index) => <article key={title} className="group bg-[#f5f6f2] p-8 transition hover:bg-[#e5eef0] lg:p-10"><div className="flex items-start justify-between"><Icon className="text-[#1b7180]" /><span className="text-xs text-[#52717b]">0{index + 1}</span></div><h3 className="mt-20 text-2xl font-medium tracking-[-0.03em]">{title}</h3><p className="mt-4 leading-relaxed text-[#52717b]">{text}</p><ChevronRight className="mt-8 text-[#1b7180] transition group-hover:translate-x-1" /></article>)}
             </div>
           </div>
         </section>
 
-        <section className="hidden">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#004976] mb-4">
-                Unified Platform of Three End-to-End Workflows
-              </h2>
-              <p className="text-lg text-gray-700">
-                End-to-end workflows for LP sourcing, screening, outreach, and due diligence — raise capital 3x faster.
-              </p>
-            </div>
+        <section className="overflow-hidden bg-white py-14"><div className="mx-auto max-w-7xl px-6 lg:px-10"><p className="mb-8 text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">Trusted by leaders building what comes next</p></div><div className="flex w-max animate-scroll-seamless">{[...clientLogos, ...clientLogos, ...clientLogos].map(([src, alt], index) => <div key={`${src}-${index}`} className="flex h-20 w-52 items-center justify-center px-8"><Image src={src} alt={alt} width={140} height={60} className="h-12 w-auto object-contain grayscale opacity-65" /></div>)}</div></section>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-[#004976] via-[#0066a1] to-[#003557] p-8 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="mb-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
-                    Fundraising Workflow
-                  </h4>
-                  <p className="text-gray-200 leading-relaxed">
-                    End-to-end workflow for LP sourcing, screening, outreach, and due diligence — raise capital 3x
-                    faster.
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-white/20">
-                  <div className="flex items-center text-white/80 text-sm">
-                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-                    3x faster fundraising
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#004976] via-[#0066a1] to-[#003557] p-8 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="mb-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
-                    Investment Workflow
-                  </h4>
-                  <p className="text-gray-200 leading-relaxed">
-                    End-to-end workflow for thematic deal sourcing, screening, outreach, and due diligence — never miss
-                    a top deal.
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-white/20">
-                  <div className="flex items-center text-white/80 text-sm">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-                    2x more top deals
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#004976] via-[#0066a1] to-[#003557] p-8 rounded-xl shadow-lg group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="mb-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                      />
-                    </svg>
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
-                    Deal Exit Workflow
-                  </h4>
-                  <p className="text-gray-200 leading-relaxed">
-                    End-to-end workflow for GP sourcing, screening, outreach, and vendor due diligence — achieve exits
-                    4x faster.
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-white/20">
-                  <div className="flex items-center text-white/80 text-sm">
-                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
-                    4x faster exits
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-12 text-center">
-              <Link href="/use-cases">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
-                  See Case Studies
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="hidden">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#004976] mb-4">
-                Five Core Modules Hyper-Tailored to Your Fund Thesis
-              </h2>
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Each of the three workflows is powered by our five specialized AI modules tailored to your fund unique
-                thesis, working in sequence to deliver comprehensive results
-              </p>
-            </div>
-
-            {/* Module Flow Visualization */}
-            <div className="relative max-w-6xl mx-auto">
-              {/* Connection Lines */}
-              <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#004976] via-[#0066a1] to-[#004976] transform -translate-y-1/2 z-0"></div>
-
-              {/* Modules */}
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
-                {/* Module 1 - Sourcing */}
-                <div className="bg-gradient-to-br from-[#004976] to-[#0066a1] p-6 rounded-xl shadow-lg text-white text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    1
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">Thematic Sourcing</h3>
-                  <ul className="text-sm text-gray-200 space-y-1">
-                    <li>• Deal discovery</li>
-                    <li>• LP identification</li>
-                    <li>• Buyer sourcing</li>
-                  </ul>
-                </div>
-
-                {/* Module 2 - Screening */}
-                <div className="bg-gradient-to-br from-[#0066a1] to-[#0088cc] p-6 rounded-xl shadow-lg text-white text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    2
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">Thematic Screening</h3>
-                  <ul className="text-sm text-gray-200 space-y-1">
-                    <li>• Deal scoring</li>
-                    <li>• LP fit analysis</li>
-                    <li>• Buyer assessment</li>
-                  </ul>
-                </div>
-
-                {/* Module 3 - Contact Finder */}
-                <div className="bg-gradient-to-br from-[#0088cc] to-[#00aaff] p-6 rounded-xl shadow-lg text-white text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    3
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">Contact Finder</h3>
-                  <ul className="text-sm text-gray-200 space-y-1">
-                    <li>• Decision makers</li>
-                    <li>• LP contacts</li>
-                    <li>• Buyer executives</li>
-                    <li>• Maximum relevancy contact</li>
-                  </ul>
-                </div>
-
-                {/* Module 4 - Outreach */}
-                <div className="bg-gradient-to-br from-[#00aaff] to-[#0088cc] p-6 rounded-xl shadow-lg text-white text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    4
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">Outreach</h3>
-                  <ul className="text-sm text-gray-200 space-y-1">
-                    <li>• Outreach strategy</li>
-                    <li>• Tailored message</li>
-                    <li>• Maximize relevancy</li>
-                  </ul>
-                </div>
-
-                {/* Module 5 - Due Diligence */}
-                <div className="bg-gradient-to-br from-[#0066a1] to-[#004976] p-6 rounded-xl shadow-lg text-white text-center group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    5
-                  </div>
-                  <h3 className="text-lg font-bold mb-3">Due Diligence</h3>
-                  <ul className="text-sm text-gray-200 space-y-1">
-                    <li>• Investment DD</li>
-                    <li>• LP query responses</li>
-                    <li>• Vendor DD</li>
-                    <li>• Risk assessment</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Flow Arrows for Mobile */}
-              <div className="md:hidden flex justify-center mt-8">
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-0.5 h-8 bg-[#004976]"></div>
-                  <svg className="w-6 h-6 text-[#004976]" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-16 text-center">
-              <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto"></p>
-              <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
-                  See How It Works
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-[#f0f5fa]">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#004976] mb-4">Security and Compliance</h2>
-              <p className="text-lg text-gray-700">
-                Don't risk your proprietary data being trained on public AI models or exposed during audits. Choose a
-                platform that's built compliant and secure.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-lg border border-[#d0e0f0] shadow-sm flex items-start gap-4">
-                <div className="text-[#004976] mt-1 flex-shrink-0">
-                  <ShieldCheck size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-[#004976] mb-2">Data Privacy Guaranteed</h3>
-                  <p className="text-gray-700">
-                    Your fund data is never trained on public LLMs. Proprietary information remains fully private and
-                    secure.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg border border-[#d0e0f0] shadow-sm flex items-start gap-4">
-                <div className="text-[#004976] mt-1 flex-shrink-0">
-                  <FileCheck size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-[#004976] mb-2">SEC Compliant</h3>
-                  <p className="text-gray-700">
-                    17a-4 archival to meet SEC compliance and regulations, ensuring your fund meets all regulatory
-                    requirements.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg border border-[#d0e0f0] shadow-sm flex items-start gap-4">
-                <div className="text-[#004976] mt-1 flex-shrink-0">
-                  <Lock size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-[#004976] mb-2">Access Control</h3>
-                  <p className="text-gray-700">
-                    Granular access controls prevent internal and external breaches, giving you full control over your
-                    data.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-lg border border-[#d0e0f0] shadow-sm flex items-start gap-4">
-                <div className="text-[#004976] mt-1 flex-shrink-0">
-                  <Shield size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-[#004976] mb-2">Enterprise-Grade Security</h3>
-                  <p className="text-gray-700">
-                    Enterprise-grade safeguards protect your data from hacks and breaches at all times.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-12 text-center">
-              <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
-                  Book Security Demo
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <section className="bg-[#d7e8ee] py-20 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_1.3fr] lg:px-10"><p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#52717b]">The next chapter</p><div><h2 className="max-w-4xl text-4xl font-medium leading-tight tracking-[-0.04em] md:text-6xl">The organizations that lead with AI will shape the markets around them.</h2><div className="mt-10 flex flex-wrap gap-4"><a href="mailto:admin@aix2.ai"><Button className="rounded-full bg-[#071b2b] px-7 py-6 text-white hover:bg-[#12334a]">Contact us <ArrowUpRight data-icon="inline-end" /></Button></a><Link href="/research"><Button variant="outline" className="rounded-full border-[#071b2b]/30 px-7 py-6 text-[#071b2b] hover:bg-white">Explore our research</Button></Link></div></div></div></section>
       </main>
-
-      <footer className="bg-[#003557] text-white py-12">
-        <div className="container">
-          <div className="border-t border-white/20 mt-8 pt-8 text-sm text-gray-300 text-center">
-            <p>© 2025 AIx2. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <footer className="bg-[#071b2b] py-10 text-white"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-6 text-sm text-white/60 md:flex-row lg:px-10"><p>© {new Date().getFullYear()} AIx2. Intelligence for what comes next.</p><div className="flex gap-6"><Link href="/privacy" className="hover:text-white">Privacy</Link><Link href="/terms" className="hover:text-white">Terms</Link></div></div></footer>
     </div>
   )
 }
+
