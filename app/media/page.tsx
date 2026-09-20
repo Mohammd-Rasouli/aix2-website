@@ -93,9 +93,6 @@ export default function Media() {
             <Link href="/" className="text-[#004976] hover:text-[#003557] font-medium">
               Home
             </Link>
-            <Link href="/use-cases" className="text-[#004976] hover:text-[#003557] font-medium">
-              Use Cases
-            </Link>
             <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium font-bold underline">
               Media and Conferences
             </Link>
@@ -105,16 +102,10 @@ export default function Media() {
             <Link href="/blog" className="text-[#004976] hover:text-[#003557] font-medium">
               Blog
             </Link>
-            <Link href="/privacy" className="text-[#004976] hover:text-[#003557] font-medium">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-[#004976] hover:text-[#003557] font-medium">
-              Terms
-            </Link>
           </nav>
-          <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Book Demo</Button>
-          </Link>
+          <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-[#1a7180] hover:bg-[#0f5d66] text-white rounded-full">Contact us</Button>
+          </a>
         </div>
       </header>
 
@@ -133,7 +124,7 @@ export default function Media() {
 
               <p className="text-[#004976] font-medium">
                 <Link
-                  href="https://meetings.hubspot.com/aix2/aix2-team"
+                  href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#004976] hover:text-[#003557] underline"
@@ -620,8 +611,7 @@ export default function Media() {
                   <div className="p-6">
                     <h3 className="text-lg font-semibold text-[#004976] mb-3">Session 1</h3>
                     <p className="text-gray-700 text-sm mb-2">
-                      <strong>Speakers:</strong> Praveen Akkiraju (Insight Partners, Managing Director), Amit Garg (Tau
-                      Ventures, Managing Partner), Mohammad Rasouli (AIx2, CEO)
+<strong>Speakers:</strong> Praveen Akkiraju (Insight Partners, Managing Director), Mohammad Rasouli (AIx2, CEO)
                     </p>
                     <p className="text-gray-500 text-sm italic">Video coming soon</p>
                   </div>
@@ -817,7 +807,7 @@ export default function Media() {
             </div>
 
             <div className="mt-16 text-center">
-              <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
+              <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
                   Book a Consultation
                 </Button>

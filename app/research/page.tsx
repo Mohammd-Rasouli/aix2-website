@@ -20,9 +20,6 @@ export default function Research() {
             <Link href="/" className="text-[#004976] hover:text-[#003557] font-medium">
               Home
             </Link>
-            <Link href="/use-cases" className="text-[#004976] hover:text-[#003557] font-medium">
-              Use Cases
-            </Link>
             <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium">
               Media and Conferences
             </Link>
@@ -32,16 +29,10 @@ export default function Research() {
             <Link href="/blog" className="text-[#004976] hover:text-[#003557] font-medium">
               Blog
             </Link>
-            <Link href="/privacy" className="text-[#004976] hover:text-[#003557] font-medium">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-[#004976] hover:text-[#003557] font-medium">
-              Terms
-            </Link>
           </nav>
-          <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Book Demo</Button>
-          </Link>
+          <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-[#1a7180] hover:bg-[#0f5d66] text-white rounded-full">Contact us</Button>
+          </a>
         </div>
       </header>
 
@@ -72,7 +63,7 @@ export default function Research() {
 
               <p className="text-[#004976] font-medium">
                 <Link
-                  href="https://meetings.hubspot.com/aix2/aix2-team"
+                  href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#004976] hover:text-[#003557] underline"
@@ -150,7 +141,7 @@ export default function Research() {
             </div>
 
             <div className="mt-16 text-center">
-              <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
+              <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
                   Book a Research Consultation
                 </Button>

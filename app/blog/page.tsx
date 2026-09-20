@@ -48,9 +48,6 @@ export default function Blog() {
             <Link href="/" className="text-[#004976] hover:text-[#003557] font-medium">
               Home
             </Link>
-            <Link href="/use-cases" className="text-[#004976] hover:text-[#003557] font-medium">
-              Use Cases
-            </Link>
             <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium">
               Media and Conferences
             </Link>
@@ -60,30 +57,25 @@ export default function Blog() {
             <Link href="/blog" className="text-[#004976] hover:text-[#003557] font-medium font-bold underline">
               Blog
             </Link>
-            <Link href="/privacy" className="text-[#004976] hover:text-[#003557] font-medium">
-              Privacy
-            </Link>
-            <Link href="/terms" className="text-[#004976] hover:text-[#003557] font-medium">
-              Terms
-            </Link>
           </nav>
-          <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Book Demo</Button>
-          </Link>
+          <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-[#1a7180] hover:bg-[#0f5d66] text-white rounded-full">Contact us</Button>
+          </a>
         </div>
       </header>
 
-      <main className="flex-1 py-12 md:py-20 bg-gray-50">
+      <main className="flex-1 bg-[#f5f3ed] py-16 md:py-24">
         <div className="container max-w-6xl">
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#004976] mb-4">Blog</h1>
-            <p className="text-xl text-gray-600">Insights and research from the AIx2 team</p>
+          <div className="mb-16 border-b border-[#102433]/15 pb-10">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#1a7180]">AIx2 perspective / 2026</p>
+            <h1 className="max-w-3xl text-5xl font-medium leading-[1.02] tracking-[-0.05em] text-[#102433] md:text-7xl">Ideas for leaders navigating the AI economy.</h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-[#52717b]">Research, field notes, and practical perspectives on artificial intelligence, organizations, and capital markets.</p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {articles.map((article) => (
               <Link key={article.slug} href={`/blog/${article.slug}`}>
-                <Card className="h-full hover:shadow-xl transition-shadow duration-300 cursor-pointer border-2 hover:border-[#004976]">
+                <Card className="h-full rounded-none border border-[#102433]/15 bg-white shadow-none transition-all duration-300 hover:-translate-y-1 hover:border-[#1a7180] hover:shadow-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl text-[#004976] mb-2 leading-tight">{article.title}</CardTitle>
                     <CardDescription className="text-sm text-gray-500">
