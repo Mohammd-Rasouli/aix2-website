@@ -68,7 +68,7 @@ export default function Home() {
                 <div className="mt-10 grid gap-8 border-t border-[#102433]/15 pt-6 md:grid-cols-3">
                   <div><p className="text-sm font-semibold text-[#102433]">Research-led</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">PhD-level AI expertise from Stanford and leading research institutions.</p></div>
                   <div><p className="text-sm font-semibold text-[#102433]">Operator-tested</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">Experience across top-tier consulting, engineering, and technology organizations.</p></div>
-                  <div><p className="text-sm font-semibold text-[#102433]">Market-connected</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">A direct understanding of GPs, LPs, and the institutions that allocate capital.</p></div>
+                  <div><p className="text-sm font-semibold text-[#102433]">Capital Market-connected</p><p className="mt-2 text-sm leading-relaxed text-[#52717b]">A direct understanding of GPs, LPs, and the institutions that allocate capital.</p></div>
                 </div>
               </div>
             </div>
