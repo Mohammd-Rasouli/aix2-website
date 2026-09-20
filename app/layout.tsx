@@ -5,8 +5,8 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "AIx2 - Tailored Signal in Private Market",
-  description: "AI-powered solutions for due diligence, deal sourcing, and LP screening tailored to your fund.",
+  title: "AIx2 - AI Transformation, Connected to Capital Market",
+  description: "AI transformation for organizations, connected to the capital market through strategy, engineering, and intelligent systems.",
     generator: 'v0.app'
 }
 
