@@ -41,9 +41,9 @@ export default function Home() {
               Terms
             </Link>
           </nav>
-          <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Book Demo</Button>
-          </Link>
+          <a href="mailto:admin@aix2.ai">
+            <Button className="bg-[#004976] hover:bg-[#003557] text-white rounded-full">Contact Us</Button>
+          </a>
         </div>
       </header>
 
@@ -52,27 +52,18 @@ export default function Home() {
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#004976] mb-6 leading-tight">
-                The AI Backbone for Fundraising & Investing Tailored to Your Fund
+                AI transformation for your organization, connected to the capital market
               </h1>
               <p className="text-lg mb-8 text-gray-700">
-                Drive 30% higher ROI and 3x faster fundraising with an end-to-end AI platform from sourcing and
-                screening to outreach and due diligence
+                AIx2 helps organizations transform how they operate, make decisions, and create value — connecting people, intelligence, and strategy to the capital market.
               </p>
-              <Link href="https://meetings.hubspot.com/aix2/aix2-team" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:admin@aix2.ai">
                 <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-6 text-lg rounded-full">
-                  BOOK DEMO
+                  CONTACT US
                 </Button>
-              </Link>
+              </a>
             </div>
-            <div className="relative">
-              <Image
-                src="/images/aix2-dashboard-new.png"
-                alt="AIx2 Dashboard"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl"
-              />
-            </div>
+
           </div>
         </section>
 
@@ -460,7 +451,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="hidden">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#004976] mb-4">
@@ -566,7 +557,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="hidden">
           <div className="container">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-[#004976] mb-4">
