@@ -2,162 +2,55 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+const layers = [
+  { number: "01", title: "User layer", name: "RLUI feedback", text: "Interfaces that turn expert judgment into a continuous learning loop, shaped around how investment teams actually work." },
+  { number: "02", title: "Algorithms layer", name: "CORTEX", text: "Curated search, reasoning, and agentic systems that map the private market and surface the signals that matter." },
+  { number: "03", title: "Data structure layer", name: "MEMORA", text: "A durable intelligence layer for preferences, context, and institutional knowledge—organized for retrieval and action." },
+  { number: "04", title: "Data layer", name: "Connected intelligence", text: "Public and proprietary data brought together with disciplined access controls, integrations, and traceable sources." },
+]
+
 export default function Research() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="border-b bg-white">
-        <div className="container flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/aix2-logo-official.png"
-              alt="AIx2 Logo"
-              width={180}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-[#004976] hover:text-[#003557] font-medium">
-              Home
-            </Link>
-            <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium">
-              Media and Conferences
-            </Link>
-            <Link href="/research" className="text-[#004976] hover:text-[#003557] font-medium font-bold underline">
-              AI Research
-            </Link>
-            <Link href="/blog" className="text-[#004976] hover:text-[#003557] font-medium">
-              Blog
-            </Link>
+    <div className="min-h-screen bg-[#f7f8f6] text-[#102b3f]">
+      <header className="border-b border-[#102b3f]/10 bg-[#f7f8f6]/95 backdrop-blur">
+        <div className="container flex items-center justify-between py-5">
+          <Link href="/" aria-label="AIx2 home"><Image src="/images/aix2-logo-official.png" alt="AIx2" width={180} height={40} className="h-9 w-auto" /></Link>
+          <nav className="hidden items-center gap-8 md:flex">
+            <Link href="/" className="text-sm font-medium hover:text-[#0d7a83]">Home</Link>
+            <Link href="/media" className="text-sm font-medium hover:text-[#0d7a83]">Media and Conferences</Link>
+            <Link href="/research" className="border-b-2 border-[#0d7a83] pb-1 text-sm font-semibold">AI Research</Link>
+            <Link href="/blog" className="text-sm font-medium hover:text-[#0d7a83]">Blog</Link>
           </nav>
-          <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#1a7180] hover:bg-[#0f5d66] text-white rounded-full">Contact us</Button>
-          </a>
+          <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noreferrer"><Button className="rounded-full bg-[#0d7a83] px-5 text-white hover:bg-[#095e66]">Contact us</Button></Link>
         </div>
       </header>
 
-      <main className="flex-1">
-        <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container max-w-5xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#004976] mb-6 text-center">
-              AIx2 CereBrain: Vertical AI Agents Providing Operating System for Private Market Investors
-            </h1>
-
-            <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-12 text-center">
-              Backed by Advanced AI Research and Technology
-            </h2>
-
-            <div className="prose prose-lg max-w-none mb-12">
-              <p className="text-gray-700 mb-6">
-                AIx2 is an advanced AI research and technology team from top academic and industry research labs. To
-                build our efficient vertical AI agents for private market investors, AIx2 uses its own technology
-                architecture built on on top of our team's years of research in AI.
-              </p>
-
-              <p className="text-gray-700 mb-6">
-                We believe in <span className="font-semibold">open access research</span>, and that it will foster our
-                growth as well as the industry growth. Using the{" "}
-                <span className="font-semibold">research navigation map below</span>, see our research for different
-                parts of the architecture in this page.
-              </p>
-
-              <p className="text-[#004976] font-medium">
-                <Link
-                  href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#004976] hover:text-[#003557] underline"
-                >
-                  Contact us if you are an AI researcher and would like to collaborate in this space.
-                </Link>
-              </p>
+      <main>
+        <section className="border-b border-[#102b3f]/10 bg-[#102b3f] text-white">
+          <div className="container grid gap-12 py-20 md:grid-cols-[1.25fr_.75fr] md:py-28">
+            <div>
+              <p className="mb-6 text-xs font-semibold uppercase tracking-[0.28em] text-[#77c9c3]">AI research & engineering</p>
+              <h1 className="max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-0.04em] md:text-6xl">Building the intelligence architecture for the private market.</h1>
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-white/70">AIx2 combines original research, rigorous engineering, and domain expertise to create systems that make complex organizations more intelligent.</p>
+              <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noreferrer" className="mt-9 inline-flex"><Button className="rounded-full bg-[#77c9c3] px-6 text-[#102b3f] hover:bg-[#9adbd5]">Start a conversation</Button></Link>
             </div>
-
-            <div className="my-12 flex justify-center">
-              <Image
-                src="/images/aix2-cerebrain-architecture-detailed.png"
-                alt="AIx2 CereBrain Architecture"
-                width={800}
-                height={600}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-
-            <div className="mt-16 space-y-16">
-              <div>
-                <h3 className="text-2xl font-bold text-[#004976] mb-4">User Layer - AIx2 RLUI Feedback</h3>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-gray-700 mb-4">
-                    The User Layer is the interface between the investor and our AI system. It includes:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>AIx2 RLUI feedback mechanisms for continuous improvement</li>
-                    <li>Intuitive interfaces designed specifically for private market investors</li>
-                    <li>Personalized user experience based on investor preferences and history</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-[#004976] mb-4">Algorithms Layer - AIx2 CORTEX</h3>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-gray-700 mb-4">The Algorithms Layer, powered by AIx2 CORTEX, provides:</p>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Curated Search and Reasoning capabilities</li>
-                    <li>Agents for up-to-date mapping of entire private market</li>
-                    <li>Advanced pattern recognition for investment opportunities</li>
-                    <li>Proprietary algorithms designed specifically for private market analysis</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-[#004976] mb-4">Data Structure Layer - AIx2 MEMORA</h3>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-gray-700 mb-4">The Data Structure Layer, powered by AIx2 MEMORA, includes:</p>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Agents for up-to-date user preference mapping</li>
-                    <li>Efficient data organization and retrieval systems</li>
-                    <li>Secure storage of proprietary investment data</li>
-                    <li>Integration capabilities with existing investor data systems</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-[#004976] mb-4">Data Layer</h3>
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <p className="text-gray-700 mb-4">
-                    The Data Layer forms the foundation of our AI architecture and includes:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>Unstructured industry public data and investor's proprietary data</li>
-                    <li>Integration with private market data sources (Preqin, Bloomberg, CAPITAL IQ)</li>
-                    <li>Fund's private data including date rooms, actions, and meetings</li>
-                    <li>Secure handling of sensitive financial information with strict access controls</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-16 text-center">
-              <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
-                  Book a Research Consultation
-                </Button>
-              </Link>
-            </div>
+            <div className="flex items-end border-l border-white/20 pl-8"><p className="max-w-xs text-sm leading-7 text-white/60">An open research program for the next generation of decision systems—grounded in real operating environments.</p></div>
           </div>
         </section>
-      </main>
 
-      <footer className="bg-[#003557] text-white py-12">
-        <div className="container">
-          <div className="border-t border-white/20 mt-8 pt-8 text-sm text-gray-300 text-center">
-            <p>© 2025 AIx2. All rights reserved.</p>
+        <section className="container py-20 md:py-28">
+          <div className="grid gap-12 md:grid-cols-[.7fr_1.3fr]">
+            <div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">Our point of view</p><h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.03em] md:text-4xl">Research should move from paper to practice.</h2></div>
+            <div className="max-w-2xl text-lg leading-8 text-[#526575]"><p>Our work explores how AI can reason over fragmented information, learn from experts, and operate with the precision that capital markets demand.</p><p className="mt-6">We publish openly, collaborate with leading researchers, and translate foundational ideas into dependable systems for organizations navigating change.</p></div>
           </div>
-        </div>
-      </footer>
+          <div className="mt-16 overflow-hidden border border-[#102b3f]/15 bg-white"><Image src="/images/aix2-cerebrain-architecture-detailed.png" alt="AIx2 CereBrain architecture" width={1200} height={760} className="h-auto w-full object-cover" /></div>
+        </section>
+
+        <section className="border-y border-[#102b3f]/10 bg-white"><div className="container py-20 md:py-24"><div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">The architecture</p><h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] md:text-4xl">From raw signal to institutional intelligence.</h2></div><p className="max-w-sm text-sm leading-6 text-[#526575]">A layered approach designed for context, control, and measurable progress.</p></div><div className="grid gap-px overflow-hidden border border-[#102b3f]/15 bg-[#102b3f]/15 md:grid-cols-2">{layers.map((layer) => <article key={layer.number} className="bg-white p-8 md:p-10"><div className="flex items-start justify-between"><span className="text-sm font-semibold text-[#0d7a83]">{layer.number}</span><span className="text-xs uppercase tracking-[0.18em] text-[#526575]">{layer.title}</span></div><h3 className="mt-14 text-2xl font-semibold">{layer.name}</h3><p className="mt-4 max-w-md leading-7 text-[#526575]">{layer.text}</p></article>)}</div></div></section>
+
+        <section className="container py-20 text-center md:py-24"><p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">Collaborate with AIx2</p><h2 className="mx-auto mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] md:text-4xl">Have a research question worth pursuing?</h2><p className="mx-auto mt-5 max-w-xl leading-7 text-[#526575]">We work with researchers, operators, and investors at the frontier of AI transformation.</p><Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noreferrer" className="mt-8 inline-flex"><Button className="rounded-full bg-[#102b3f] px-7 text-white hover:bg-[#0d7a83]">Book a research conversation</Button></Link></section>
+      </main>
+      <footer className="bg-[#102b3f] py-8 text-center text-sm text-white/60">© 2025 AIx2. All rights reserved.</footer>
     </div>
   )
 }

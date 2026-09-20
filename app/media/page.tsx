@@ -77,8 +77,8 @@ export default function Media() {
   const conferenceKeynotes: any[] = []
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <header className="border-b bg-white">
+    <div className="min-h-screen bg-[#f7f8f6] text-[#102b3f]">
+      <header className="border-b border-[#102b3f]/10 bg-[#f7f8f6]/95 backdrop-blur">
         <div className="container flex items-center justify-between py-4">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -110,11 +110,23 @@ export default function Media() {
       </header>
 
       <main className="flex-1">
-        <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container max-w-5xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#004976] mb-12 text-center">
-              Work with the Thought Leaders in AI for Funds
-            </h1>
+        <section className="border-b border-[#102b3f]/10 bg-[#102b3f] text-white">
+          <div className="container grid gap-10 py-20 md:grid-cols-[1.2fr_.8fr] md:py-24">
+            <div>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#77c9c3]">Media, ideas & convening</p>
+              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">A clearer conversation about AI and capital.</h1>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">AIx2 brings research, operators, and investment leaders together to make AI transformation practical, rigorous, and relevant.</p>
+              <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex"><Button className="rounded-full bg-[#77c9c3] px-6 text-[#102b3f] hover:bg-[#9adbd5]">Start a conversation</Button></a>
+            </div>
+            <div className="flex items-end border-l border-white/20 pl-8"><p className="max-w-xs text-sm leading-7 text-white/60">From global stages to focused research sessions, we share the work shaping the next operating model for capital markets.</p></div>
+          </div>
+        </section>
+        <section className="py-16 md:py-24">
+          <div className="container max-w-6xl mx-auto">
+            <div className="mb-14 grid gap-8 md:grid-cols-[.7fr_1.3fr]">
+              <div><p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#0d7a83]">Selected perspective</p><h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] md:text-4xl">Ideas with a point of view.</h2></div>
+              <p className="max-w-2xl text-lg leading-8 text-[#526575]">Our media work translates complex AI and investment questions into conversations that help leaders decide what to do next.</p>
+            </div>
 
             <div className="prose prose-lg max-w-none mb-8">
               <p className="text-gray-700 mb-6">
@@ -135,14 +147,14 @@ export default function Media() {
             </div>
 
             <div className="mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-10 text-center">Industry Journals</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">Industry Journals</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
                 <Link
                   href="https://www.forbes.com/sites/josipamajic/2024/01/16/venture-capitals-new-era-ais-journey-from-enhancing-operational-efficiency-to-alpha-generation/?ctpv=searchpage"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/forbes-logo-new.jpeg"
@@ -157,7 +169,7 @@ export default function Media() {
                   href="https://www.ai-cio.com/news/will-ai-compromise-security-for-institutional-investors/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/cio-logo-new.png"
@@ -172,7 +184,7 @@ export default function Media() {
                   href="https://middlemarketgrowth.org/ai-platform-alternative-investment/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/mmg-logo-new.png"
@@ -186,14 +198,14 @@ export default function Media() {
             </div>
 
             <div className="mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-10 text-center">Academic Lectures</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">Academic Lectures</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
                 <Link
                   href="https://www.linkedin.com/posts/mohammadrasouli_mba-wharton-vc-activity-7269645758608388097-d5ue/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA-ZUh4ByP2DyYm8HjP050oXjx0yybmGnaU"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/columbia-bs-logo-stacked.png"
@@ -208,7 +220,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_mba-wharton-vc-activity-7269645758608388097-d5ue/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA-ZUh4ByP2DyYm8HjP050oXjx0yybmGnaU"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/wharton-logo-new.jpeg"
@@ -223,7 +235,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_mba-wharton-vc-activity-7269645758608388097-d5ue/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA-ZUh4ByP2DyYm8HjP050oXjx0yybmGnaU"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/nyu-stern-logo-new.jpeg"
@@ -237,7 +249,7 @@ export default function Media() {
             </div>
 
             <div className="mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-10 text-center">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Podcasts and Interviews
               </h2>
 
@@ -249,7 +261,7 @@ export default function Media() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-28"
+                    className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-28"
                   >
                     <Image
                       src={item.logo || "/placeholder.svg"}
@@ -270,7 +282,7 @@ export default function Media() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-28"
+                    className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-28"
                   >
                     <Image
                       src={item.logo || "/placeholder.svg"}
@@ -285,7 +297,7 @@ export default function Media() {
             </div>
 
             <div className="mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-10 text-center">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Conference Keynotes and Speakerships
               </h2>
 
@@ -295,7 +307,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_superreturn-international-2024-activity-7197342707042701313-w5KN/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/superreturn-international-logo-new.jpeg"
@@ -310,7 +322,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_superreturn-middle-east-2023-activity-7123095119397863424-Ko95/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/superreturn-middle-east-logo.png"
@@ -325,7 +337,7 @@ export default function Media() {
                   href="https://www.flickr.com/photos/icbi-events/albums/72177720313234811/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/superreturn-africa-logo-new.png"
@@ -340,7 +352,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_superreturn-us-west-2024-activity-7177349363529039872-60i5/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/superreturn-us-west-logo.png"
@@ -355,7 +367,7 @@ export default function Media() {
                   href="https://informaconnect.com/riskmindsamericas/speakers/mohammad-rasouli/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/riskminds-americas-logo.png"
@@ -373,7 +385,7 @@ export default function Media() {
                   href="https://app.qwoted.com/opportunities/event-gaim-ops-west-2023"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/gaim-ops-west-logo.png"
@@ -388,7 +400,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_generativeai-finance-finovatefall-activity-7238668183392407552-peQE/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/finovate-fall-logo.jpeg"
@@ -403,7 +415,7 @@ export default function Media() {
                   href="https://www.peievents.com/en/event/pere-america-forum-2024/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/pere-america-forum-logo.jpeg"
@@ -418,7 +430,7 @@ export default function Media() {
                   href="https://www.privateequityinternational.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/pei-responsible-investment-forum-logo.png"
@@ -433,7 +445,7 @@ export default function Media() {
                   href="https://www.peievents.com/en/wp-content/uploads/2023/02/PERE-Asia-2024-agenda-12.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/pere-asia-summit-logo.jpeg"
@@ -451,7 +463,7 @@ export default function Media() {
                   href="https://www.peievents.com/en/event/responsible-investment-forum-west/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/pei-responsible-investment-forum-west-logo.jpeg"
@@ -466,7 +478,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_im-speaking-at-rif-new-york-2024-join-me-activity-7161041054895349762-VUBW/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/responsible-investment-forum-ny-logo.png"
@@ -481,7 +493,7 @@ export default function Media() {
                   href="https://static1.squarespace.com/static/6392336fedab3f514d290603/t/66da0f819de8ad6fadd9731c/1725566850033/AI%26Blockchain_2024_Final+Agenda.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/carmo-companies-ai-blockchain-logo.png"
@@ -496,7 +508,7 @@ export default function Media() {
                   href="https://www.professionalpensions.com/news/4165067/pp-conference-key-themes-2024"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/professional-pensions-logo.png"
@@ -511,7 +523,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_ai-alternative-investment-activity-7234456437899370496-yLRd/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/altssv-2024-logo.jpeg"
@@ -529,7 +541,7 @@ export default function Media() {
                   href="https://www.linkedin.com/posts/mohammadrasouli_ai-investment-activity-7126249775468859392-2W3H/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/with-intelligence-coo-summit-logo.png"
@@ -544,7 +556,7 @@ export default function Media() {
                   href="https://www.proskauer.com/events/funds-in-focus-2024"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/proskauer-logo.jpeg"
@@ -559,7 +571,7 @@ export default function Media() {
                   href="https://lu.ma/sbgs"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/stanford-blockchain-governance-summit-logo.png"
@@ -574,7 +586,7 @@ export default function Media() {
                   href="https://www.wfoi.org/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 w-full h-24"
+                  className="flex items-center justify-center p-4 bg-white border border-[#102b3f]/10 hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300 w-full h-24"
                 >
                   <Image
                     src="/images/wfoi-logo.jpeg"
@@ -589,7 +601,7 @@ export default function Media() {
 
             {/* Stanford AI and Investment Series section with four sessions */}
             <div className="mt-20">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#004976] mb-10 text-center">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
                 Stanford AI and Investment Series
               </h2>
 
@@ -599,7 +611,7 @@ export default function Media() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Session 1 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/b9f0b1c8-0371-41a9-ace8-349d942ff255.avif"
@@ -618,7 +630,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 2 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=ymd4sDXFXWc&feature=youtu.be"
                     target="_blank"
@@ -646,7 +658,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 3 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=Bu0kzgMDW0o" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -671,7 +683,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 4 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=wCex47BVv_s&feature=youtu.be"
                     target="_blank"
@@ -700,7 +712,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 5 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <div className="relative w-full aspect-[16/9] bg-gray-100">
                     <Image
                       src="/images/stanford-ai-and-investment-series-session-5.png"
@@ -723,7 +735,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 6 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://youtu.be/8fQ_SXuEg84" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -749,7 +761,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 7 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link href="https://www.youtube.com/watch?v=-RXXb_UxF34" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
@@ -775,7 +787,7 @@ export default function Media() {
                 </div>
 
                 {/* Session 8 */}
-                <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
                   <Link
                     href="https://www.youtube.com/watch?v=X53iozJwAoY"
                     target="_blank"
