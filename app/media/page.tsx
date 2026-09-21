@@ -609,10 +609,10 @@ export default function Media() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Session 10 — September 16, 2026 */}
                 <div className="order-1 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
-                  <Link href="https://luma.com/3w5x9br3" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
-                        src="/images/stanford-ai-and-investment-series-session-8.png"
+                        src="/images/stanford-lp-session-10.jpg"
                         alt="Stanford LP Seminar, September 16, 2026"
                         fill
                         className="object-contain"
@@ -631,10 +631,10 @@ export default function Media() {
 
                 {/* Session 9 — September 10, 2026 */}
                 <div className="order-2 bg-white border border-[#102b3f]/10 overflow-hidden hover:border-[#0d7a83]/50 hover:-translate-y-1 transition-all duration-300">
-                  <Link href="https://luma.com/tmp1kqvt" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-full aspect-[16/9] bg-gray-100">
                       <Image
-                        src="/images/stanford-ai-and-investment-series-session-7.png"
+                        src="/images/stanford-lp-session-9.png"
                         alt="Stanford LP Seminar, September 10, 2026"
                         fill
                         className="object-contain"
