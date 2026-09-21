@@ -138,7 +138,7 @@ export default function Media() {
                   Our work sits where enterprise transformation meets the capital markets — informed by close work with general partners, limited partners, and the institutions allocating capital to what comes next.
                 </p>
                 <p>
-                  We contribute this perspective through keynote conversations, executive briefings, and the <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="font-medium text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">Stanford AI and Investment Series</Link>.
+                  We contribute this perspective through keynote conversations, executive briefings, and the <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="font-medium text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">Stanford AI and Allocators Series</Link>.
                 </p>
               </div>
             </div>
@@ -596,15 +596,27 @@ export default function Media() {
               </div>
             </div>
 
-            {/* Stanford AI and Investment Series section with four sessions */}
-            <div className="order-1 mt-20">
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-[#102b3f] mb-10">
-                Stanford AI and Investment Series
-              </h2>
-
-              <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
-                AIx2 hosts Stanford AI and Investment Series with industry thought leaders.
-              </p>
+{/* Stanford AI and Allocators Series */}
+  <div className="order-1 mt-20">
+  <div className="mb-10 flex flex-col gap-5 border-y border-[#102b3f]/15 py-8 md:flex-row md:items-end md:justify-between">
+  <div>
+  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#0d7a83]">Stanford convening</p>
+  <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#102b3f] md:text-3xl">
+  Stanford AI and Allocators Series
+  </h2>
+  <p className="mt-3 max-w-2xl text-sm leading-7 text-[#526575]">
+  Conversations with the allocators and investment leaders shaping the next generation of capital.
+  </p>
+  </div>
+  <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+  <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">
+  Stanford series page
+  </Link>
+  <Link href="https://youtube.com/@AIx2_Videos" target="_blank" rel="noopener noreferrer" className="text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">
+  Watch on YouTube
+  </Link>
+  </div>
+  </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Session 10 — September 16, 2026 */}
