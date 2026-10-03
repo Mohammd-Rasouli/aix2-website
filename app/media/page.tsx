@@ -94,7 +94,7 @@ export default function Media() {
               Home
             </Link>
             <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium font-bold underline">
-              Media and Conferences
+              Stanford Seminars and Conferences
             </Link>
             <Link href="/research" className="text-[#004976] hover:text-[#003557] font-medium">
               AI Research
@@ -113,10 +113,13 @@ export default function Media() {
         <section className="border-b border-[#102b3f]/10 bg-[#102b3f] text-white">
           <div className="container grid gap-10 py-20 md:grid-cols-[1.2fr_.8fr] md:py-24">
             <div>
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#77c9c3]">Media, ideas & convening</p>
-              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">A clearer conversation about AI and capital.</h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">AIx2 brings research, operators, and investment leaders together to make AI transformation practical, rigorous, and relevant.</p>
-              <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex"><Button className="rounded-full bg-[#77c9c3] px-6 text-[#102b3f] hover:bg-[#9adbd5]">Start a conversation</Button></a>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#77c9c3]">Stanford seminars & conferences</p>
+              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] md:text-6xl">Stanford Seminars and Conferences</h1>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/70">Explore research, investment conversations, and Stanford LP Seminar sessions shaping the future of AI and capital.</p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a href="https://youtube.com/@DrMohammadRasouli" target="_blank" rel="noopener noreferrer" className="inline-flex"><Button className="rounded-full bg-[#e63946] px-7 py-6 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-[#c92f3b]">Visit YouTube Channel</Button></a>
+                <a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer" className="inline-flex"><Button className="rounded-full border border-white/30 bg-white/10 px-6 py-6 text-white hover:bg-white/20">Start a conversation</Button></a>
+              </div>
             </div>
             <div className="flex items-end border-l border-white/20 pl-8"><p className="max-w-xs text-sm leading-7 text-white/60">From global stages to focused research sessions, we share the work shaping the next operating model for capital markets.</p></div>
           </div>
@@ -608,12 +611,12 @@ export default function Media() {
   Conversations with the allocators and investment leaders shaping the next generation of capital.
   </p>
   </div>
-  <div className="flex shrink-0 flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
-  <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">
-  Stanford series page
+  <div className="flex shrink-0 flex-wrap gap-3">
+  <Link href="https://lpseminar.stanford.edu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full bg-[#004976] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#003557]">
+  Stanford Seminar Page
   </Link>
-  <Link href="https://youtube.com/@DrMohammadRasouli" target="_blank" rel="noopener noreferrer" className="text-[#004976] underline decoration-[#0d7a83]/40 underline-offset-4 hover:text-[#0d7a83]">
-  Watch on YouTube
+  <Link href="https://youtube.com/@DrMohammadRasouli" target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full bg-[#e63946] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#c92f3b]">
+  Subscribe on YouTube
   </Link>
   </div>
   </div>
@@ -871,7 +874,17 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-16 text-center">
+            <div className="mt-16 grid gap-6 rounded-3xl bg-[#102b3f] px-6 py-8 text-white md:grid-cols-[1fr_auto] md:items-center md:px-10 md:py-10">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#77c9c3]">Keep learning with AIx2</p>
+                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] md:text-3xl">Subscribe for every Stanford seminar and conference conversation.</h2>
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-white/65">Watch new sessions, investment perspectives, and practical AI transformation ideas on the YouTube channel.</p>
+              </div>
+              <Link href="https://youtube.com/@DrMohammadRasouli" target="_blank" rel="noopener noreferrer" className="inline-flex">
+                <Button className="h-auto rounded-full bg-[#e63946] px-7 py-4 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-[#c92f3b]">Subscribe on YouTube</Button>
+              </Link>
+            </div>
+            <div className="mt-8 text-center">
               <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
                   Book a Consultation
