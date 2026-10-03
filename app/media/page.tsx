@@ -874,23 +874,6 @@ export default function Media() {
               </div>
             </div>
 
-            <div className="mt-16 grid gap-6 rounded-3xl bg-[#102b3f] px-6 py-8 text-white md:grid-cols-[1fr_auto] md:items-center md:px-10 md:py-10">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#77c9c3]">Keep learning with AIx2</p>
-                <h2 className="mt-2 text-2xl font-semibold tracking-[-0.03em] md:text-3xl">Subscribe for every Stanford seminar and conference conversation.</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-white/65">Watch new sessions, investment perspectives, and practical AI transformation ideas on the YouTube channel.</p>
-              </div>
-              <Link href="https://youtube.com/@DrMohammadRasouli" target="_blank" rel="noopener noreferrer" className="inline-flex">
-                <Button className="h-auto rounded-full bg-[#e63946] px-7 py-4 text-base font-semibold text-white shadow-lg shadow-black/20 hover:bg-[#c92f3b]">Subscribe on YouTube</Button>
-              </Link>
-            </div>
-            <div className="mt-8 text-center">
-              <Link href="https://calendar.app.google/JSZzuAFvkoSdeeUw6" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#004976] hover:bg-[#003557] text-white px-8 py-3 text-lg font-medium rounded-full">
-                  Book a Consultation
-                </Button>
-              </Link>
-            </div>
           </div>
         </section>
       </main>
