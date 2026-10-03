@@ -47,7 +47,7 @@ export default function Home() {
           <div className="relative mx-auto max-w-7xl px-6 pb-24 lg:px-10 lg:pb-32">
             <div className="max-w-5xl">
               <p className="mb-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#a8d7dc]"><span className="h-px w-10 bg-[#a8d7dc]" /> AI transformation / capital markets</p>
-              <h1 className="max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.04em] md:text-7xl lg:text-[6.7rem]">Transform the organization.<br /><span className="text-[#a8d7dc]">Connect to capital.</span></h1>
+              <h1 className="max-w-4xl text-5xl font-medium leading-[1.02] tracking-[-0.04em] md:text-7xl lg:text-[6.7rem]">AI Transformation Connected to Capital Markets</h1>
               <div className="mt-12 grid max-w-4xl gap-8 border-t border-white/20 pt-8 md:grid-cols-[1fr_280px]">
                 <p className="max-w-2xl text-xl leading-relaxed text-white/75 md:text-2xl">AIx2 works with leadership teams to turn artificial intelligence into operating advantage, stronger decisions, and measurable enterprise value — connected to the capital market.</p>
                 <div className="flex items-end"><a href="https://calendar.app.google/JSZzuAFvkoSdeeUw6"><Button className="rounded-full bg-[#d7e8ee] px-7 py-6 text-base text-[#071b2b] hover:bg-white">Start a conversation <ArrowUpRight data-icon="inline-end" /></Button></a></div>
