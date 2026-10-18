@@ -94,7 +94,7 @@ export default function Media() {
               Home
             </Link>
             <Link href="/media" className="text-[#004976] hover:text-[#003557] font-medium font-bold underline">
-              Stanford Seminars and Conferences
+              Media and Conferences
             </Link>
             <Link href="/research" className="text-[#004976] hover:text-[#003557] font-medium">
               AI Research
