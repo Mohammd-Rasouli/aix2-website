@@ -12,7 +12,7 @@
  */
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Environment, Lightformer, RoundedBox } from '@react-three/drei';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { Bloom, EffectComposer, Noise, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { BlendFunction, ToneMappingMode } from 'postprocessing';
 import { useEffect, useMemo, useRef, type MutableRefObject } from 'react';
@@ -87,6 +87,26 @@ const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const noRaycast = () => {};
+
+function RoundedBox({
+  args,
+  radius,
+  smoothness,
+  material,
+  position,
+  'position-y': positionY,
+}: {
+  args: [number, number, number];
+  radius: number;
+  smoothness: number;
+  material?: THREE.Material;
+  position?: [number, number, number];
+  'position-y'?: number;
+  raycast?: THREE.Object3D['raycast'];
+}) {
+  const geometry = useMemo(() => new RoundedBoxGeometry(...args, smoothness, radius), [args, radius, smoothness]);
+  return <mesh geometry={geometry} material={material} position={position} position-y={positionY} raycast={noRaycast} />;
+}
 
 const built = computeScene(BUILT);
 const drawn = computeScene({ ...DRAWN, extrude: 1 });
@@ -986,12 +1006,11 @@ function Scene({ hero, next, mid, frames, overlay, sides, onReady, phases }: Pro
     <>
       <Backdrop sky={P.sky} />
       <fog attach="fog" args={[P.fog, 60, 150]} />
-      <Environment key={`env-${theme}`} resolution={128} frames={1}>
-        <color attach="background" args={[P.env]} />
-        <Lightformer form="rect" intensity={2.2} color="#fff1dc" position={[0, 14, 4]} rotation-x={Math.PI / 2} scale={[24, 12, 1]} />
-        <Lightformer form="rect" intensity={1.6} color="#ffd9a6" position={[-16, 6, 8]} rotation-y={Math.PI / 2} scale={[14, 5, 1]} />
-        <Lightformer form="rect" intensity={0.8} color="#c9d4ff" position={[18, 5, -6]} rotation-y={-Math.PI / 2} scale={[14, 4, 1]} />
-      </Environment>
+      <color attach="background" args={[P.env]} />
+      <ambientLight key={`ambient-${theme}`} intensity={light ? 0.28 : 0.4} color={light ? '#fff7e8' : '#ffe8c2'} />
+      <pointLight position={[0, 14, 4]} intensity={light ? 18 : 12} distance={70} color="#fff1dc" />
+      <pointLight position={[-16, 6, 8]} intensity={light ? 12 : 9} distance={55} color="#ffd9a6" />
+      <pointLight position={[18, 5, -6]} intensity={light ? 8 : 5} distance={55} color="#c9d4ff" />
       <hemisphereLight key={`hemi-${theme}`} args={[light ? '#ffffff' : theme === 'brand' ? '#eaf3ff' : '#fff1dc', P.hemiGround, light ? 0.32 : 0.45]} />
       <directionalLight position={[-12, 18, 10]} intensity={light ? 2.6 : 2.2} color={light ? '#fffaf2' : theme === 'brand' ? '#f2f7ff' : '#ffeccf'} />
 
