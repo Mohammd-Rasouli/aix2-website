@@ -9,7 +9,6 @@
  */
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Environment, Grid, Lightformer, PerformanceMonitor } from '@react-three/drei';
 import { useEffect, useMemo, useRef, useState, type MutableRefObject } from 'react';
 import * as THREE from 'three';
 import { Line2 } from 'three/examples/jsm/lines/Line2.js';
@@ -445,23 +444,6 @@ function Scene({ progress, plan, overlay, onReady }: Omit<Props, 'active'>) {
       <directionalLight position={[-6, 16, 10]} intensity={2.4} color="#fff2e2" />
       <directionalLight position={[22, 7, -8]} intensity={0.9} color="#9cb6ff" />
       <ambientLight intensity={0.12} />
-      <Environment resolution={64} frames={1}>
-        <Lightformer intensity={1.6} position={[0, 10, 0]} rotation-x={Math.PI / 2} scale={[30, 30, 1]} />
-        <Lightformer intensity={0.8} color="#9cb6ff" position={[20, 4, -6]} scale={[10, 6, 1]} />
-      </Environment>
-      <Grid
-        position={[(SHEET.x0 + SHEET.x1) / 2, -0.002, (SHEET.z0 + SHEET.z1) / 2]}
-        args={[80, 80]}
-        cellSize={1}
-        cellThickness={0.55}
-        cellColor="#1a2540"
-        sectionSize={5}
-        sectionThickness={1}
-        sectionColor="#2b3b62"
-        fadeDistance={58}
-        fadeStrength={1.4}
-        infiniteGrid
-      />
       <primitive
         object={built.root}
         onPointerOver={(ev: { object: THREE.Object3D; stopPropagation: () => void }) => {
@@ -480,10 +462,8 @@ function Scene({ progress, plan, overlay, onReady }: Omit<Props, 'active'>) {
 }
 
 export default function ModelCanvas(props: Props) {
-  const [dpr, setDpr] = useState(1.5);
   return (
     <Canvas
-      dpr={[1, Math.min(dpr, 1.75)]}
       frameloop={props.active ? 'always' : 'never'}
       gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
       camera={{ fov: 30, near: 1, far: 400, position: [40, 40, 40] }}
@@ -491,7 +471,6 @@ export default function ModelCanvas(props: Props) {
       aria-hidden="true"
       tabIndex={-1}
     >
-      <PerformanceMonitor onIncline={() => setDpr(1.75)} onDecline={() => setDpr(1)} />
       <Scene {...props} />
     </Canvas>
   );
