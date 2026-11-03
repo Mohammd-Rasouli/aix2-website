@@ -13,6 +13,7 @@
  */
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+// Use native Three.js geometry to avoid an optional drei dependency in the preview bundle.
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { Bloom, EffectComposer, Noise, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { BlendFunction, ToneMappingMode } from 'postprocessing';
