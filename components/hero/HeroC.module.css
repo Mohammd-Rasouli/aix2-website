@@ -1,0 +1,308 @@
+.hero {
+  --chrome-h: calc(var(--bar-h) + var(--header-h));
+  position: relative;
+  z-index: 1;
+}
+
+.copy {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: 32px var(--margin) 28px;
+}
+
+.first,
+.lead,
+.act,
+.proof,
+.impactRow {
+  grid-column: 1 / -1;
+}
+
+/* The first screen keeps the page's 12 columns. */
+.first {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.impactRow {
+  margin-top: 32px;
+}
+
+.eyebrow {
+  font-size: var(--step-small);
+  font-weight: 450;
+  color: var(--ink-2);
+}
+
+.title {
+  margin-top: 20px;
+  font-size: clamp(2.75rem, 1rem + 4.5vw, 5.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.built {
+  color: var(--ink);
+}
+
+/* The drawn version: an outline of the letters. */
+.drawn {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+  paint-order: stroke fill;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .drawn {
+    color: var(--ink-2);
+  }
+}
+
+.subhead {
+  margin-top: 26px;
+  max-width: 33em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.doors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.talk {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.proof {
+  margin-top: 40px;
+}
+
+.proofList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.countries {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+/* ---------- Still (phones, tablets, reduced motion) ---------- */
+
+.still {
+  margin: 8px var(--margin) 56px;
+}
+
+.still img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* One still per theme; only the one for the current theme is shown (and loaded, being lazy). */
+.stillLight {
+  display: none;
+}
+
+:global([data-theme='light']) .stillWarm,
+:global([data-theme='brand-light']) .stillWarm {
+  display: none;
+}
+
+:global([data-theme='light']) .stillLight,
+:global([data-theme='brand-light']) .stillLight {
+  display: block;
+}
+
+.stillKey {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.revisions {
+  margin-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.revisions li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 13px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.revText {
+  display: grid;
+  gap: 4px;
+}
+
+.finding {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--red-text);
+}
+
+.source {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .proofList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Desktop with motion: the scan plays behind; copy on the first screen ---------- */
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 560vh;
+  }
+  .copy {
+    --hero-pt: clamp(24px, 5.5vh, 64px);
+    padding: var(--hero-pt) var(--margin) clamp(20px, 3vh, 34px);
+    pointer-events: none;
+  }
+  /* Exactly one window tall: the title block sits at the foot of the first screen, never cut by the fold. */
+  .first {
+    min-height: calc(100svh - var(--chrome-h) - var(--hero-pt));
+    grid-template-rows: auto auto 1fr auto;
+    padding-bottom: clamp(14px, 2.4vh, 26px);
+  }
+  .lead,
+  .act,
+  .impactRow,
+  .proof {
+    pointer-events: auto;
+  }
+  .impactRow {
+    grid-row: 4;
+    margin-top: 24px;
+  }
+  /* Short windows: the headline, text and spacing scale with the height so the whole sheet fits. */
+  .title {
+    margin-top: clamp(10px, 2.3vh, 20px);
+    font-size: min(clamp(2.75rem, 1rem + 4.5vw, 5.5rem), 10.4vh);
+  }
+  .subhead {
+    margin-top: clamp(12px, 3vh, 26px);
+    font-size: min(var(--step-lead), max(15px, 2.45vh));
+  }
+  .doors {
+    margin-top: clamp(14px, 3.4vh, 30px);
+  }
+  .lead {
+    grid-column: 1 / span 7;
+  }
+  .act {
+    grid-column: 1 / span 6;
+  }
+  .act .subhead {
+    max-width: 30em;
+  }
+  .proof {
+    margin-top: clamp(28px, 5vh, 56px);
+  }
+  .proofList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gutter);
+  }
+  .still {
+    display: none;
+  }
+}
+
+/* The copy steps back as the first scroll begins, leaving the scan the whole screen. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  /* Only the headline and its text step back; Impact and the results stay solid as they scroll past (CC-69). */
+  .lead,
+  .act {
+    animation: copyOut linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+}
+
+@keyframes copyOut {
+  to {
+    opacity: 0;
+    translate: 0 -56px;
+  }
+}
+
+/* Desktop, reduced motion or no WebGL: nothing pinned; the still sits beside the copy. */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .hero {
+    height: auto;
+  }
+  .copy {
+    position: relative;
+    height: auto;
+  }
+  .still {
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: var(--margin);
+    width: 40%;
+    margin: 0;
+  }
+}
+
+/* WCAG 2.5.8: at least 24 px tall to tap. */
+.talk {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+/* CC-67: one action and two quiet routes, on one row, one spacing step below the text. */
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: 32px;
+  pointer-events: auto;
+}
+
+.routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  font-size: var(--step-body);
+  font-weight: 500;
+}
+
+.routes a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--edge-strong);
+  text-underline-offset: 5px;
+}
+
+.routes a:hover {
+  text-decoration-color: var(--gold);
+}

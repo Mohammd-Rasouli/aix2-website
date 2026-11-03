@@ -1,0 +1,109 @@
+.wall {
+  display: grid;
+  gap: clamp(20px, 2.4vw, 32px);
+  /* Full bleed: the strip runs to the edges of the page. */
+  margin-inline: calc(var(--margin) * -1);
+}
+
+.title {
+  justify-self: center;
+  font-size: var(--step-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.rows {
+  display: grid;
+  gap: clamp(22px, 2.6vw, 36px);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.row {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  --gap: clamp(40px, 4.4vw, 72px);
+  gap: var(--gap);
+  /* One trailing gap, so half the track is exactly one copy plus its gaps: a seamless loop. */
+  padding-right: var(--gap);
+}
+
+.logo {
+  flex: none;
+}
+
+.still {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(28px, 4vw, 64px) clamp(36px, 5vw, 80px);
+  padding-inline: var(--margin);
+}
+
+.still .logo img {
+  opacity: 0.8;
+}
+
+.logo img {
+  display: block;
+  width: auto;
+  opacity: 0.62;
+  filter: var(--logo-filter);
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.row[data-big='true'] .logo img {
+  opacity: 0.8;
+}
+
+.logo:hover img {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .track {
+    animation: drift 90s linear infinite;
+  }
+  .row[data-reverse='true'] .track {
+    animation-duration: 80s;
+    animation-direction: reverse;
+  }
+  .row[data-big='true'] .track {
+    --gap: clamp(56px, 6vw, 104px);
+    animation-duration: 60s;
+  }
+  .rows:hover .track,
+  .rows:focus-within .track {
+    animation-play-state: paused;
+  }
+}
+
+/* The track holds the logos twice; moving it by half returns it to where it started. */
+@keyframes drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rows {
+    mask-image: none;
+  }
+  .track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    gap: 28px 48px;
+  }
+  .copy,
+  .logo[aria-hidden='true'] {
+    display: none;
+  }
+}

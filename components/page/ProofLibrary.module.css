@@ -1,0 +1,116 @@
+.library {
+  display: grid;
+  gap: 28px;
+  padding: clamp(40px, 5vw, 72px) var(--margin) var(--section-y);
+}
+
+.filters {
+  display: grid;
+  gap: 14px;
+  padding: 22px 24px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 9em 1fr;
+  align-items: start;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  float: left;
+  padding: 8px 0 0;
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  min-height: 36px;
+  padding: 0 14px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--step-label);
+  font-weight: 450;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out-quint),
+    border-color var(--dur-fast) var(--ease-out-quint),
+    color var(--dur-fast) var(--ease-out-quint);
+}
+
+.chip:hover {
+  border-color: var(--gold);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--on-ink);
+}
+
+.count {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-l);
+}
+
+.empty p {
+  max-width: 40em;
+  font-size: var(--step-body);
+  color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+.grid > li > * {
+  height: 100%;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .group {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .legend {
+    padding: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

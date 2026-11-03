@@ -1,0 +1,81 @@
+/* Shared shell for home sections. */
+
+.section {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  gap: clamp(32px, 4vw, 56px);
+  padding: var(--section-y) var(--margin);
+  background: var(--ground);
+}
+
+/* Over the 3D scene: a veil instead of a solid ground. */
+.overScene {
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--ground) 86%, transparent) 14%, color-mix(in srgb, var(--ground) 92%, transparent) 86%, transparent 100%);
+}
+
+.rule {
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.endLink {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--line-soft);
+  text-underline-offset: 0.3em;
+}
+
+.endLink:hover {
+  text-decoration-color: var(--gold);
+}
+
+.endLink svg {
+  width: 18px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: translate var(--dur-fast) var(--ease-out-quint);
+}
+
+.endLink:hover svg {
+  translate: 3px 0;
+}
+
+.lead {
+  max-width: 34em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.pending {
+  justify-self: start;
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.card {
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+}
+
+/* Sections the 3D scene sits behind (How, Two lenses): transparent where the scene runs. */
+:global(html[data-scene='on']) .scene {
+  background: transparent;
+}

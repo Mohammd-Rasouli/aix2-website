@@ -1,0 +1,160 @@
+.section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(64px, 9vw, 140px) var(--margin);
+  /* A soft veil over the model, so the record reads first. */
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--ground) 86%, transparent) 18%, color-mix(in srgb, var(--ground) 92%, transparent) 82%, transparent 100%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--gutter);
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.worked,
+.spoken {
+  padding: 26px 26px 24px;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--ground-raised) 86%, transparent);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(12px);
+}
+
+.colTitle {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.clients {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.client {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 18px 18px 18px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--ink) 6%, transparent), color-mix(in srgb, var(--ink) 2%, transparent));
+  border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.place {
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.who {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.result {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.pending {
+  margin-top: 4px;
+  justify-self: start;
+  padding: 2px 8px;
+  border: 1px dashed color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.countries {
+  margin-top: 18px;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.series {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #c9a35b, #a37a3c);
+  color: #120f0a;
+}
+
+.seriesName {
+  font-size: 1.1875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.seriesLine {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(18, 15, 10, 0.8);
+}
+
+.lead {
+  margin-top: 20px;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.stages {
+  margin-top: 8px;
+}
+
+.stages li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  font-size: 0.9375rem;
+}
+
+.stage {
+  color: var(--ink);
+}
+
+.year {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.mediaTitle {
+  margin-top: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.media {
+  margin-top: 6px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .clients {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,434 @@
+/* The Stanford sessions showcase. The names carry the weight: large, quiet, well spaced. */
+
+/* ---------- Hosts and counts ---------- */
+
+.band {
+  padding-block: clamp(40px, 5vw, 72px);
+  background:
+    radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 70%),
+    var(--ground-raised);
+}
+
+.bandInner {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+}
+
+.kicker {
+  margin-bottom: 14px;
+  font-size: var(--step-label);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hostList {
+  display: grid;
+  gap: 12px;
+}
+
+.hostList li {
+  display: grid;
+  gap: 2px;
+  padding-left: 14px;
+  border-left: var(--rule) solid var(--gold-edge);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.stats li {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: var(--hairline) solid var(--edge-strong);
+}
+
+.statFig {
+  font-size: var(--step-figure-l);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  font-size: var(--step-small);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* ---------- In the room: the institutions, drifting ---------- */
+
+.room {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: clamp(48px, 6vw, 88px) 0 clamp(40px, 5vw, 72px);
+  border-top: var(--hairline) solid var(--edge);
+  background: var(--ground);
+  overflow: hidden;
+}
+
+.roomTitle {
+  font-size: var(--step-label);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.roomLine {
+  max-width: 40em;
+  padding-inline: var(--margin);
+  font-size: var(--step-small);
+  text-align: center;
+  color: var(--ink-2);
+}
+
+.marquee {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  margin-top: 18px;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.mRow {
+  overflow: hidden;
+}
+
+.mTrack {
+  --gap: clamp(28px, 3vw, 48px);
+  display: flex;
+  width: max-content;
+  gap: var(--gap);
+  padding-right: var(--gap);
+}
+
+.mTrack li {
+  flex: none;
+  font-size: clamp(1.125rem, 0.9rem + 0.9vw, 1.75rem);
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* A small gold mark between names. */
+.mTrack li::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: var(--gap);
+  border-radius: 50%;
+  background: var(--gold);
+  vertical-align: middle;
+  translate: 0 -3px;
+  opacity: 0.7;
+}
+
+.mRow[data-reverse='true'] .mTrack li {
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mTrack {
+    animation: drift 140s linear infinite;
+  }
+  .mRow[data-reverse='true'] .mTrack {
+    animation-duration: 120s;
+    animation-direction: reverse;
+  }
+  .marquee:hover .mTrack {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+    padding-inline: var(--margin);
+  }
+  .mTrack {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+    gap: 10px 24px;
+  }
+  .mCopy {
+    display: none;
+  }
+}
+
+/* ---------- The programme ---------- */
+
+.programme {
+  row-gap: clamp(28px, 3vw, 44px);
+}
+
+.programme > * {
+  grid-column: 1 / -1;
+}
+
+.chapter {
+  display: grid;
+  gap: 0;
+}
+
+.chapterHead {
+  position: sticky;
+  top: calc(var(--chrome-h) + 0px);
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding: 16px 0;
+  border-bottom: var(--rule) solid var(--gold);
+  background: color-mix(in srgb, var(--ground) 94%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.chapterName {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+}
+
+.chapterLine {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.chapter + .chapter {
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.sessions {
+  display: grid;
+}
+
+.session {
+  display: grid;
+  grid-template-columns: minmax(180px, 3fr) minmax(0, 9fr);
+  gap: var(--gutter);
+  padding: clamp(24px, 3vw, 40px) 0;
+  border-bottom: var(--hairline) solid var(--edge);
+  scroll-margin-top: calc(var(--chrome-h) + 72px);
+}
+
+.meta {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.num {
+  display: grid;
+  gap: 2px;
+}
+
+.numLabel {
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.numFig {
+  font-size: var(--step-figure-l);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.when {
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.sub {
+  font-size: 0.8125rem;
+  color: var(--plan);
+}
+
+.badge {
+  justify-self: start;
+  padding: 3px 10px;
+  border: var(--hairline) solid var(--gold);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.links {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.watch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 8px 16px 8px 10px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-pill);
+  background: var(--gold-wash);
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-out-quint);
+}
+
+.watch:hover {
+  border-color: var(--gold);
+}
+
+.play {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.play::after {
+  content: '';
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-left: 7px solid var(--ground);
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+}
+
+.luma {
+  min-height: 24px;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.noVideo {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.body {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.theme {
+  max-width: 40em;
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+}
+
+.guests {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.guest {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 16px 18px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+.gName {
+  font-size: var(--step-body);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.gTitle {
+  font-size: var(--step-small);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.gOrg {
+  font-size: var(--step-small);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--gold);
+}
+
+.gWhere {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.mod {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .bandInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .session {
+    grid-template-columns: 1fr;
+  }
+  .meta {
+    grid-template-columns: auto 1fr;
+    align-items: end;
+    column-gap: 18px;
+  }
+  .num {
+    grid-row: span 2;
+  }
+  .links {
+    grid-column: 1 / -1;
+  }
+  .guests {
+    grid-template-columns: 1fr;
+  }
+}

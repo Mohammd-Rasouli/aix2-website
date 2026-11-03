@@ -1,0 +1,16 @@
+.page {
+  min-height: 100vh;
+  background: var(--ground);
+  color: var(--ink);
+}
+
+.over {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* Over the hero the header lets the scene through. The announcement bar stays the solid brand bar,
+   as on every page, so the One-Week Proof note reads on the first screen (CC-68). */
+.over > header {
+  background: transparent;
+}

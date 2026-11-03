@@ -1,0 +1,102 @@
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.head {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+}
+
+.head > * {
+  grid-column: 1 / -1;
+}
+
+.list {
+  border-top: var(--hairline) solid var(--edge-strong);
+}
+
+.item {
+  border-bottom: var(--hairline) solid var(--edge-strong);
+}
+
+.q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 64px;
+  padding: 14px 0;
+  font-size: var(--step-lead);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.q::-webkit-details-marker {
+  display: none;
+}
+
+.q:hover {
+  color: var(--gold);
+}
+
+/* Plus that turns into minus. */
+.sign {
+  position: relative;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: 50%;
+}
+
+.sign::before,
+.sign::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 1.5px;
+  translate: -50% -50%;
+  background: currentColor;
+  transition: rotate var(--dur-base) var(--ease-out-quint);
+}
+
+.sign::after {
+  rotate: 90deg;
+}
+
+.item[open] .sign {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.item[open] .sign::after {
+  rotate: 0deg;
+}
+
+.a {
+  max-width: 44em;
+  padding: 0 52px 24px 0;
+  font-size: var(--step-body);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .head {
+    position: static;
+  }
+  .a {
+    padding-right: 0;
+  }
+}

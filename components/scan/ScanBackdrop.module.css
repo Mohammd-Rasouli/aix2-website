@@ -1,0 +1,401 @@
+.box {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(80% 70% at 62% 40%, var(--scene-a), var(--scene-b) 72%);
+  pointer-events: none;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 600ms linear;
+}
+
+.box[data-ready='true'] .canvas {
+  opacity: 1;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 95% at 60% 45%, transparent 58%, var(--scene-vignette) 100%);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* The key sits top right, under the header, clear of the lens path and the notes. */
+.modelKey {
+  position: absolute;
+  top: calc(var(--chrome-h) + 26px);
+  right: var(--margin);
+}
+
+/* ---------- The lens rim ---------- */
+
+.ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 1.5px solid var(--lens-rim);
+  box-shadow:
+    0 0 0 6px rgba(201, 163, 91, 0.06),
+    0 0 60px var(--lens-glow),
+    inset 0 0 40px rgba(201, 163, 91, 0.08);
+  opacity: 0;
+  will-change: transform, width, height, opacity;
+}
+
+.ringTag {
+  opacity: var(--tag, 1);
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  translate: -50% 0;
+  padding: 2px 10px 3px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #1c1812; /* ink on gold: 6.0:1 and up in both themes */
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% 0;
+  white-space: nowrap;
+  padding: 8px 14px 9px;
+  border: 1px solid rgba(214, 178, 108, 0.35);
+  border-radius: 999px;
+  background: var(--scene-pill);
+  color: var(--plan);
+  font-size: 0.8125rem;
+  opacity: 0;
+  transition: opacity 300ms linear;
+}
+
+/* ---------- Leaders, labels and notes ---------- */
+
+.leaders {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Revision clouds: red ink over the render, like the marks on the Red lines cards. */
+.leaders .cloud {
+  stroke: var(--scene-red-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(229, 83, 61, 0.55));
+}
+
+.nodeLabels li,
+.flows li,
+.notes > li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.nodeLabels li,
+.flows li {
+  /* One tag system on the model (CC-71): a glass chip, a marker, and a tick down to what it names. */
+  translate: -50% calc(-100% - 12px);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px 3px 8px;
+  border: 1px solid var(--scene-pill-line);
+  border-radius: 999px;
+  background: var(--scene-pill);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 16px -10px rgba(4, 20, 36, 0.45);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: var(--scene-label);
+}
+
+.nodeLabels li::before,
+.flows li::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--scene-label) 45%, transparent);
+}
+
+/* The tick: a hairline from the chip to the point it names. */
+.nodeLabels li::after,
+.flows li::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 11px;
+  background: linear-gradient(var(--scene-pill-line), transparent);
+}
+
+.nodeLabels li[data-kind='system']::before {
+  background: #1d6aa8;
+}
+
+.nodeLabels li[data-kind='external']::before {
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--scene-label) 55%, transparent);
+}
+
+.flows li[data-kind='flow'] {
+  border-color: rgba(201, 163, 91, 0.55);
+}
+
+.flows li[data-kind='flow']::before {
+  border-radius: 50%;
+  background: #c9a35b;
+  box-shadow: 0 0 6px rgba(201, 163, 91, 0.8);
+}
+
+.flows li[data-kind='note']::before {
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid #c9a35b;
+}
+
+.flows li[data-kind='alert'] {
+  border-color: rgba(229, 83, 61, 0.55);
+}
+
+.flows li[data-kind='alert']::before {
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--scene-red-ink);
+}
+
+.notes > li {
+  width: 0;
+  height: 0;
+}
+
+.note {
+  position: absolute;
+  top: 0;
+  translate: 0 -50%;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  width: max-content;
+  max-width: 15.5rem;
+  padding: 12px 14px 13px 12px;
+  border: 1px solid rgba(229, 83, 61, 0.35);
+  border-radius: 12px;
+  background: var(--scene-note);
+  box-shadow: var(--shadow-2);
+  backdrop-filter: blur(8px);
+}
+
+.notes > li[data-side='right'] .note {
+  left: 0;
+}
+
+.notes > li[data-side='left'] .note {
+  right: 0;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.noteText {
+  display: grid;
+  gap: 4px;
+}
+
+.finding {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--red-text);
+}
+
+.source {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+
+/* ---------- Later sections: layer names (How) and lens marks (Two lenses) ---------- */
+
+.later {
+  position: absolute;
+  inset: 0;
+}
+
+.layerLabels li,
+.lensLabels li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.layerLabels li {
+  translate: 0 -50%;
+  padding: 3px 11px 4px;
+  border: 1px solid var(--scene-pill-line);
+  border-radius: 999px;
+  background: var(--scene-pill);
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition:
+    color 300ms linear,
+    border-color 300ms linear;
+}
+
+.layerLabels li[data-lit='true'] {
+  border-color: var(--gold-edge);
+  color: var(--ink);
+}
+
+.lensLabels li {
+  translate: -50% -50%;
+  padding: 3px 11px 4px;
+  border: 1px solid var(--scene-pill-line);
+  border-radius: 999px;
+  background: var(--scene-pill);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.lensLabels li[data-tone='red'] {
+  border-color: rgba(229, 83, 61, 0.65);
+}
+
+.lensLabels li[data-tone='gold'] {
+  border-color: rgba(201, 163, 91, 0.7);
+}
+
+/* ---------- Story: one caption per stage of the hero run ----------
+   Pinned to the empty bottom-left corner, clear of the finding notes and the key. Shown only while
+   its stage plays (data-stage is set from the hero's scroll progress). */
+
+.story {
+  position: absolute;
+  left: var(--margin);
+  bottom: clamp(24px, 5vh, 48px);
+  display: grid;
+  width: min(27em, 30vw);
+}
+
+.storyTitle {
+  grid-area: 1 / 1;
+  align-self: start;
+  margin-bottom: 16px;
+  max-width: 22em;
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+  text-wrap: balance;
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.story:not([data-stage='lens']):not([data-after='true']) .storyTitle {
+  opacity: 1;
+}
+
+.beat {
+  grid-area: 2 / 1;
+  align-self: end;
+  display: grid;
+  gap: 12px;
+  padding: 24px 26px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+  opacity: 0;
+  translate: 0 14px;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-base) var(--ease-out-quint),
+    translate var(--dur-base) var(--ease-out-quint),
+    visibility 0s linear var(--dur-base);
+}
+
+.story[data-stage='collect'] .beat[data-beat='collect'],
+.story[data-stage='map'] .beat[data-beat='map'],
+.story[data-stage='finding'] .beat[data-beat='finding'],
+.story[data-stage='design'] .beat[data-beat='design'],
+.story[data-stage='live'] .beat[data-beat='live'] {
+  opacity: 1;
+  translate: 0 0;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.story[data-after='true'] .beat {
+  opacity: 0;
+  translate: 0 14px;
+  visibility: hidden;
+  transition-delay: 0s, 0s, var(--dur-base);
+}
+
+.beat[data-beat='finding'] {
+  border-color: color-mix(in srgb, var(--red) 55%, transparent);
+}
+
+.beatKicker {
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.beat[data-beat='finding'] .beatKicker {
+  color: var(--red-text);
+}
+
+.beatTitle {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--track-h3);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.beatLine {
+  font-size: var(--step-small);
+  line-height: 1.55;
+  color: var(--ink-2);
+}

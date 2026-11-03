@@ -1,0 +1,16 @@
+.placeholder {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.flag {
+  padding: 1px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 450;
+  color: var(--ink-2);
+  white-space: nowrap;
+}

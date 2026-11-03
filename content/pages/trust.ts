@@ -1,0 +1,138 @@
+import type { PageContent } from './types';
+
+/**
+ * Trust center. Source: SS "Trust". No ISO or SOC badges, no CPU/GPU hardware claims (A-28).
+ * Penetration testing (OQ-15) and the 24-hour incident notice (OQ-16) are flagged.
+ */
+export const trust: PageContent = {
+  route: '/trust',
+  seo: {
+    title: 'AIx2 · Trust center',
+    description: 'Your data stays home: AIx2 is built for regulated, sensitive and sovereign environments.',
+  },
+  hero: {
+    name: 'Trust center',
+    what: 'How we protect your data',
+    title: 'Your data stays home.',
+    subhead: 'Built for regulated, sensitive and sovereign environments.',
+  },
+  blocks: [
+    {
+      type: 'prose',
+      id: 'deployment',
+      name: 'Deployment',
+      what: 'What leaves your environment, by option',
+      title: 'Your boundary, your choice.',
+      facts: ['A-11', 'A-12', 'A-13'],
+      paragraphs: [
+        'On-premise, cloud managed by AIx2, or sovereign.',
+        'What leaves in each: nothing on-premise; in our cloud, only masked text reaches model providers, never used for their training.',
+      ],
+    },
+    {
+      type: 'list',
+      id: 'access',
+      name: 'Access',
+      what: 'How we connect to your systems',
+      title: 'Read-only, everywhere.',
+      style: 'check',
+      facts: ['A-20'],
+      items: [
+        'A dedicated read-only account, a data contract and a named owner for every source',
+        'No inbound connections',
+        'We work through your jump host, with recorded sessions',
+        'All access removed at the end',
+      ],
+    },
+    {
+      type: 'list',
+      id: 'privacy',
+      name: 'Privacy',
+      what: 'How personal data is handled',
+      title: 'Personal data is masked before analysis.',
+      style: 'check',
+      facts: ['A-21'],
+      items: [
+        'E-mail metadata only, unless you approve more',
+        'Meeting audio deleted once transcribed',
+        'Recording and vision only with consent, under GDPR and KVKK',
+      ],
+    },
+    {
+      type: 'list',
+      id: 'people',
+      name: 'People',
+      what: 'How results are reported',
+      title: 'No one is scored.',
+      style: 'check',
+      facts: ['A-22'],
+      items: ['Results by team, line and shift, never by individual', 'Agreed with your works council where there is one'],
+    },
+    {
+      type: 'list',
+      id: 'human-oversight',
+      name: 'Human oversight',
+      what: 'Who approves what, and when',
+      title: 'People decide.',
+      style: 'check',
+      facts: ['A-16'],
+      items: [
+        'A named owner approves every finding and every model update',
+        'A second person approves before anything is published',
+        'Model updates arrive as signed packages through your change control',
+      ],
+    },
+    {
+      type: 'list',
+      id: 'ai-governance',
+      name: 'AI governance',
+      what: 'How AI is kept in check',
+      title: 'Computed by code. Explained by AI.',
+      style: 'check',
+      facts: ['A-14'],
+      items: [
+        'Every figure produced by code and traceable',
+        'Confidence scores on every AI step',
+        'Uncertain items go to people',
+        'Support for EU AI Act transparency and human-oversight duties',
+      ],
+    },
+    {
+      type: 'cards',
+      id: 'security',
+      name: 'Atlas security',
+      what: 'The safeguards around the platform itself',
+      title: 'How we protect Atlas itself.',
+      columns: 4,
+      facts: ['A-17', 'A-18', 'A-19', 'A-20'],
+      items: [
+        { title: 'Role-based access' },
+        { title: 'Encryption' },
+        { title: 'A tamper-evident audit log' },
+        { title: 'A software bill of materials' },
+        { title: 'Penetration testing', dependsOn: 'OQ-15' },
+        { title: 'Incident notice within 24 hours', dependsOn: 'OQ-16' },
+        { title: 'Deletion at exit confirmed in writing' },
+      ],
+    },
+    {
+      type: 'list',
+      id: 'regulations',
+      name: 'Regulations',
+      what: 'The rules our controls are designed around',
+      title: 'Designed to support your obligations.',
+      style: 'bullet',
+      facts: ['A-24'],
+      items: ['GDPR', 'EU AI Act', 'NIS2', 'Saudi PDPL and NDMO standards', 'KVKK', 'Quebec Law 25', 'PIPEDA'],
+    },
+    {
+      type: 'cta',
+      id: 'security-overview',
+      name: 'Documents',
+      what: 'The technical pack, on request',
+      title: 'Ask for the full technical overview.',
+      body: 'Data, Security, Privacy and Architecture overview, under NDA',
+      actions: [{ label: 'Request the security overview', href: '/contact?topic=security-overview', variant: 'primary' }],
+    },
+  ],
+};

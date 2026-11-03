@@ -1,0 +1,277 @@
+.section {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  gap: clamp(28px, 3.5vw, 48px);
+  padding: var(--section-y) var(--margin);
+  /* A veil over the model, so the sentence reads first. */
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--ground) 88%, transparent) 16%, color-mix(in srgb, var(--ground) 94%, transparent) 84%, transparent 100%);
+}
+
+.head {
+  max-width: 64rem;
+}
+
+/* ---------- The sentence: three blanks to fill ---------- */
+
+.form {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+.sentence {
+  max-width: 30em;
+  font-size: clamp(1.5rem, 1.05rem + 1.6vw, 2.5rem);
+  font-weight: 450;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+  text-wrap: balance;
+}
+
+.glue {
+  white-space: nowrap;
+}
+
+.blank {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.select {
+  appearance: none;
+  field-sizing: content; /* the blank is as wide as the choice in it */
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1.15em 0.05em 0;
+  border: 0;
+  border-bottom: 2px solid var(--gold);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-fast) var(--ease-out-quint),
+    color var(--dur-fast) var(--ease-out-quint);
+}
+
+.select:hover {
+  color: var(--gold);
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.select option {
+  background: var(--ground-raised);
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.caret {
+  position: absolute;
+  right: 0.1em;
+  top: 50%;
+  width: 0.5em;
+  height: 0.32em;
+  translate: 0 -30%;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  background-image: var(--btn-sheen, none);
+  box-shadow: var(--btn-sheen-edge, none);
+  color: var(--btn-ink);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out-quint),
+    box-shadow var(--dur-fast) var(--ease-out-quint);
+}
+
+.submit:hover {
+  background-color: color-mix(in srgb, var(--ink) 86%, var(--gold));
+  filter: brightness(1.06);
+  box-shadow: 0 0 0 4px var(--gold-wash);
+}
+
+.submit svg {
+  width: 18px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- The result ---------- */
+
+.result {
+  min-height: 220px;
+}
+
+.card,
+.preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.card {
+  animation: cardIn var(--dur-slow) var(--ease-out-expo);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+.col,
+.ghost {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 28px 28px 26px;
+  border-right: var(--hairline) solid var(--edge);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.finding {
+  font-size: clamp(1.375rem, 1.1rem + 0.9vw, 1.875rem);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.text {
+  font-size: var(--step-body);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.proof {
+  font-size: var(--step-body);
+  line-height: 1.55;
+  color: var(--positive);
+}
+
+.pending {
+  justify-self: start;
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.action {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 28px;
+  border-top: var(--hairline) solid var(--edge);
+}
+
+/* Before the first choice: what the card will hold. */
+.preview {
+  box-shadow: none;
+  background: color-mix(in srgb, var(--ground-raised) 60%, transparent);
+}
+
+.ghost .label {
+  color: var(--ink-2);
+}
+
+.ghostLine {
+  display: block;
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.ghostLine[data-short='true'] {
+  width: 62%;
+}
+
+.previewText {
+  grid-column: 1 / -1;
+  padding: 18px 28px 20px;
+  border-top: var(--hairline) solid var(--edge);
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .card,
+  .preview {
+    grid-template-columns: 1fr;
+  }
+  .col,
+  .ghost {
+    border-right: 0;
+    border-bottom: var(--hairline) solid var(--edge);
+    padding: 22px 22px 20px;
+  }
+  .action {
+    padding: 18px 22px;
+  }
+}
+
+@media (max-width: 639px) {
+  .sentence {
+    line-height: 1.6;
+  }
+  .select {
+    white-space: normal;
+  }
+  .ghost:nth-child(n + 2) {
+    display: none;
+  }
+}

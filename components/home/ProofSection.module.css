@@ -1,0 +1,117 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+.grid > li > * {
+  height: 100%;
+}
+
+/* The library: the fifth tile, as wide as two, with a way into every case page. */
+.allCell {
+  grid-column: span var(--span, 2);
+}
+
+.all {
+  display: grid;
+  align-content: space-between;
+  gap: 28px;
+  padding: 26px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-l);
+}
+
+.allHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.allLabel {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  letter-spacing: var(--track-h3);
+}
+
+.allArrow {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border: var(--hairline) solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  transition:
+    background-color var(--dur-fast) var(--ease-out-quint),
+    color var(--dur-fast) var(--ease-out-quint);
+}
+
+.allArrow svg {
+  width: 20px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.allHead:hover .allArrow {
+  background: var(--gold);
+  color: var(--on-ink);
+}
+
+.allList {
+  display: grid;
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.allList a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border-bottom: var(--hairline) solid var(--edge);
+  font-size: var(--step-small);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.allList a::after {
+  content: '→';
+  margin-left: auto;
+  color: var(--ink-2);
+  transition: translate var(--dur-fast) var(--ease-out-quint);
+}
+
+.allList a:hover {
+  color: var(--gold);
+}
+
+.allList a:hover::after {
+  translate: 3px 0;
+  color: var(--gold);
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .allCell {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 639px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .allCell {
+    grid-column: auto;
+  }
+}

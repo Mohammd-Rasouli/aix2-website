@@ -1,0 +1,6 @@
+/* Our customers: every client's logo, between the hero and the cases. */
+.logos {
+  padding: clamp(40px, 5vw, 72px) var(--margin);
+  border-top: var(--hairline) solid var(--edge);
+  background: var(--ground);
+}

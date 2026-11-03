@@ -1,0 +1,5 @@
+/* A firmer veil than other over-scene sections: logos need a quiet ground to read. */
+.band.band {
+  padding-block: clamp(40px, 5vw, 72px);
+  background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--ground) 94%, transparent) 30%, color-mix(in srgb, var(--ground) 94%, transparent) 80%, transparent 100%);
+}

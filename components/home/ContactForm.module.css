@@ -1,0 +1,230 @@
+.form {
+  display: grid;
+  gap: 24px;
+  padding: clamp(22px, 3vw, 36px);
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+}
+
+.title {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px var(--gutter);
+}
+
+.field {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.field[data-wide='true'] {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.control {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--ground) 70%, transparent);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  transition:
+    border-color var(--dur-fast) var(--ease-out-quint),
+    box-shadow var(--dur-fast) var(--ease-out-quint);
+}
+
+.control:hover {
+  border-color: color-mix(in srgb, var(--gold) 60%, var(--line-soft));
+}
+
+.control:focus-visible {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-wash), 0 0 0 1px var(--gold);
+}
+
+textarea.control {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectWrap select {
+  appearance: none;
+  padding-right: 40px;
+}
+
+.selectWrap select option {
+  background: var(--ground-raised);
+  color: var(--ink);
+}
+
+.selectWrap svg {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 10px;
+  height: 6px;
+  translate: 0 -50%;
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Errors: words beside the field, never colour alone. */
+.field[data-error='true'] .control {
+  border-color: var(--ink);
+  box-shadow: inset 3px 0 0 var(--ink);
+}
+
+.error {
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  background-image: var(--btn-sheen, none);
+  box-shadow: var(--btn-sheen-edge, none);
+  color: var(--btn-ink);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: color-mix(in srgb, var(--ink) 86%, var(--gold));
+  filter: brightness(1.06);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.submit svg {
+  width: 18px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Sent ---------- */
+
+.sent {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  padding: clamp(22px, 3vw, 36px);
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+}
+
+.sentMark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.sentMark svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--on-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sentText {
+  font-size: var(--step-lead);
+  color: var(--ink);
+}
+
+.pending {
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Beside other content (Contact): two columns, so the choices are not cut. */
+@media (min-width: 640px) {
+  .fields[data-cols='2'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

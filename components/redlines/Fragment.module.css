@@ -1,0 +1,98 @@
+.svg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 360 / 200;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gridLine {
+  stroke: var(--grid);
+  stroke-width: 0.6;
+  opacity: var(--grid-alpha);
+}
+
+.route {
+  stroke: var(--line-soft);
+  stroke-width: 1.4;
+}
+
+.ink {
+  stroke: var(--line);
+  stroke-width: 1.8;
+}
+
+.inkThin {
+  stroke: var(--line);
+  stroke-width: 1.1;
+}
+
+.dash {
+  stroke: var(--line);
+  stroke-width: 1.4;
+  stroke-dasharray: 4 4;
+}
+
+.dim {
+  stroke: var(--ink-2);
+  stroke-width: 1.1;
+}
+
+.node {
+  stroke: var(--line);
+  stroke-width: 1.4;
+  fill: var(--frag-fill, var(--ground-raised));
+}
+
+.inner {
+  stroke: var(--line);
+  stroke-width: 0.9;
+}
+
+.head {
+  stroke: var(--line);
+  stroke-width: 1.8;
+  fill: var(--frag-fill, var(--ground-raised));
+}
+
+.paper {
+  stroke: var(--line);
+  stroke-width: 1.1;
+  fill: var(--frag-fill, var(--ground-raised));
+}
+
+.tick {
+  stroke: var(--line);
+  stroke-width: 1.6;
+}
+
+.dot {
+  fill: var(--line);
+  stroke: none;
+}
+
+/* Red ink: draws itself once the card is in view. */
+.mark {
+  stroke: var(--red);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur-slow) var(--ease-out-expo) var(--mark-delay, 120ms);
+}
+
+:global([data-inview='true']) .mark {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
+
+/* No JS: the marks are drawn at rest. */
+:global(.no-js) .mark {
+  stroke-dashoffset: 0;
+}

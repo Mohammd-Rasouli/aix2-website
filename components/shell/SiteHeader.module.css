@@ -1,0 +1,71 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: var(--bar-h);
+  padding: 0 var(--margin);
+  background: var(--bar-ground);
+  color: var(--bar-ink);
+  font-size: 0.875rem;
+  font-weight: 450;
+  letter-spacing: 0.005em;
+}
+
+.bar a {
+  text-decoration: none;
+}
+
+.bar a:hover {
+  text-decoration: underline;
+}
+
+/* WCAG 2.5.8: at least 24 px tall to tap. */
+.bar a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+/* CC-68: the One-Week Proof note, with a small gold badge, then a hairline, then the Stanford note. */
+.proof {
+  gap: 10px;
+  font-weight: 500;
+}
+
+.badge {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--btn-bg, var(--gold));
+  background-image: var(--btn-sheen, none);
+  color: var(--btn-ink, #000);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sep {
+  width: 1px;
+  height: 14px;
+  background: color-mix(in srgb, var(--bar-ink) 35%, transparent);
+}
+
+.short {
+  display: none;
+}
+
+.proof,
+.second {
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .bar .sep,
+  .bar .second,
+  .bar .long {
+    display: none;
+  }
+  .short {
+    display: inline;
+  }
+}

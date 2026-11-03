@@ -1,0 +1,41 @@
+.delta {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  border: 1.5px solid var(--red);
+  border-radius: 50%;
+  color: var(--red-text);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.s {
+  width: 20px;
+  height: 20px;
+}
+
+.s .num {
+  font-size: 10px;
+}
+
+.m {
+  width: 26px;
+  height: 26px;
+}
+
+.m .num {
+  font-size: 12px;
+}
+
+.l {
+  width: 34px;
+  height: 34px;
+}
+
+.l .num {
+  font-size: 14px;
+}
