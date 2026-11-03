@@ -8,6 +8,7 @@
  * company, and the findings land one at a time.
  *
  * Every material in the scene shares one lens uniform (screen-space circle): built things
+ * Geometry and lighting use native Three.js primitives to keep the canvas dependency-light.
  * show only inside it; the drawing dims inside it.
  */
 
