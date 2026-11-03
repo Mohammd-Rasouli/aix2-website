@@ -1,0 +1,234 @@
+.wrap {
+  display: grid;
+  gap: 18px;
+}
+
+/* ---------- The switch: a gold lens that slides between the two ---------- */
+
+.toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: start;
+  padding: 5px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--ground) 60%, transparent);
+}
+
+.thumb {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  border: var(--rule) solid var(--gold);
+  border-radius: var(--radius-pill);
+  background: var(--gold-wash);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--gold) 30%, transparent);
+  transition: translate var(--dur-base) var(--ease-out-expo);
+}
+
+.wrap[data-lens='investor'] .thumb {
+  translate: 100% 0;
+}
+
+.option {
+  position: relative;
+  min-width: 140px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out-quint);
+}
+
+.option[aria-checked='true'] {
+  color: var(--ink);
+}
+
+.option:hover {
+  color: var(--ink);
+}
+
+.line {
+  min-height: 1.5em;
+  font-size: var(--step-lead);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.lineLabel {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ---------- The plate: same geometry, the overlay and framing change ---------- */
+
+.plate {
+  overflow: hidden;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(70% 80% at 50% 45%, color-mix(in srgb, var(--gold) 9%, transparent), transparent 70%),
+    var(--ground-sunk);
+}
+
+.plate :global(.lens-plate) {
+  width: 100%;
+  height: auto;
+}
+
+.plate :global(.model) {
+  transform-origin: 280px 165px;
+  transition: transform var(--dur-slow) var(--ease-in-out);
+}
+
+/* Camera re-frame: the investor lens steps back to take in the whole company. */
+.plate :global([data-lens='investor'] .model) {
+  transform: scale(0.94) translate(6px, 4px);
+}
+
+.plate :global(.floor line) {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+
+.plate :global(.edges line) {
+  stroke: var(--plan);
+  stroke-width: 1.25;
+  opacity: 0.7;
+}
+
+.plate :global(.face-t) {
+  fill: var(--face-top);
+}
+
+.plate :global(.face-l) {
+  fill: var(--face-left);
+}
+
+.plate :global(.face-r) {
+  fill: var(--face-right);
+}
+
+.plate :global(.overlay),
+.plate :global(.labels) {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.plate :global([data-lens='operator'] .overlay-operator),
+.plate :global([data-lens='operator'] .labels-operator),
+.plate :global([data-lens='investor'] .overlay-investor),
+.plate :global([data-lens='investor'] .labels-investor) {
+  opacity: 1;
+  transition-delay: 120ms;
+}
+
+.plate :global(.heat) {
+  stroke: url(#heat);
+  stroke-width: 6;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+
+.plate :global(.heat-strong) {
+  stroke-width: 10;
+  opacity: 0.9;
+}
+
+.plate :global(.rework) {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.plate :global(.fix) {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+}
+
+.plate :global(.ring) {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.75;
+}
+
+.plate :global(.ring-dash) {
+  stroke-dasharray: 5 4;
+}
+
+.plate :global(.flag path) {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.plate :global(.flag .flag-cloth) {
+  fill: var(--red);
+  stroke: none;
+}
+
+.plate :global(.lever path) {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plate :global(.verify circle) {
+  fill: var(--gold);
+}
+
+.plate :global(.verify path) {
+  fill: none;
+  stroke: var(--on-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plate :global(.pill rect) {
+  fill: color-mix(in srgb, var(--ground) 88%, transparent);
+  stroke: var(--edge-strong);
+}
+
+.plate :global(.pill-gold rect) {
+  stroke: var(--gold-edge);
+}
+
+.plate :global(.pill-red rect) {
+  stroke: color-mix(in srgb, var(--red) 60%, transparent);
+}
+
+.plate :global(.pill text) {
+  fill: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate :global(.model) {
+    transition: none;
+  }
+}
+
+/* Desktop with the 3D scene: the model itself sits in this frame, so the plate steps aside. */
+:global(html[data-scene='on']) .plate {
+  background: transparent;
+}
+
+:global(html[data-scene='on']) .plate :global(.lens-plate) {
+  visibility: hidden;
+}

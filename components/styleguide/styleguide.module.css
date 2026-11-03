@@ -1,0 +1,728 @@
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(70% 40% at 80% 0%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 70%),
+    var(--ground);
+  color: var(--ink);
+}
+
+/* ---------- Intro ---------- */
+
+.intro {
+  display: grid;
+  gap: 22px;
+  padding: clamp(56px, 8vw, 120px) var(--margin) 32px;
+}
+
+.introKicker {
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.introTitle {
+  font-size: var(--step-hero);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: var(--track-hero);
+}
+
+.introLead {
+  max-width: 40em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.toc a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px 0 10px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-pill);
+  font-size: var(--step-label);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  border-color: var(--gold);
+}
+
+.toc span {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- A part of the styleguide ---------- */
+
+.part {
+  display: grid;
+  gap: 36px;
+  padding: clamp(56px, 7vw, 104px) var(--margin);
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.partHead {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: var(--gutter);
+  row-gap: 10px;
+  max-width: 64rem;
+}
+
+.partN {
+  grid-row: span 2;
+  font-size: var(--step-figure-m);
+  line-height: 1;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.partTitle {
+  font-size: var(--step-h2);
+  font-weight: 460;
+  line-height: 1.05;
+  letter-spacing: var(--track-h2);
+}
+
+.partLead {
+  max-width: 44em;
+  font-size: var(--step-body);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.page code {
+  font-family: var(--font-sans);
+  font-size: 0.92em;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+/* ---------- Colour ---------- */
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--gutter);
+}
+
+.swatch {
+  display: grid;
+  gap: 6px;
+  padding: 12px 12px 16px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.chip {
+  height: 88px;
+  margin-bottom: 8px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+}
+
+.swName {
+  font-size: var(--step-small);
+  font-weight: 500;
+}
+
+.swRole {
+  font-size: var(--step-label);
+}
+
+.swUse {
+  font-size: var(--step-label);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.swRatio {
+  justify-self: start;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- Type ---------- */
+
+.typeList {
+  display: grid;
+}
+
+.typeRow {
+  display: grid;
+  grid-template-columns: minmax(180px, 3fr) minmax(0, 9fr);
+  gap: var(--gutter);
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: var(--hairline) solid var(--edge);
+}
+
+.typeMeta {
+  display: grid;
+  gap: 4px;
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.tHero {
+  font-size: var(--step-hero);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: var(--track-hero);
+  text-wrap: balance;
+}
+
+.drawn {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--ink);
+}
+
+.tDisplay {
+  font-size: var(--step-display);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-display);
+}
+
+.tH2 {
+  font-size: var(--step-h2);
+  font-weight: 460;
+  line-height: 1.05;
+  letter-spacing: var(--track-h2);
+  text-wrap: balance;
+}
+
+.tH3 {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: var(--track-h3);
+}
+
+.tLead {
+  max-width: 34em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+}
+
+.tBody {
+  max-width: 38em;
+  font-size: var(--step-body);
+  line-height: 1.55;
+}
+
+.tSmall {
+  font-size: var(--step-small);
+  font-weight: 450;
+}
+
+.tLabel {
+  max-width: 48em;
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.tFigure {
+  font-size: var(--step-figure-l);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.from {
+  color: var(--ink-2);
+}
+
+.arrow {
+  color: var(--ink-2);
+  font-size: 0.6em;
+  vertical-align: 0.3em;
+}
+
+.to {
+  color: var(--positive);
+}
+
+/* ---------- Space and grid ---------- */
+
+.spaceGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.space {
+  display: grid;
+  gap: 8px;
+}
+
+.space li {
+  display: grid;
+  grid-template-columns: 90px auto 1fr;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.bar {
+  height: 12px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--gutter);
+  height: 260px;
+  padding: 0 var(--margin);
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-m);
+}
+
+.cols span {
+  display: grid;
+  place-items: end center;
+  padding-bottom: 10px;
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+/* ---------- Shape ---------- */
+
+.radii {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.radii li {
+  display: grid;
+  gap: 6px;
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.radiusBox {
+  height: 84px;
+  margin-bottom: 6px;
+  border: var(--rule) solid var(--gold);
+  background: var(--gold-wash);
+}
+
+.surfaces {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  padding: 32px;
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(34% 90% at 18% 50%, color-mix(in srgb, var(--gold) 55%, transparent), transparent 70%),
+    radial-gradient(30% 90% at 82% 50%, color-mix(in srgb, var(--red) 40%, transparent), transparent 70%),
+    var(--ground-sunk);
+}
+
+.surfaces > div {
+  display: grid;
+  gap: 6px;
+  min-height: 120px;
+  align-content: end;
+  padding: 18px;
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.surfGlass {
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+}
+
+.surfTile {
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+.surfLift {
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-2);
+  translate: 0 -4px;
+}
+
+/* ---------- Motion ---------- */
+
+.motion {
+  display: grid;
+  gap: 14px;
+  max-width: 900px;
+}
+
+.motionRow {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: var(--gutter);
+  align-items: center;
+}
+
+.motionName {
+  display: grid;
+  gap: 2px;
+  font-size: var(--step-small);
+}
+
+.motionName span {
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.track {
+  position: relative;
+  height: 36px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-pill);
+}
+
+.puck {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 24px;
+  height: 24px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  background: var(--gold-wash);
+  transition: left var(--t) var(--ease-out-quint);
+}
+
+.motion[data-on='true'] .puck {
+  left: calc(100% - 29px);
+}
+
+.stagger {
+  display: flex;
+  gap: 8px;
+}
+
+.stagger span {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-s);
+  background: var(--gold);
+  opacity: 0.15;
+  translate: 0 8px;
+  transition:
+    opacity var(--dur-base) var(--ease-out-quint) calc(var(--i) * var(--stagger)),
+    translate var(--dur-base) var(--ease-out-quint) calc(var(--i) * var(--stagger));
+}
+
+.motion[data-on='true'] .stagger span {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.replay {
+  justify-self: start;
+  min-height: 40px;
+  padding: 0 16px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--step-small);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.replay:hover {
+  border-color: var(--gold);
+}
+
+/* ---------- Wayfinding ---------- */
+
+.wayDemo {
+  display: grid;
+  gap: 32px;
+  padding: 36px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.keyFig {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.keyFig figcaption {
+  font-size: var(--step-label);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step-small);
+}
+
+.table caption {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.table th,
+.table td {
+  padding: 12px 20px;
+  border-top: var(--hairline) solid var(--edge);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.table td:first-child {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.tdName {
+  color: var(--gold);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tdQ {
+  color: var(--ink-2);
+}
+
+/* ---------- Navigation, actions ---------- */
+
+.specList {
+  display: grid;
+  gap: 10px;
+  max-width: 52em;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.specList strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+}
+
+.states {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 28px;
+}
+
+.states figure {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  margin: 0;
+}
+
+.states figcaption {
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+/* ---------- Red ink ---------- */
+
+.demo {
+  display: grid;
+  gap: 24px;
+  padding: 40px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background:
+    linear-gradient(color-mix(in srgb, var(--grid) 55%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, color-mix(in srgb, var(--grid) 55%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--ground-sunk);
+  background-blend-mode: normal;
+}
+
+.demoDrawing {
+  width: 300px;
+  height: 120px;
+}
+
+.dl {
+  stroke: var(--plan);
+  stroke-width: 1.25;
+}
+
+.db {
+  fill: var(--ground-sunk);
+  stroke: var(--plan);
+  stroke-width: 1.5;
+}
+
+.dv {
+  fill: none;
+  stroke: var(--plan);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+
+.dn {
+  fill: var(--plan);
+}
+
+.findings {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.compactList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+/* ---------- Numbers, lens, proof, method ---------- */
+
+.proofRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.lensDemo {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.lensDemo > header {
+  grid-template-columns: 1fr;
+}
+
+.lensDemo > header > * {
+  grid-column: 1 / -1;
+}
+
+.proofHead > * {
+  grid-column: 1 / span 8;
+}
+
+.caseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+  align-items: stretch;
+}
+
+.caseGrid > li > article {
+  height: 100%;
+}
+
+.howHead {
+  margin-bottom: 24px;
+}
+
+.note {
+  font-size: var(--step-h2);
+  color: var(--gold);
+}
+
+@media (max-width: 1023px) {
+  .spaceGrid,
+  .findings,
+  .lensDemo,
+  .keys,
+  .proofRow,
+  .caseGrid,
+  .surfaces {
+    grid-template-columns: 1fr;
+  }
+  .compactList {
+    grid-template-columns: 1fr;
+  }
+  .radii {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .typeRow {
+    grid-template-columns: 1fr;
+  }
+  .motionRow {
+    grid-template-columns: 1fr;
+  }
+  .cols {
+    height: 160px;
+  }
+}
+
+@media (max-width: 639px) {
+  .partHead {
+    grid-template-columns: 1fr;
+  }
+  .partN {
+    grid-row: auto;
+  }
+  .demo,
+  .wayDemo {
+    padding: 22px;
+  }
+  .demoDrawing {
+    width: 100%;
+    height: auto;
+  }
+}

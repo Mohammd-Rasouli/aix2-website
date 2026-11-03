@@ -1,0 +1,681 @@
+/*
+ * Hero. Three layouts from one markup:
+ *  - desktop with motion (≥ 1024 px): pinned 3D scene scrubbed by scroll, copy over the first screen
+ *  - desktop with reduced motion: the as-built drawing at rest, notes beside it, nothing pinned
+ *  - phones and tablets (< 1024 px): copy, then the marked-up plan with a revision table
+ */
+
+.hero {
+  --chrome-h: calc(var(--bar-h) + var(--header-h));
+  position: relative;
+}
+
+/* ---------- Stage (drawing, canvas, notes) ---------- */
+
+.stage {
+  display: none;
+}
+
+.drawing {
+  position: absolute;
+  inset: 0;
+}
+
+.frame {
+  position: absolute;
+  left: var(--fx0);
+  top: var(--fy0);
+  width: calc(var(--fx1) - var(--fx0));
+  height: calc(var(--fy1) - var(--fy0));
+  container-type: size;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.fit {
+  position: relative;
+  width: min(100cqw, calc(100cqh * var(--ratio)));
+  aspect-ratio: var(--ratio);
+}
+
+.poster,
+.builtStatic {
+  position: absolute;
+  inset: 0;
+}
+
+.builtStatic {
+  display: none;
+}
+
+.poster {
+  transition: opacity var(--dur-base) linear;
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dur-base) linear;
+}
+
+.stage[data-live='true'] .canvasLayer {
+  opacity: 1;
+}
+
+.stage[data-live='true'] .poster {
+  opacity: 0;
+}
+
+.staticNotes {
+  display: none;
+}
+
+.liveLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ---------- Notes: red-ink findings with a delta ---------- */
+
+.notes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.note {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.liveNote {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Margin notes: the leader's shoulder replaces the tick. */
+.liveNote::before {
+  display: none;
+}
+
+.liveNote[data-side='right'] .noteBody {
+  left: 0;
+}
+
+.liveNote[data-side='left'] .noteBody {
+  right: 0;
+}
+
+.leaders {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.noteBody {
+  position: absolute;
+  top: 0;
+  translate: 0 -50%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: max-content;
+  max-width: 17.5rem;
+  padding: 8px 12px 9px 10px;
+  background: color-mix(in srgb, var(--ground) 90%, transparent);
+  pointer-events: auto;
+}
+
+.note::before {
+  content: '';
+  position: absolute;
+  top: -0.75px;
+  width: 16px;
+  height: 1.5px;
+  background: var(--red);
+}
+
+.note[data-side='right']::before {
+  left: 0;
+}
+
+.note[data-side='right'] .noteBody {
+  left: 16px;
+}
+
+.note[data-side='left']::before {
+  right: 0;
+}
+
+.note[data-side='left'] .noteBody {
+  right: 16px;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.noteBoxed {
+  max-width: 15.5rem;
+}
+
+.noteText {
+  display: grid;
+  gap: 4px;
+}
+
+.noteFinding {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--red-text);
+}
+
+.noteSource {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+
+/* Flow labels: knocked out of the line, like labels on a drawing. */
+.flows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.flow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -135%;
+  padding: 1px 7px 2px;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  line-height: 1.35;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.liveFlow {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Node labels: room labels on the plan, then signs on the roofs. */
+.nodeLabels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nodeLabel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  padding: 0 4px;
+  background: color-mix(in srgb, var(--ground) 82%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  line-height: 1.45;
+  white-space: nowrap;
+  color: var(--ink);
+  transition:
+    background-color var(--dur-fast) linear,
+    color var(--dur-fast) linear;
+}
+
+.liveNode {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.liveNode[data-hover='true'] {
+  background: var(--ink);
+  color: var(--ground);
+}
+
+.assembleIn {
+  opacity: 0;
+  animation: fadeIn 260ms linear var(--delay) forwards;
+}
+
+/* Deltas pinned to the static drawing. */
+.tags {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tags li {
+  position: absolute;
+  translate: -50% -100%;
+}
+
+/* The revision table: shown with the static drawing (reduced motion, no WebGL). */
+.revisionBlock {
+  display: none;
+}
+
+/* ---------- Copy ---------- */
+
+.copy {
+  position: relative;
+  z-index: 2;
+}
+
+.block {
+  display: contents;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--step-small);
+  font-weight: 450;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.sheetMark {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 22px;
+  padding: 0 5px;
+  border: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.title {
+  margin-top: 18px;
+  font-size: var(--step-display);
+  font-weight: 460;
+  line-height: 0.98;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.subhead {
+  max-width: 34em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.doors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.talk {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.talk:hover {
+  color: var(--ink);
+}
+
+.proof {
+  position: relative;
+  padding-top: 18px;
+  border-top: var(--hairline) solid color-mix(in srgb, var(--line-soft) 60%, transparent);
+  background: var(--ground);
+}
+
+.proofList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.countries {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+/* ---------- Phones and tablets ---------- */
+
+.mobileFigure {
+  margin: 36px var(--margin) 0;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
+}
+
+.mobileFit {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ratio);
+}
+
+.mobileDrawing {
+  position: absolute;
+  inset: 0;
+}
+
+.mobileTags,
+.mobileFlows {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mobileTags li,
+.mobileFlows li {
+  position: absolute;
+  opacity: 0;
+  animation: fadeIn 300ms linear var(--delay) forwards;
+}
+
+.mobileTags li {
+  translate: -50% -100%;
+}
+
+.mobileFlows li {
+  translate: -50% -130%;
+  padding: 0 4px;
+  border: 1px solid var(--line);
+  background: var(--ground);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.revisions {
+  margin-top: 20px;
+  border-top: var(--rule) solid var(--line);
+}
+
+.revisions li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--line-soft) 55%, transparent);
+}
+
+.revText {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--red-text);
+}
+
+.revSource {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
+  }
+  .copy {
+    display: contents;
+  }
+  .lead {
+    order: 1;
+    padding: 36px var(--margin) 0;
+  }
+  .act {
+    order: 2;
+    padding: 20px var(--margin) 0;
+  }
+  .mobileFigure {
+    order: 3;
+  }
+  .proof {
+    order: 4;
+    margin: 36px var(--margin) 0;
+  }
+  .proofList {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .title {
+    font-size: clamp(2.5rem, 1.6rem + 3.6vw, 3.6rem);
+  }
+  .doors {
+    flex-direction: column;
+  }
+  .doors > a {
+    width: 100%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .proofList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .doors {
+    flex-direction: row;
+  }
+  .doors > a {
+    width: auto;
+  }
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 1024px) {
+  .mobileFigure {
+    display: none;
+  }
+
+  .stage {
+    display: block;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: clip;
+  }
+
+  .copy {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: calc(100svh - var(--chrome-h));
+    min-height: 640px;
+    padding: clamp(28px, 5vh, 64px) var(--margin) clamp(20px, 3.2vh, 36px);
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    pointer-events: none;
+  }
+
+  .lead,
+  .act,
+  .proof {
+    pointer-events: auto;
+  }
+
+  /* A · the marked-up sheet: notes column left, drawing right, proof along the foot. */
+  .a {
+    height: 380vh;
+  }
+  .a .copy {
+    grid-template-rows: auto auto 1fr auto;
+  }
+  .a .lead {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+  }
+  .a .act {
+    grid-column: 1 / span 5;
+    grid-row: 2;
+    margin-top: 26px;
+  }
+  .a .proof {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
+  /* B · the blueprint wall: the drawing fills the sheet; the copy sits in its title block. */
+  .b {
+    height: 380vh;
+  }
+  .b .copy {
+    grid-template-rows: 1fr auto auto;
+    padding-bottom: clamp(16px, 2.6vh, 28px);
+  }
+  .b .block {
+    display: grid;
+    grid-column: 1 / span 6;
+    grid-row: 2;
+    align-self: end;
+    border: var(--rule) solid var(--line);
+    background: var(--ground-sunk);
+    pointer-events: auto;
+  }
+  .b .lead {
+    padding: 0 28px;
+  }
+  .b .eyebrow {
+    margin: 0 -28px;
+    padding: 11px 28px 12px;
+    border-bottom: var(--hairline) solid color-mix(in srgb, var(--line) 30%, transparent);
+  }
+  .b .title {
+    margin-top: 22px;
+    font-size: clamp(2.75rem, 1rem + 3.4vw, 4.5rem);
+  }
+  .b .act {
+    padding: 18px 28px 24px;
+  }
+  .b .subhead {
+    font-size: var(--step-body);
+    max-width: 38em;
+  }
+  .b .doors {
+    margin-top: 20px;
+  }
+  .b .talk {
+    margin-top: 14px;
+  }
+  .b .proof {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 12px;
+    padding: 0;
+    border: var(--rule) solid var(--line);
+    background: var(--ground-sunk);
+  }
+  .b .proofList {
+    gap: 0;
+  }
+  .b .proofList > li {
+    padding: 14px 20px 14px;
+    border-right: var(--hairline) solid color-mix(in srgb, var(--line) 30%, transparent);
+  }
+  .b .proofList > li:last-child {
+    border-right: none;
+  }
+  .b .countries {
+    margin: 0;
+    padding: 8px 20px 9px;
+    border-top: var(--hairline) solid color-mix(in srgb, var(--line) 30%, transparent);
+  }
+}
+
+/* Desktop, reduced motion: nothing pinned, the as-built drawing at rest with its revision table. */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .a,
+  .b {
+    height: auto;
+    min-height: calc(100svh - var(--chrome-h));
+  }
+  .stage {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    --fy1: 48% !important;
+  }
+  .copy {
+    position: relative;
+  }
+  .poster {
+    display: none;
+  }
+  .builtStatic,
+  .staticNotes,
+  .revisionBlock {
+    display: grid;
+  }
+}
+
+/* Desktop without WebGL: the same static drawing; the section keeps its length. */
+@media (min-width: 1024px) {
+  .stage[data-canvas='false'] {
+    --fy1: 48% !important;
+  }
+  .stage[data-canvas='false'] .poster {
+    display: none;
+  }
+  .stage[data-canvas='false'] .builtStatic,
+  .stage[data-canvas='false'] .staticNotes,
+  .stage[data-canvas='false'] .revisionBlock {
+    display: grid;
+  }
+
+  .revisionBlock {
+    position: absolute;
+    left: calc(var(--fx0) + 3%);
+    right: calc(100% - var(--fx1));
+    top: calc(var(--fy1) + 10px);
+    align-content: start;
+  }
+  .revisionBlock li {
+    padding: 9px 0;
+    border-top: var(--hairline) solid color-mix(in srgb, var(--line-soft) 55%, transparent);
+  }
+  .revisionBlock .noteBody {
+    position: static;
+    translate: none;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    background: none;
+  }
+}

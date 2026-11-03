@@ -1,0 +1,237 @@
+import type { PageContent } from './types';
+
+/**
+ * Insights hub (rebuilt 2026-10-30 from docs/insights-draft.md section C). Seven groups, each named and
+ * explained in a plain line: series, talks and keynotes, podcasts and interviews, research and surveys,
+ * essays and guides, press. Only items with a source are listed (OQ-23: unwritten essays, guides, the
+ * sample report and the glossary are not shown; "Allocator Pulse" has no source and is dropped).
+ * Lectures stay hidden until OQ-22 is answered. Event years: docs/facts.md section 6 plus the staged
+ * INS-40; an unknown year shows "[Year to confirm]" (OQ-21). Third-party items are summarised in one
+ * line and linked, never republished. Staged facts: docs/facts-staging-insights.md.
+ */
+export const insights: PageContent = {
+  route: '/insights',
+  seo: {
+    title: 'AIx2 · Insights',
+    description:
+      'Series, talks, podcasts, a fundraising survey, essays and guides from the people behind AIx2: what each one is, when it happened and where to read, watch or listen.',
+  },
+  hero: {
+    name: 'Insights',
+    what: 'Series, talks, podcasts, research and writing',
+    title: 'See how we think.',
+    subhead: 'Series, talks, podcasts, research and writing, in one place. Each group says what it is.',
+  },
+  blocks: [
+    {
+      // CC-50: the Stanford sessions with their guests by name, as published (USR-04).
+      type: 'seriesFeature',
+      id: 'series',
+      name: 'Stanford sessions',
+      what: 'Conversations with the people who allocate capital',
+      title: 'Who comes to our sessions at Stanford.',
+      body: 'Chief investment officers of foundations, endowments, pensions and family offices, and the investors they back. Co-hosted and moderated by AIx2.',
+      facts: ['S-07', 'S-09', 'S-10', 'S-11', 'S-12', 'USR-04'],
+      featured: [
+        'Vinod Khosla',
+        'Christine Tsai',
+        'Ana Marshall',
+        'Chun Lai',
+        'Paula Volent',
+        'Jianhua Peng',
+        'Alexander Thees',
+        'Ashley Baum',
+        'Carina Coleman',
+        'Tim Recker',
+        'David Hefter',
+        'Saam Moatamedi',
+      ],
+      cta: { label: 'See every session and guest', href: '/insights/stanford-ai-investment-series' },
+    },
+    {
+      type: 'cards',
+      id: 'talk',
+      name: 'Talk',
+      what: 'Our four-minute stage talk',
+      title: 'Your enterprise, as it really runs',
+      body: 'From the Plug and Play Summit: the argument, the five-step method and one case, with the numbers behind it.',
+      dependsOn: 'OQ-21',
+      columns: 2,
+      facts: ['T-20'],
+      items: [
+        {
+          tag: 'Plug and Play Summit · 2026',
+          title: 'Your enterprise, as it really runs',
+          copy: 'Leaders are asked to change a company they cannot see. The talk shows how AIx2 reads the records a company already keeps, finds the gap to best practice, and checks that the better way holds.',
+          href: '/talks/plug-and-play-summit-2026',
+        },
+      ],
+    },
+    {
+      type: 'timeline',
+      id: 'keynotes',
+      name: 'Keynotes and conferences',
+      what: 'Conferences where we have spoken, by year',
+      title: 'Keynotes and conferences',
+      body: 'SuperReturn and other investor conferences, with the venue where a public page gives one.',
+      facts: ['S-04', 'S-06', 'USR-02', 'T-01', 'T-02', 'T-03', 'T-04', 'T-05', 'T-06', 'T-07', 'T-08', 'T-09', 'T-10', 'T-11', 'T-12', 'T-13', 'T-14', 'T-15', 'T-16', 'T-17', 'T-18', 'T-19', 'T-20', 'INS-40'],
+      items: [
+        { when: '2026', title: 'Stanford LP Seminar, Fall 2026 · eleven sessions on the Stanford campus' },
+        { when: '2026', title: 'Stanford AI & Investment Series, Session 7 · Stanford' },
+        { when: '2026', title: 'Plug and Play Summit: “Your enterprise, as it really runs”, a four-minute talk' },
+        { when: '2025', title: 'SuperReturn Africa' },
+        { when: '2025', title: 'RiskMinds Americas · New York' },
+        { when: '2025', title: 'PEI Responsible Investment Forum' },
+        { when: '2025', title: 'World Family Office Institute (WFOI)' },
+        { when: '2024', title: 'SuperReturn International' },
+        { when: '2024', title: 'SuperReturn US West' },
+        { when: '2024', title: 'Finovate Fall' },
+        { when: '2024', title: 'PERE America Forum' },
+        { when: '2024', title: 'PERE Asia Summit' },
+        { when: '2024', title: 'Responsible Investment Forum New York' },
+        { when: '2024', title: 'PEI Responsible Investment Forum: West · Palo Alto, California' },
+        { when: '2024', title: 'Carmo Companies AI & Blockchain Investment Conference' },
+        { when: '2024', title: 'Professional Pensions Conference, Key Themes 2024 · online' },
+        { when: '2024', title: 'ALTSSV, Alternative Investments Conference · San Francisco' },
+        { when: '2024', title: 'Proskauer Funds in Focus · New York · keynote and fireside chat' },
+        { when: '2024', title: 'Stanford Blockchain Governance Summit · Stanford Law School · panel on blockchains and AI' },
+        { when: '2023', title: 'SuperReturn Middle East' },
+        { when: '2023', title: 'GAIM Ops West · Carlsbad, California' },
+        { when: '2023', title: 'with. Intelligence Private Markets US COO Summit' },
+      ],
+    },
+    {
+      type: 'cards',
+      id: 'podcasts',
+      name: 'Podcasts and interviews',
+      what: 'Episodes and interviews we have joined',
+      title: 'Podcasts and interviews',
+      body: 'Audio and video conversations with other people’s shows. Each card links to the outlet’s own page.',
+      columns: 2,
+      facts: ['POD-01', 'POD-02', 'POD-04', 'POD-05', 'POD-06', 'POD-07', 'POD-08', 'INS-41', 'INS-42', 'INS-43', 'INS-44', 'INS-45', 'INS-46'],
+      note: 'Links open the outlet’s page, not AIx2’s.',
+      items: [
+        {
+          tag: 'The Derivative · RCM Alternatives · January 30, 2025',
+          title: 'The State of AI, and AI in Alternative Investments with Mohammad Rasouli of AIx2',
+          copy: 'Why AI fits investing, predictive and generative AI, why adoption goes wrong, and what it means for jobs. Our summary of the episode is on its own page.',
+          href: '/insights/podcasts/the-derivative',
+        },
+        {
+          tag: 'The Long-Short · AIMA · March 26, 2025',
+          title: 'EP 101: The Long Short - Beyond ChatGPT: The Real-World Impact of AI in Asset Management',
+          copy: 'How hedge funds are deploying generative AI, and whether machines can make asset-allocation decisions. A second appearance on the show.',
+          href: 'https://www.aima.org/article/ep-101-the-long-short-beyond-chatgpt-the-real-world-impact-of-ai-in-asset-management.html',
+        },
+        {
+          tag: 'Private Equity Value Creation Podcast · September 10, 2024 · 43 min',
+          title: 'EP 43: Mohammad Rasouli and a colleague from AIx2',
+          copy: 'AI across the deal cycle, from sourcing and vetting deals to preparing diligence and exit; the effect on speed; and the human element that stays.',
+          href: 'https://podcasts.apple.com/us/podcast/ep-43-mohammad-rasouli-and-philipp-reineke-aix2/id1693271242?i=1000668968222',
+        },
+        {
+          tag: 'Absolute Return Podcast · July 16, 2024',
+          title: 'Absolute Return Podcast #248: AI In Investing With Stanford AI Researcher Dr. Mohammad Rasouli',
+          copy: 'Language-model use cases in investing, cases where AI found opportunities that traditional methods missed, and how managers balance AI with human judgment.',
+          href: 'https://accelerateshares.com/podcasts/absolute-return-podcast-248-ai-in-investing-with-stanford-ai-researcher-dr-mohammad-rasouli/',
+        },
+        {
+          tag: 'Private Market Talks · Proskauer · May 28, 2024 · 45 min',
+          title: 'Generative AI: From Theory to Practice with AIx2’s Mohammad Rasouli',
+          copy: 'Practical points for private funds adopting generative AI: risk management, security and confidentiality, and what it means for staff.',
+          href: 'https://privatemarkettalks.proskauerpodcasts.com/e/generative-ai-from-theory-to-practice-with-aix2s-mohammad-rasouli/',
+        },
+        {
+          tag: 'Video · AIx2 channel · 2024',
+          title: 'Mohammad Rasouli: AI for investment at SuperReturn International',
+          copy: 'The keynote on AI for investment. The link goes to AIx2’s video channel.',
+          href: 'https://www.youtube.com/@AIx2_Videos',
+        },
+        {
+          tag: '15 for 15 Podcast · Dealflow Network · September 2023',
+          title: '15 for 15 Podcast: Mohammad Rasouli, Implementing AI in Private Equity',
+          copy: 'A Dealflow Network conversation on putting AI to work in private equity. The link goes to the event page.',
+          href: 'https://www.linkedin.com/events/7105613532343193600/comments/',
+        },
+      ],
+    },
+    {
+      type: 'cards',
+      id: 'research',
+      name: 'Research and surveys',
+      what: 'Surveys with a stated sample and method',
+      title: 'Research and surveys',
+      body: 'One survey so far, with its method and every key finding on its own page.',
+      columns: 2,
+      facts: ['SV-01', 'SUR-01'],
+      items: [
+        {
+          tag: 'Survey · July to September 2025',
+          title: 'Fundraising 2025: Survey Results',
+          copy: '124 GPs, 22 LPs and 4 placement agents on how fundraising conversion is won or lost: the outreach funnel, where commitments come from, and what lifts replies and meetings.',
+          href: '/insights/research/fundraising-2025',
+        },
+      ],
+    },
+    {
+      type: 'cards',
+      id: 'essays',
+      name: 'Essays and guides',
+      what: 'Written pieces, summarised on our site',
+      title: 'Essays and guides',
+      body: 'Longer pieces that already exist. Each page summarises the argument and links to the original.',
+      columns: 2,
+      facts: ['PR-03', 'INS-47', 'INS-49', 'INS-50'],
+      items: [
+        {
+          tag: 'Essay · Middle Market Growth · January 24, 2024',
+          title: 'How AI Platforms Are Changing the Game for Alternative Investment',
+          copy: 'Why funds are moving from scattered AI tools to one platform that learns from their own data, and a seven-step approach for building it.',
+          href: '/insights/essays/ai-platforms-for-alternative-investment',
+        },
+        {
+          tag: 'Guide · 2025',
+          title: 'General AI assistant or vertical AI: where each belongs',
+          copy: 'Start with an enterprise assistant for everyone, learn where it stops, then buy specialised tools only for the workflows that decide the outcome.',
+          href: '/insights/guides/chatgpt-vs-vertical-ai',
+        },
+      ],
+    },
+    {
+      type: 'cards',
+      id: 'press',
+      name: 'In the press',
+      what: 'Articles in other publications',
+      title: 'In the press',
+      body: 'Outlet and title, with a link to the article.',
+      columns: 2,
+      facts: ['PR-01', 'PR-02', 'PR-03', 'PR-04', 'INS-47'],
+      items: [
+        {
+          tag: 'Chief Investment Officer · December 22, 2023',
+          title: 'Will AI compromise security for institutional investors?',
+          copy: 'A news article on data security and language models for institutional investors, with comments from Mohammad Rasouli.',
+          href: 'https://www.ai-cio.com/news/will-ai-compromise-security-for-institutional-investors/',
+        },
+        {
+          tag: 'Forbes · January 16, 2024',
+          title: 'Venture Capital’s New Era: AI’s Journey From Enhancing Operational Efficiency To Alpha Generation',
+          copy: 'A Forbes contributor column on AI in venture capital.',
+          href: 'https://www.forbes.com/sites/josipamajic/2024/01/16/venture-capitals-new-era-ais-journey-from-enhancing-operational-efficiency-to-alpha-generation/',
+        },
+        {
+          tag: 'Middle Market Growth · January 24, 2024',
+          title: 'How AI Platforms Are Changing the Game for Alternative Investment',
+          copy: 'Written by Mohammad Rasouli for the magazine of the Association for Corporate Growth.',
+          href: '/insights/essays/ai-platforms-for-alternative-investment',
+        },
+        {
+          tag: 'Markets Group',
+          title: 'Could AI offer investors a steady hand amid times of uncertainty?',
+          copy: 'A Markets Group news article on AI and investing in uncertain times.',
+          href: 'https://www.marketsgroup.org/news/could-ai-offer-investors-a-steady-hand-amid-times-of-uncertainty',
+        },
+      ],
+    },
+  ],
+};

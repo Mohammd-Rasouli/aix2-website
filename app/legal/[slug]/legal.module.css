@@ -1,0 +1,101 @@
+/* One document: contents held on the left, the text set to a reading measure on the right. */
+.doc {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: start;
+  padding: clamp(48px, 6vw, 96px) var(--margin) clamp(72px, 8vw, 128px);
+}
+
+.toc {
+  grid-column: 1 / span 3;
+  position: sticky;
+  top: calc(var(--chrome-h) + 32px);
+  display: grid;
+  gap: 14px;
+}
+
+.tocTitle {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.toc ol,
+.toc ul {
+  display: grid;
+  margin-bottom: 18px;
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.toc a {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: var(--hairline) solid var(--edge);
+  font-size: var(--step-small);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--gold);
+}
+
+.body {
+  grid-column: 5 / span 7;
+  display: grid;
+  gap: 40px;
+  max-width: 42em;
+}
+
+.pending {
+  justify-self: start;
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.part {
+  display: grid;
+  gap: 14px;
+  padding-top: 28px;
+  border-top: var(--hairline) solid var(--edge);
+  scroll-margin-top: calc(var(--chrome-h) + 24px);
+}
+
+.partTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-size: var(--step-h3);
+  font-weight: 500;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+}
+
+.part p {
+  font-size: var(--step-body);
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.n {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1023px) {
+  .toc,
+  .body {
+    grid-column: 1 / -1;
+    position: static;
+  }
+  .toc {
+    margin-bottom: 32px;
+  }
+}

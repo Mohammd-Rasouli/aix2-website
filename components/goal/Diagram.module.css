@@ -1,0 +1,1545 @@
+/* Goal-page diagrams. Colour rules: --plan (blue) is the drawn structure, --gold what is built
+   and the flow, --red findings and hidden work only. Every piece with an inline --i enters once,
+   staggered, when the figure is a quarter on screen (Reveal sets data-in). */
+
+.fig {
+  --stagger: 110ms;
+  position: relative;
+  padding: clamp(20px, 2.6vw, 36px);
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(70% 90% at 85% 0%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 70%),
+    linear-gradient(color-mix(in srgb, var(--plan) 6%, transparent) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, color-mix(in srgb, var(--plan) 6%, transparent) 1px, transparent 1px) 0 0 / 32px 32px,
+    color-mix(in srgb, var(--ground-raised) 70%, transparent);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrance uses transform, so pieces positioned with translate keep their place. */
+  .fig [style*='--i'] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 600ms var(--ease-out-quint),
+      transform 600ms var(--ease-out-quint);
+    transition-delay: calc(var(--i) * var(--stagger));
+  }
+  .fig[data-in='true'] [style*='--i'] {
+    opacity: 1;
+    transform: none;
+  }
+  .draw,
+  .link,
+  .liveLine,
+  .onceLine {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 1400ms var(--ease-out-quint);
+  }
+  .fig[data-in='true'] .draw,
+  .fig[data-in='true'] .link,
+  .fig[data-in='true'] .liveLine,
+  .fig[data-in='true'] .onceLine {
+    stroke-dashoffset: 0;
+  }
+  .fig[data-in='true'] .ringFlow {
+    animation: flow 9s linear infinite;
+  }
+  .fig[data-in='true'] .ringDot {
+    animation: orbit 9s linear infinite;
+  }
+  .fig[data-in='true'] .orbit {
+    animation: spin 12s linear infinite;
+  }
+  .fig[data-in='true'] .engineRing {
+    animation: spin 14s linear infinite;
+  }
+  .fig[data-in='true'] .gate::after {
+    animation: pulse 2.4s var(--ease-out-quint) infinite;
+    animation-delay: calc(var(--i, 0) * 300ms);
+  }
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.9;
+    scale: 0.6;
+  }
+  100% {
+    opacity: 0;
+    scale: 2.2;
+  }
+}
+
+/* ---------- Shared pieces ---------- */
+
+.tag {
+  justify-self: start;
+  font-size: var(--step-label);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--plan);
+}
+
+.tag[data-gold='true'] {
+  color: var(--gold);
+}
+
+.tag[data-muted='true'] {
+  color: var(--ink-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chipRed,
+.chipGold {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--step-small);
+  line-height: 1.3;
+}
+
+.chipRed {
+  border: var(--hairline) dashed var(--red);
+  background: var(--red-wash);
+  color: var(--ink);
+}
+
+.chipGold {
+  border: var(--hairline) solid var(--gold-edge);
+  background: var(--gold-wash);
+  color: var(--ink);
+}
+
+/* ---------- 1. Layers: built bottom-up ---------- */
+
+.layers {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+
+.stack {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.upRail {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-left: var(--rule) solid var(--gold-edge);
+}
+
+.upRail::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -7px;
+  width: 12px;
+  height: 12px;
+  border-top: var(--rule) solid var(--gold);
+  border-left: var(--rule) solid var(--gold);
+  rotate: 45deg;
+}
+
+.upRail span {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  font-size: var(--step-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.layerList {
+  display: grid;
+  gap: 14px;
+}
+
+.layer {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.4em minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: var(--w);
+  padding: 14px 18px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+/* The arrow up to the layer above. */
+.layer:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 1.5px;
+  height: 14px;
+  background: var(--gold-edge);
+}
+
+.layerN {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--plan);
+  font-variant-numeric: tabular-nums;
+}
+
+.layerText {
+  display: grid;
+  gap: 4px;
+}
+
+.layerName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.layerItems {
+  font-size: var(--step-small);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.layerTag {
+  padding: 4px 10px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--gold);
+}
+
+.layerTag[data-observed='true'] {
+  border-color: var(--plan);
+  color: var(--plan);
+}
+
+.hiddenBox {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: var(--hairline) dashed color-mix(in srgb, var(--red) 60%, transparent);
+  border-radius: var(--radius-l);
+  background: color-mix(in srgb, var(--red) 5%, transparent);
+}
+
+.hiddenTitle {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hiddenLine {
+  font-size: var(--step-small);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---------- 2. Hidden work: the official path and its detours ---------- */
+
+.hidden {
+  display: grid;
+  gap: 22px;
+}
+
+.pathRow {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+}
+
+.pathName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--plan);
+}
+
+.paths {
+  display: grid;
+  gap: 8px;
+}
+
+.pathLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.pathLabel[data-red='true'] {
+  color: var(--red-text);
+}
+
+.formal,
+.detours {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.formalNode,
+.detour {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 14px;
+  border-radius: var(--radius-m);
+  font-size: var(--step-small);
+}
+
+.formalNode {
+  border: var(--hairline) solid var(--gold-edge);
+  background: var(--surface-tile);
+  color: var(--ink);
+}
+
+/* The official line, linking each step to the next. */
+.formalNode:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -11px;
+  top: 50%;
+  width: 11px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.formalN {
+  font-size: var(--step-label);
+  color: var(--gold);
+}
+
+.detour {
+  border: var(--hairline) dashed var(--red);
+  background: var(--red-wash);
+  color: var(--ink);
+}
+
+.detour span {
+  color: var(--red-text);
+}
+
+/* ---------- 3. The data supply chain as a loop ---------- */
+
+.loop {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+/* One stage for the ring, the centre and the four cards, so the cards sit on the ring. */
+.loopStage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(820px, 100%);
+  aspect-ratio: 16 / 10;
+}
+
+.loopRing {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  height: 94%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  overflow: visible;
+}
+
+.ringTrack {
+  fill: none;
+  stroke: var(--edge-strong);
+  stroke-width: 1.5;
+}
+
+.ringFlow {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 7;
+  opacity: 0.8;
+}
+
+.ringDot {
+  fill: var(--gold);
+  transform-origin: 200px 200px;
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+
+.loopCenter {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  width: min(230px, 30%);
+  padding: 16px 18px;
+  border: var(--hairline) solid var(--plan);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  text-align: center;
+}
+
+.loopCenterName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--plan);
+}
+
+.loopCenterItems {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.loopNodes {
+  position: absolute;
+  inset: 0;
+}
+
+.loopNode {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+  width: min(230px, 27%);
+  padding: 12px 14px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-glass);
+  backdrop-filter: blur(6px);
+}
+
+.loopNode[data-pos='0'] {
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+}
+.loopNode[data-pos='1'] {
+  top: 50%;
+  left: calc(50% + 37%);
+  translate: -50% -50%;
+}
+.loopNode[data-pos='2'] {
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+}
+.loopNode[data-pos='3'] {
+  top: 50%;
+  left: calc(50% - 37%);
+  translate: -50% -50%;
+}
+
+.loopId {
+  font-size: var(--step-label);
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.loopName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.loopItems {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.loopBack {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--gold);
+}
+
+/* ---------- 4. Two starting points, one way ---------- */
+
+.funnel {
+  display: grid;
+  justify-items: center;
+  gap: 0;
+}
+
+.starts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gutter);
+  width: 100%;
+}
+
+.start {
+  display: grid;
+  gap: 8px;
+  padding: 20px 22px;
+  border: var(--hairline) solid var(--plan);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.startName {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.startCopy {
+  font-size: var(--step-small);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.converge {
+  display: block;
+  width: 100%;
+  height: 56px;
+}
+
+.converge svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.draw {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.same {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  padding: 18px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-l);
+  background: var(--gold-wash);
+}
+
+.sameLabel {
+  font-size: var(--step-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.moves {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.move {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-glass);
+}
+
+.move:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--gold);
+}
+
+.moveN {
+  font-size: var(--step-label);
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.moveName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.moveCopy {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.down {
+  width: 1.5px;
+  height: 30px;
+  background: var(--gold);
+}
+
+.outcome {
+  width: 100%;
+  padding: 18px 22px;
+  border: var(--rule) solid var(--gold);
+  border-radius: var(--radius-l);
+  background:
+    radial-gradient(80% 140% at 50% 0%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 70%),
+    var(--surface-glass);
+  font-size: var(--step-lead);
+  font-weight: 500;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* ---------- 5. Best-match engine ---------- */
+
+.match {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.8fr) minmax(0, 1fr);
+  grid-template-areas: 'a engine b' 'out out out';
+  gap: 28px var(--gutter);
+  align-items: center;
+}
+
+.match > .side:first-child {
+  grid-area: a;
+}
+.engine {
+  grid-area: engine;
+}
+.side[data-ref='true'] {
+  grid-area: b;
+}
+.matchOut {
+  grid-area: out;
+}
+
+.side {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border: var(--hairline) solid var(--plan);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.side[data-ref='true'] {
+  border-color: var(--edge-strong);
+}
+
+.sideList {
+  display: grid;
+  gap: 8px;
+}
+
+.sideList li {
+  padding: 9px 12px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-m);
+  font-size: var(--step-small);
+  color: var(--ink);
+}
+
+.engine {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: min(210px, 100%);
+  justify-self: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 22%, transparent), transparent 66%);
+}
+
+.engineRing {
+  position: absolute;
+  inset: 8%;
+  border: var(--rule) dashed var(--gold);
+  border-radius: 50%;
+}
+
+.engineName {
+  position: relative;
+  max-width: 7em;
+  font-size: var(--step-small);
+  font-weight: 600;
+  text-align: center;
+  color: var(--gold);
+}
+
+.matchOut {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 20px;
+  border: var(--rule) solid var(--gold);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+}
+
+.matchOutName {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- 6. Hub vs supply chain ---------- */
+
+.hvc {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: var(--gutter);
+}
+
+.panel {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 22px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+}
+
+.panel[data-muted='true'] {
+  border-color: var(--edge-strong);
+  background: transparent;
+}
+
+.panelName {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.panelQ {
+  font-size: var(--step-small);
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+.hub {
+  position: relative;
+  aspect-ratio: 1;
+  width: min(260px, 100%);
+  margin: 8px auto;
+}
+
+.hubCenter {
+  position: absolute;
+  inset: 34%;
+  display: grid;
+  place-items: center;
+  border: var(--hairline) solid var(--ink-2);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--ink-2);
+}
+
+.spokes li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 0;
+  transform-origin: 0 0;
+  rotate: var(--a);
+  border-top: var(--hairline) dashed var(--line-soft);
+}
+
+.spokes li span {
+  position: absolute;
+  right: -4px;
+  top: 0;
+  translate: 50% -50%;
+  rotate: calc(var(--a) * -1);
+  padding: 2px 6px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-pill);
+  background: var(--ground);
+  font-size: 0.6875rem;
+  color: var(--ink-2);
+}
+
+.points {
+  display: grid;
+  gap: 6px;
+  font-size: var(--step-small);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.points li::before {
+  content: '· ';
+  color: var(--line-soft);
+}
+
+.chain {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 8px;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.stageName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.stageItems {
+  display: grid;
+  gap: 8px;
+}
+
+.stageItems li {
+  display: grid;
+  gap: 3px;
+  padding: 10px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+.stageWhat {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.stageWho {
+  font-size: 0.75rem;
+  color: var(--plan);
+}
+
+.stageWho::before {
+  content: '● ';
+  font-size: 0.6em;
+  vertical-align: middle;
+}
+
+/* A quality gate on the handoff to the next stage. */
+.gate {
+  position: absolute;
+  top: 48%;
+  right: -17px;
+  width: 12px;
+  height: 12px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  background: var(--ground);
+}
+
+.gate::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: var(--hairline) solid var(--gold);
+  opacity: 0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.legend li::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------- 7. One connected model ---------- */
+
+.conn {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 0.8fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.col {
+  display: grid;
+  gap: 12px;
+}
+
+.colList {
+  display: grid;
+  gap: 12px;
+}
+
+.colList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+  font-size: var(--step-small);
+  color: var(--ink);
+}
+
+.col:last-child .colList li {
+  border-color: var(--plan);
+}
+
+.colN {
+  font-size: var(--step-label);
+  color: var(--gold);
+}
+
+.base {
+  padding: 10px 16px;
+  border: var(--hairline) dashed var(--plan);
+  border-radius: var(--radius-m);
+  font-size: 0.8125rem;
+  color: var(--plan);
+}
+
+.links {
+  position: relative;
+  display: grid;
+  height: 100%;
+  min-height: 240px;
+}
+
+.links svg {
+  width: 100%;
+  height: 240px;
+  overflow: visible;
+}
+
+.link {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.2;
+  opacity: 0.7;
+  vector-effect: non-scaling-stroke;
+}
+
+.linkLabel {
+  justify-self: center;
+  max-width: 12em;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--gold);
+}
+
+/* ---------- 8. Scale: nested levels ---------- */
+
+.scale {
+  padding: clamp(16px, 2vw, 28px);
+}
+
+.nest {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  grid-template-areas: 'name inner' 'items inner';
+  align-items: start;
+  gap: 10px 24px;
+  padding: 22px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: color-mix(in srgb, var(--plan) 4%, transparent);
+}
+
+.nest[data-level='1'] {
+  border-color: color-mix(in srgb, var(--plan) 50%, transparent);
+}
+
+.nest[data-level='0'] {
+  grid-template-columns: 1fr;
+  grid-template-areas: 'name' 'items';
+  border: var(--rule) solid var(--gold);
+  background:
+    radial-gradient(70% 120% at 50% 0%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 70%),
+    var(--surface-glass);
+}
+
+.nestName {
+  grid-area: name;
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.nest[data-level='2'] > .nestName,
+.nest[data-level='1'] > .nestName {
+  color: var(--plan);
+}
+
+.nestItems {
+  grid-area: items;
+  display: grid;
+  gap: 6px;
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.nest > .nest {
+  grid-area: inner;
+}
+
+/* ---------- 9. The live loop ---------- */
+
+.live {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--gutter);
+  align-items: center;
+}
+
+.wheel {
+  position: relative;
+  aspect-ratio: 1;
+  width: min(480px, 100%);
+  justify-self: center;
+}
+
+.wheelRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* A gold mark that travels the loop. */
+.orbit {
+  position: absolute;
+  inset: 15%;
+}
+
+.orbit i {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 16px var(--gold);
+}
+
+.wheelCenter {
+  position: absolute;
+  inset: 39%;
+  display: grid;
+  place-items: center;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.wheelSteps li {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 132px;
+  translate: calc(cos(var(--a)) * 35cqw - 50%) calc(sin(var(--a)) * 35cqw - 50%);
+  text-align: center;
+}
+
+.wheel {
+  container-type: inline-size;
+}
+
+.wheelN {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  background: var(--ground-raised);
+  font-size: var(--step-label);
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.wheelText {
+  padding: 6px 10px;
+  border-radius: var(--radius-m);
+  background: var(--surface-glass);
+  font-size: var(--step-small);
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.liveNotes {
+  display: grid;
+  gap: 12px;
+}
+
+.liveNotes li {
+  padding: 16px 18px;
+  border-left: var(--rule) solid var(--gold);
+  background: var(--surface-tile);
+  font-size: var(--step-body);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ---------- 10. Drift: the illustrative chart ---------- */
+
+.drift {
+  display: grid;
+  gap: 14px;
+}
+
+.chart {
+  position: relative;
+  padding-left: 42px;
+}
+
+.chart svg {
+  width: 100%;
+  height: clamp(180px, 22vw, 260px);
+  overflow: visible;
+}
+
+.axisY {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+  translate: 0 -50%;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.hi,
+.lo {
+  position: absolute;
+  left: 18px;
+  font-size: 0.6875rem;
+  color: var(--ink-2);
+}
+
+.hi {
+  top: 14%;
+}
+
+.lo {
+  bottom: 18%;
+}
+
+.grid {
+  stroke: var(--edge-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.reviewLine {
+  stroke: var(--line-soft);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.liveLine,
+.onceLine {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.liveLine {
+  stroke: var(--gold);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--gold) 60%, transparent));
+}
+
+.onceLine {
+  stroke: var(--red);
+  opacity: 0.9;
+}
+
+.chartKey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  font-size: var(--step-small);
+  color: var(--ink);
+}
+
+.chartKey li::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 3px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+.chartKey li[data-gold='true']::before {
+  background: var(--gold);
+}
+
+.chartKey li[data-red='true']::before {
+  background: var(--red);
+}
+
+.chartKey li[data-review='true']::before {
+  height: 0;
+  border-top: 1.5px dashed var(--line-soft);
+}
+
+/* ---------- 11. AI readiness: four stages ---------- */
+
+.ready {
+  display: grid;
+  gap: 20px;
+}
+
+.readyCols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1fr);
+  gap: 30px;
+  align-items: stretch;
+}
+
+.readyCol {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+/* The flow from one stage to the next: a dashed gold line with a moving dash. */
+.readyCol:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -26px;
+  width: 22px;
+  height: 0;
+  border-top: 1.5px dashed var(--gold);
+}
+
+.readyStage {
+  font-size: var(--step-label);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.mods {
+  display: grid;
+  gap: 6px;
+}
+
+.mods li {
+  padding: 8px 12px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.mods li[data-first='true'] {
+  border-color: var(--gold-edge);
+  background: var(--gold-wash);
+  color: var(--ink);
+}
+
+.mods .modsNote {
+  padding: 2px 4px 6px;
+  border: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hubCard,
+.modelCard {
+  display: grid;
+  gap: 8px;
+  height: 100%;
+  padding: 18px;
+  border: var(--hairline) solid var(--plan);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.hubName {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.hubLine {
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+}
+
+.hubItems {
+  display: grid;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.hubItems li {
+  padding: 6px 10px;
+  border-radius: var(--radius-s, 6px);
+  background: color-mix(in srgb, var(--plan) 8%, transparent);
+  font-size: 0.8125rem;
+  color: var(--ink);
+}
+
+.modelCard {
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  border: var(--rule) solid var(--gold);
+  background:
+    radial-gradient(70% 70% at 50% 40%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 70%),
+    var(--surface-glass);
+}
+
+.modelLens {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 8px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.modelLens i {
+  position: absolute;
+  inset: 22%;
+  border: var(--hairline) dashed var(--gold);
+  border-radius: 50%;
+}
+
+.agents {
+  display: grid;
+  gap: 8px;
+}
+
+.agents li {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+.agentName {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.agentCopy {
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.gateLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+  border-top: var(--hairline) solid var(--edge);
+  font-size: var(--step-small);
+  color: var(--ink);
+}
+
+.gateIcon {
+  width: 14px;
+  height: 14px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px var(--ground), inset 0 0 0 8px var(--gold);
+}
+
+/* ---------- Tablet and phone ---------- */
+
+@media (max-width: 1023px) {
+  .layers,
+  .live,
+  .hvc {
+    grid-template-columns: 1fr;
+  }
+  .chain {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .gate {
+    top: auto;
+    bottom: -12px;
+    right: auto;
+    left: 18px;
+  }
+  .readyCols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .readyCol:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .layer {
+    width: 100%;
+    grid-template-columns: 2em minmax(0, 1fr);
+  }
+  .layerTag {
+    grid-column: 2;
+    justify-self: start;
+    white-space: normal;
+  }
+  .pathRow {
+    grid-template-columns: 1fr;
+  }
+  .formal,
+  .detours,
+  .starts,
+  .moves,
+  .readyCols {
+    grid-template-columns: 1fr;
+  }
+  .formalNode:not(:last-child)::after,
+  .move:not(:last-child)::after {
+    display: none;
+  }
+  .match {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'a' 'engine' 'b' 'out';
+  }
+  .conn {
+    grid-template-columns: 1fr;
+  }
+  .links {
+    display: none;
+  }
+  .nest {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'name' 'items' 'inner';
+  }
+  /* The loop as a list on phones: the ring cannot hold four cards at this width. */
+  .loop {
+    display: grid;
+    gap: 12px;
+    min-height: 0;
+  }
+  .loopRing {
+    display: none;
+  }
+  .loopNodes {
+    position: static;
+    display: grid;
+    gap: 10px;
+    order: -1;
+  }
+  .loopNode,
+  .loopNode[data-pos] {
+    position: static;
+    width: 100%;
+    translate: none;
+  }
+  .loopCenter {
+    order: 1;
+  }
+  .loopCenter {
+    width: 100%;
+  }
+  .loopStage {
+    aspect-ratio: auto;
+    display: grid;
+    gap: 10px;
+  }
+  .loopBack {
+    white-space: normal;
+  }
+  .wheelSteps li {
+    width: 96px;
+  }
+  .wheelText {
+    font-size: 0.75rem;
+  }
+}

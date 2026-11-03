@@ -1,0 +1,135 @@
+.door {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 0 22px 0 8px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--ground) 55%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition:
+    border-color var(--dur-fast) var(--ease-out-quint),
+    background-color var(--dur-fast) var(--ease-out-quint);
+}
+
+.door:hover,
+.door:focus-visible,
+.door[data-force='hover'],
+.door[data-force='focus'] {
+  border-color: var(--gold, var(--ink));
+  background: var(--gold-wash, transparent);
+}
+
+.door[data-force='focus'] {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.door:active,
+.door[data-force='active'] {
+  translate: 0 1px;
+}
+
+/* The lens around the glyph lights on hover. */
+.lens {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: var(--rule) solid var(--gold, var(--ink));
+  border-radius: 50%;
+  color: var(--gold, var(--ink));
+  transition:
+    background-color var(--dur-base) var(--ease-out-quint),
+    color var(--dur-base) var(--ease-out-quint),
+    box-shadow var(--dur-base) var(--ease-out-quint);
+}
+
+.door:hover .lens,
+.door:focus-visible .lens,
+.door[data-force] .lens {
+  background: var(--gold, var(--ink));
+  color: var(--on-ink);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--gold, var(--ink)) 45%, transparent);
+}
+
+.glyph {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.wall {
+  stroke-width: 2.2;
+}
+
+/* At rest the door stands a third open; on hover it swings fully open. */
+.leaf {
+  transform-box: view-box;
+  transform-origin: 5px 20px;
+  transform: rotate(-30deg);
+  transition: transform var(--dur-base) var(--ease-out-quint);
+}
+
+.arc {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0.667;
+  stroke-width: 1;
+  opacity: 0.75;
+  transition: stroke-dashoffset var(--dur-base) var(--ease-out-quint);
+}
+
+.hinge {
+  fill: currentColor;
+  stroke: none;
+}
+
+.door:hover .leaf,
+.door:focus-visible .leaf,
+.door[data-force] .leaf {
+  transform: rotate(-90deg);
+}
+
+.door:hover .arc,
+.door:focus-visible .arc,
+.door[data-force] .arc {
+  stroke-dashoffset: 0;
+}
+
+.label {
+  flex: 1;
+}
+
+.arrow {
+  width: 20px;
+  height: 12px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--dur-fast) var(--ease-out-quint);
+}
+
+.door:hover .arrow,
+.door[data-force='hover'] .arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door:hover .arrow {
+    transform: none;
+  }
+}

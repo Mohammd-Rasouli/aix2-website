@@ -1,0 +1,101 @@
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.head {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+}
+
+.head > * {
+  grid-column: 1 / -1;
+}
+
+.lens {
+  display: grid;
+  gap: 18px;
+}
+
+/* ---------- The three audiences ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gutter);
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 14px;
+  padding: 24px 24px 24px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.audience {
+  font-size: var(--step-label);
+  line-height: 1.45;
+  color: var(--gold);
+}
+
+.title {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: var(--track-h3);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.bullets {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 20px;
+  font-size: var(--step-small);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 50%;
+}
+
+.button {
+  justify-self: start;
+  margin-top: 6px;
+}
+
+.scales {
+  max-width: 30em;
+  font-size: var(--step-h3);
+  font-weight: 450;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .top,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .head {
+    position: static;
+  }
+}

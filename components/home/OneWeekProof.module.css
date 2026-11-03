@@ -1,0 +1,249 @@
+/* The One-Week Proof: a lead column, the week as a drawn track, and the path after it. */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+
+.lead {
+  display: grid;
+  gap: 22px;
+}
+
+.text {
+  font-size: var(--step-lead);
+  color: var(--ink);
+}
+
+.receive {
+  display: grid;
+  gap: 10px;
+}
+
+.receive li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.receive li::before {
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.6 2.5L13 6.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat,
+    var(--gold);
+}
+
+.qualifier {
+  padding: 12px 16px;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-wash);
+  font-size: var(--step-small);
+  color: var(--ink);
+}
+
+/* The week */
+.week {
+  display: grid;
+  gap: 22px;
+  padding: clamp(24px, 3vw, 36px);
+  border: var(--hairline) solid var(--gold-edge);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius-l);
+  background: radial-gradient(120% 120% at 100% 0%, var(--gold-wash), transparent 55%), var(--surface-glass);
+  box-shadow: var(--shadow-1);
+}
+
+.weekHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+}
+
+.weekBadge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--btn-bg, var(--gold));
+  background-image: var(--btn-sheen, none);
+  color: var(--btn-ink, #000);
+  font-size: var(--step-small);
+  font-weight: 600;
+}
+
+.days {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* The track the four days sit on, drawn in as the section enters. */
+.days::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 30%, transparent));
+  transform-origin: left center;
+}
+
+.day {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding-top: 30px;
+}
+
+.dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  background: var(--ground);
+}
+
+.day:last-child .dot {
+  background: var(--gold);
+}
+
+.when {
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.dayTitle {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.dayText {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+/* After the week */
+.path {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 14px;
+}
+
+.pathLabel {
+  font-size: var(--step-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.pathList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.pathStep {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 18px 22px 18px 26px;
+  background: var(--ground-raised);
+}
+
+.pathStep + .pathStep {
+  border-left: var(--hairline) solid var(--edge);
+}
+
+/* A chevron between steps. */
+.pathStep + .pathStep::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-top: var(--hairline) solid var(--edge);
+  border-right: var(--hairline) solid var(--edge);
+  background: var(--ground-raised);
+  rotate: 45deg;
+  translate: 0 -50%;
+}
+
+.pathStep[data-first='true'] {
+  background: linear-gradient(90deg, var(--gold-wash), var(--ground-raised));
+}
+
+.pathWhen {
+  font-size: var(--step-small);
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.pathTitle {
+  font-weight: 600;
+}
+
+.pathText {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .days::before {
+    animation: draw linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 45%;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 1023px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+  .days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .days::before {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .days,
+  .pathList {
+    grid-template-columns: 1fr;
+  }
+  .pathStep + .pathStep {
+    border-left: none;
+    border-top: var(--hairline) solid var(--edge);
+  }
+  .pathStep + .pathStep::before {
+    display: none;
+  }
+}

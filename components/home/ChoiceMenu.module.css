@@ -1,0 +1,159 @@
+.blank {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* The blank: the choice in the sentence, underlined in gold. */
+.button {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+  margin: 0;
+  padding: 0 0 0.05em;
+  border: 0;
+  border-bottom: 2px solid var(--gold);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out-quint);
+}
+
+.button:hover,
+.blank[data-open='true'] .button {
+  color: var(--gold);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.caret {
+  width: 0.42em;
+  height: 0.26em;
+  flex: none;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  translate: 0 -0.12em;
+  transition: rotate var(--dur-base) var(--ease-out-quint);
+}
+
+.blank[data-open='true'] .caret {
+  rotate: 180deg;
+}
+
+/* ---------- The menu: a glass card under the blank ---------- */
+
+.pop {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -14px;
+  z-index: 40;
+  display: grid;
+  gap: 6px;
+  width: max-content;
+  min-width: 17rem;
+  max-width: min(26rem, 86vw);
+  padding: 12px 8px 8px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: color-mix(in srgb, var(--ground-raised) 94%, transparent);
+  backdrop-filter: blur(var(--blur));
+  box-shadow:
+    0 24px 60px -18px rgba(0, 0, 0, 0.7),
+    var(--shadow-1);
+  font-size: 1rem;
+  font-weight: 450;
+  letter-spacing: 0;
+  line-height: 1.35;
+  transform-origin: top left;
+}
+
+.pop[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pop {
+    animation: popIn var(--dur-base) var(--ease-out-quint);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+
+.popLabel {
+  display: block;
+  padding: 0 12px 4px;
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.list {
+  display: grid;
+  gap: 2px;
+  max-height: min(60vh, 22rem);
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: var(--radius-m);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out-quint);
+}
+
+.option[data-active='true'] {
+  background: var(--gold-wash);
+}
+
+.option[aria-selected='true'] {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.check {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+
+.option[aria-selected='true'] .check {
+  opacity: 1;
+}
+
+@media (max-width: 639px) {
+  .button {
+    white-space: normal;
+  }
+  .pop {
+    left: 0;
+    min-width: min(17rem, 86vw);
+  }
+}

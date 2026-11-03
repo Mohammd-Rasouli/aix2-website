@@ -1,0 +1,258 @@
+.card {
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: 24px 24px 22px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:
+    transform var(--dur-base) var(--ease-out-quint),
+    box-shadow var(--dur-base) var(--ease-out-quint),
+    border-color var(--dur-base) var(--ease-out-quint);
+}
+
+/* A little depth on hover: the card lifts and leans toward the pointer. */
+.card:hover,
+.card:focus-within {
+  border-color: var(--gold-edge);
+  box-shadow: var(--shadow-2);
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-4px);
+}
+
+.client {
+  padding-right: 40px;
+  font-size: var(--step-label);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.headline {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: var(--track-h3);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+/* The whole card is the link; the headline names it. */
+.stretch {
+  text-decoration: none;
+}
+
+.stretch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.stretch:focus-visible {
+  outline: none;
+}
+
+.stretch:focus-visible::after {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.go {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: 50%;
+  color: var(--ink);
+  transition:
+    background-color var(--dur-fast) var(--ease-out-quint),
+    color var(--dur-fast) var(--ease-out-quint),
+    border-color var(--dur-fast) var(--ease-out-quint);
+}
+
+.go svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.card:hover .go {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--on-ink);
+}
+
+/* ---------- From → To tiles ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.stat {
+  display: grid;
+  align-content: space-between;
+  gap: 10px;
+  min-height: 96px;
+  padding: 12px 14px 12px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-tile);
+}
+
+.statLabel {
+  font-size: var(--step-label);
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.fromTo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.from {
+  font-size: 1.0625rem;
+  color: var(--ink-2);
+}
+
+.arrow {
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.to {
+  font-size: 1.625rem;
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--positive);
+}
+
+.how {
+  font-size: var(--step-small);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.label {
+  padding-top: 12px;
+  border-top: var(--hairline) solid var(--edge);
+  font-size: var(--step-label);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.pending {
+  justify-self: start;
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+  }
+}
+
+/* The client's logo, in the page's tone. */
+.art {
+  height: 168px;
+  margin: -24px -24px 4px;
+  padding: 14px 20px 6px;
+  border-radius: var(--radius-l) var(--radius-l) 0 0;
+  background: radial-gradient(70% 90% at 70% 10%, color-mix(in srgb, var(--gold) 16%, transparent), transparent 70%), color-mix(in srgb, var(--ink) 4%, transparent);
+  border-bottom: var(--hairline) solid var(--edge);
+  overflow: hidden;
+  transition: scale var(--dur-base) var(--ease-out-quint);
+}
+
+.card:hover .art svg {
+  scale: 1.04;
+}
+
+.art svg {
+  transition: scale var(--dur-slow, 600ms) var(--ease-out-quint);
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  font-size: var(--step-h3);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.name img {
+  width: auto;
+  max-width: 150px;
+  height: 30px;
+  object-fit: contain;
+  object-position: left center;
+  filter: var(--logo-filter);
+}
+
+
+/* A diagnosis card: its figures are findings, so they are red, never the colour of a gain. */
+.stats[data-kind='findings'] .to {
+  color: var(--red-text);
+}
+
+.poc {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: 999px;
+  background: var(--gold-wash);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.poc::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* A photograph fills the header edge to edge (CC-79). */
+.art:has(img) {
+  padding: 0;
+  background: none;
+}
+
+.art img {
+  transition: scale 900ms var(--ease-out-quint);
+}
+
+.card:hover .art img {
+  scale: 1.04;
+}

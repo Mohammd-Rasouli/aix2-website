@@ -1,0 +1,77 @@
+.section {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.section > :not(.backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.plan {
+  position: absolute;
+  width: min(1100px, 82vw);
+  height: auto;
+  opacity: 0.55;
+}
+
+.backdrop[data-at='right'] .plan { right: -14vw; top: 50%; translate: 0 -50%; }
+.backdrop[data-at='left'] .plan { left: -16vw; top: 50%; translate: 0 -50%; }
+.backdrop[data-at='bottom-left'] .plan { left: -12vw; bottom: -18%; }
+.backdrop[data-at='bottom-right'] .plan { right: -12vw; bottom: -20%; }
+
+.glow {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--footer-glow), transparent 100%);
+  opacity: 0.75;
+}
+
+.backdrop[data-at='right'] .glow { right: -16vw; top: 50%; translate: 0 -50%; }
+.backdrop[data-at='left'] .glow { left: -18vw; top: 50%; translate: 0 -50%; }
+.backdrop[data-at='bottom-left'] .glow { left: -14vw; bottom: -30vw; }
+.backdrop[data-at='bottom-right'] .glow { right: -14vw; bottom: -30vw; }
+
+.grid {
+  fill: none;
+  stroke: var(--plan);
+  stroke-width: 0.03;
+  opacity: 0.25;
+}
+
+.node {
+  fill: color-mix(in srgb, var(--plan) 4%, transparent);
+  stroke: var(--plan);
+  stroke-width: 0.06;
+  opacity: 0.55;
+}
+
+.node[data-kind='system'] {
+  fill: color-mix(in srgb, var(--gold) 10%, transparent);
+  stroke: var(--gold);
+}
+
+.node[data-kind='external'] {
+  stroke-dasharray: 0.25 0.2;
+}
+
+.route {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.07;
+  stroke-linejoin: round;
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .plan { width: 150vw; opacity: 0.4; }
+}

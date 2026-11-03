@@ -1,0 +1,92 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: var(--hairline) solid var(--edge);
+  border-left: var(--hairline) solid var(--edge);
+}
+
+/* Each condition reads like a control that is met. */
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 14px;
+  row-gap: 18px;
+  min-height: 150px;
+  padding: 22px 22px 24px;
+  border-right: var(--hairline) solid var(--edge);
+  border-bottom: var(--hairline) solid var(--edge);
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: var(--rule) solid var(--gold);
+  border-radius: 7px;
+  background: var(--gold-wash);
+}
+
+.box svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.n {
+  align-self: center;
+  justify-self: end;
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.text {
+  grid-column: 1 / -1;
+  align-self: end;
+  font-size: var(--step-lead);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.closing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  padding: 24px 28px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-l);
+  background: var(--surface-tile);
+}
+
+.closingLine {
+  max-width: 36em;
+  font-size: var(--step-lead);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+@media (max-width: 1023px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+  .item {
+    min-height: 0;
+  }
+}

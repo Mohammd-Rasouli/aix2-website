@@ -1,0 +1,9 @@
+.page {
+  min-height: 100vh;
+  background: var(--ground);
+  color: var(--ink);
+}
+
+.main {
+  display: block;
+}

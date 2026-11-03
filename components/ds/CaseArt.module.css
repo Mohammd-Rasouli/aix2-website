@@ -1,0 +1,63 @@
+/* Isometric cover art in the site's own tones; both themes follow the ink and gold tokens. */
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.top {
+  fill: color-mix(in srgb, var(--ink) 30%, var(--ground-raised));
+}
+
+.left {
+  fill: color-mix(in srgb, var(--ink) 16%, var(--ground-raised));
+}
+
+.right {
+  fill: color-mix(in srgb, var(--ink) 8%, var(--ground-raised));
+}
+
+.top,
+.left,
+.right {
+  stroke: color-mix(in srgb, var(--ink) 38%, transparent);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+.lit {
+  fill: var(--gold);
+  stroke: none;
+}
+
+.band {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.6;
+}
+
+.shadow {
+  fill: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lit {
+    animation: pulse 3.2s ease-in-out infinite;
+  }
+  .lit:nth-of-type(2n) {
+    animation-delay: -1.1s;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

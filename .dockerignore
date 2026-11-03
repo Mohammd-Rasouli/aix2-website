@@ -1,0 +1,10 @@
+node_modules
+.next
+.work
+deliver
+docs
+inputs
+.claude
+*.md
+!README.md
+.env*

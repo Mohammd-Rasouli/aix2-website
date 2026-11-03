@@ -1,0 +1,164 @@
+.wrap {
+  display: grid;
+  gap: 12px;
+}
+
+/* Two identical layers stacked; the after layer is clipped from the divider to the right. */
+.stage {
+  position: relative;
+  display: grid;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.layer {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: 18px;
+  padding: 56px clamp(20px, 3vw, 36px) 28px;
+}
+
+.layer[data-side='before'] {
+  background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--red) 6%, transparent) 0 1px, transparent 1px 12px),
+    var(--ground-sunk);
+}
+
+.layer[data-side='after'] {
+  background:
+    radial-gradient(80% 120% at 100% 0%, var(--gold-wash), transparent 70%),
+    var(--ground-raised);
+  clip-path: inset(0 0 0 var(--pos));
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--step-label);
+  font-weight: 500;
+}
+
+.badge[data-side='before'] {
+  left: 16px;
+  border: var(--hairline) solid color-mix(in srgb, var(--red) 50%, transparent);
+  color: var(--red-text);
+}
+
+.badge[data-side='after'] {
+  right: 16px;
+  border: var(--hairline) solid var(--gold-edge);
+  color: var(--gold);
+}
+
+.rows {
+  display: grid;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
+  align-items: baseline;
+  gap: var(--gutter);
+  padding: 14px 0;
+  border-bottom: var(--hairline) solid var(--edge);
+}
+
+.label {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.value {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  letter-spacing: var(--track-h3);
+}
+
+/* Before reads from the left of the value column, after from the right: at rest both show. */
+.rows[data-side='before'] .value {
+  text-align: left;
+  padding-right: 52%;
+}
+
+.rows[data-side='after'] .value {
+  text-align: right;
+  padding-left: 52%;
+}
+
+.rows[data-side='before'] .value {
+  color: var(--red-text);
+}
+
+.rows[data-side='after'] .value {
+  color: var(--positive);
+}
+
+/* The divider and its knob follow --pos. */
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  translate: -1px 0;
+  background: var(--gold);
+  pointer-events: none;
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand);
+  background-image: var(--btn-sheen, none);
+  color: #000000;
+  box-shadow: var(--shadow-1);
+}
+
+.knob svg {
+  width: 18px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The range input covers the stage: drag anywhere, or use the arrow keys. */
+.range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* The range runs 30–100, so it covers the stage from 30% on: the knob stays under the pointer. */
+  left: 30%;
+  width: 70%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.range:focus-visible + * {
+  outline: none;
+}
+
+.stage:has(.range:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.hint {
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}

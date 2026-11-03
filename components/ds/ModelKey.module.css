@@ -1,0 +1,95 @@
+.key {
+  width: min(300px, 100%);
+  padding: 14px 16px 12px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-m);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.line {
+  margin-top: 4px;
+  font-size: var(--step-label);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.rows {
+  display: grid;
+  gap: 2px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 26px;
+  font-size: var(--step-label);
+  line-height: 1.3;
+  color: var(--ink-2);
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.term {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- Swatches: the same marks the model and the cards use ---------- */
+
+.swatch {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 18px;
+}
+
+.swatch[data-kind='drawn']::before {
+  content: '';
+  width: 14px;
+  height: 11px;
+  border: var(--rule) solid var(--plan, var(--line));
+  border-radius: 1px;
+  transform: skewX(-18deg);
+}
+
+.swatch[data-kind='built']::before {
+  content: '';
+  width: 14px;
+  height: 11px;
+  border-radius: 3px;
+  background: linear-gradient(160deg, var(--face-top, #e9e1d0), var(--face-right, #b8ad98));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 70%, transparent),
+    0 0 10px color-mix(in srgb, var(--gold) 55%, transparent);
+  transform: skewX(-18deg);
+}
+
+.swatch svg {
+  width: 22px;
+  height: 18px;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.5;
+}
+
+/* ---------- Stage: the row that matches the screen is lit ---------- */
+
+.key[data-stage='lens'] .row[data-row='finding'],
+.key[data-stage='built'] .row[data-row='drawn'],
+.key[data-stage='built'] .row[data-row='finding'],
+.key[data-stage='finding'] .row[data-row='drawn'] {
+  opacity: 0.42;
+}

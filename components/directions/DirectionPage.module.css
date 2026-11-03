@@ -1,0 +1,98 @@
+.page {
+  min-height: 100vh;
+  background: var(--ground);
+  color: var(--ink);
+}
+
+.foot {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
+  display: grid;
+  gap: 10px;
+  padding: 48px var(--margin) 64px;
+  border-top: var(--rule) solid var(--line);
+  background: var(--ground-sunk);
+}
+
+.footName {
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  font-weight: 500;
+}
+
+.footNote {
+  max-width: 48em;
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.footLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 8px;
+  font-size: var(--step-small);
+  font-weight: 500;
+}
+
+/* C: content floats over the fixed scan. */
+.night {
+  background: #05070c;
+}
+
+.over {
+  position: relative;
+  z-index: 1;
+}
+
+.night .over > header,
+.night .over > p {
+  background: transparent;
+}
+
+.night .foot {
+  position: relative;
+  background: #05080e;
+}
+
+/* C, light studio */
+.studio {
+  background: #eeeff5;
+}
+
+.studio .over > header,
+.studio .over > p:first-child {
+  background: transparent;
+}
+
+/* The announcement bar on the light studio: ink text, a hairline under it. */
+.studio .over > p:first-child {
+  color: #3c4660;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.06);
+}
+
+.studio .foot {
+  position: relative;
+  background: #e6e7ef;
+}
+
+/* C, warm dark: charcoal, cream and gold */
+.warm {
+  background: #0e0c09;
+}
+
+.warm .over > header,
+.warm .over > p:first-child {
+  background: transparent;
+}
+
+.warm .over > p:first-child {
+  color: #b8ad98;
+  border-bottom: 1px solid rgba(242, 235, 221, 0.06);
+}
+
+.warm .foot {
+  position: relative;
+  background: #090806;
+  border-top-color: rgba(242, 235, 221, 0.12);
+}

@@ -1,0 +1,172 @@
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 4vw, 64px) var(--gutter);
+  align-items: start;
+  overflow: hidden;
+  padding: clamp(56px, 8vw, 120px) var(--margin) clamp(56px, 7vw, 104px);
+  border-bottom: var(--hairline) solid var(--edge);
+}
+
+/* The lens, lit, at the edge of the sheet; a faint drafting grid beneath. */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(42% 60% at 92% 10%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%),
+    linear-gradient(color-mix(in srgb, var(--grid) 45%, transparent) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, color-mix(in srgb, var(--grid) 45%, transparent) 1px, transparent 1px) 0 0 / 48px 48px;
+  mask-image: radial-gradient(80% 90% at 70% 20%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.lead,
+.index {
+  position: relative;
+  z-index: 1;
+}
+
+.lead {
+  display: grid;
+  gap: 22px;
+}
+
+.kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 1rem;
+}
+
+.name {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.what {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+}
+
+.what::before {
+  content: '';
+  width: 1px;
+  height: 15px;
+  background: var(--line-soft);
+}
+
+.title {
+  font-size: var(--step-display);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.subhead {
+  max-width: 34em;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.pending {
+  justify-self: start;
+  padding: 2px 8px;
+  border: var(--hairline) dashed var(--line-soft);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 6px;
+}
+
+/* ---------- On this page ---------- */
+
+.index {
+  align-self: stretch;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 22px 22px 14px;
+  border: var(--hairline) solid var(--edge-strong);
+  border-radius: var(--radius-l);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: var(--shadow-1);
+}
+
+.indexTitle {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.index ol {
+  display: grid;
+}
+
+.index a {
+  display: grid;
+  grid-template-columns: 2.4em 1fr;
+  gap: 10px;
+  padding: 11px 0;
+  border-top: var(--hairline) solid var(--edge);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.index a:hover .indexName {
+  color: var(--gold);
+}
+
+.indexN {
+  font-size: var(--step-label);
+  font-weight: 500;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.indexText {
+  display: grid;
+  gap: 2px;
+}
+
+.indexName {
+  font-size: var(--step-small);
+  font-weight: 500;
+  transition: color var(--dur-fast) var(--ease-out-quint);
+}
+
+.indexWhat {
+  font-size: var(--step-label);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .what {
+    flex-basis: 100%;
+  }
+  .what::before {
+    display: none;
+  }
+}

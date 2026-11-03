@@ -1,0 +1,4 @@
+.section {
+  gap: var(--gutter);
+  padding-bottom: clamp(72px, 9vw, 128px);
+}

@@ -1,0 +1,333 @@
+.seq {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* ---------- Rail: sticky on desktop ---------- */
+
+.rail {
+  grid-column: 1 / span 5;
+}
+
+.railInner {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  display: grid;
+  grid-template-columns: 1fr 2px;
+  column-gap: 20px;
+}
+
+.layers {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.plane {
+  fill: color-mix(in srgb, var(--plan) 5%, transparent);
+  stroke: var(--line-soft);
+  stroke-width: 1.25;
+  transition:
+    fill var(--dur-base) var(--ease-out-quint),
+    stroke var(--dur-base) var(--ease-out-quint);
+}
+
+.mark {
+  fill: none;
+  stroke: var(--line-soft);
+  stroke-width: 1;
+  transition: stroke var(--dur-base) var(--ease-out-quint);
+}
+
+.tick {
+  stroke: var(--line-soft);
+}
+
+.layerName {
+  fill: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 450;
+  transition: fill var(--dur-base) var(--ease-out-quint);
+}
+
+/* Lit layers: gold edge, cream marks, cream name. */
+.layers[data-step='1'] [data-layer='0'],
+.layers[data-step='2'] [data-layer='1'],
+.layers[data-step='2'] [data-layer='2'],
+.layers[data-step='2'] [data-layer='3'],
+.layers[data-step='3'] [data-layer='1'],
+.layers[data-step='4'] [data-layer='1'],
+.layers[data-step='5'] .layer {
+  --lit: 1;
+}
+
+.layer {
+  --lit: 0;
+}
+
+.layers [data-layer] .plane {
+  fill: color-mix(in srgb, var(--gold) calc(var(--lit) * 14%), color-mix(in srgb, var(--plan) 4%, transparent));
+  stroke: color-mix(in srgb, var(--gold) calc(var(--lit) * 100%), var(--line-soft));
+}
+
+.layers [data-layer] .mark {
+  stroke: color-mix(in srgb, var(--ink) calc(var(--lit) * 100%), var(--line-soft));
+}
+
+.layers [data-layer] .layerName {
+  fill: color-mix(in srgb, var(--ink) calc(var(--lit) * 100%), var(--ink-2));
+}
+
+.gap ellipse {
+  fill: var(--red-wash);
+  stroke: var(--red);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+
+.target {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+
+.checks circle {
+  fill: var(--gold);
+}
+
+.gap,
+.target,
+.checks {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.layers[data-step='3'] .gap,
+.layers[data-step='4'] .gap,
+.layers[data-step='4'] .target,
+.layers[data-step='5'] .target,
+.layers[data-step='5'] .checks {
+  opacity: 1;
+}
+
+.layers[data-step='4'] .gap {
+  opacity: 0.35;
+}
+
+.layers[data-step='5'] .checks circle {
+  animation: check 1.6s var(--ease-out-quint) infinite;
+}
+
+@keyframes check {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ---------- Index ---------- */
+
+.index {
+  display: grid;
+  gap: 2px;
+}
+
+.indexLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  color: var(--ink-2);
+  font-size: var(--step-small);
+  font-weight: 450;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out-quint);
+}
+
+.indexN {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: var(--hairline) solid var(--line-soft);
+  border-radius: 50%;
+  font-size: var(--step-label);
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color var(--dur-base) var(--ease-out-quint),
+    background-color var(--dur-base) var(--ease-out-quint),
+    color var(--dur-base) var(--ease-out-quint);
+}
+
+.indexLink:hover {
+  color: var(--ink);
+}
+
+.indexLink[aria-current='step'] {
+  color: var(--ink);
+}
+
+.indexLink[aria-current='step'] .indexN {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--on-ink);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.progress {
+  grid-column: 2;
+  grid-row: 2;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--edge-strong);
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--gold);
+  transform-origin: top;
+  transition: transform var(--dur-slow) var(--ease-out-quint);
+}
+
+/* ---------- Steps ---------- */
+
+.steps {
+  grid-column: 7 / span 6;
+}
+
+.step {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  min-height: 62vh;
+  padding: 40px 0;
+  border-top: var(--hairline) solid var(--edge);
+  transition: opacity var(--dur-base) var(--ease-out-quint);
+}
+
+.step:not([data-active='true']) .n,
+.step:not([data-active='true']) .tag {
+  color: var(--ink-2); /* dimmed by colour, not opacity: stays above 4.5:1 in both themes */
+  border-color: var(--line-soft);
+}
+
+.step:not([data-active='true']) .title {
+  color: var(--ink-2);
+}
+
+.n {
+  font-size: var(--step-figure-m);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.title {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.copy {
+  max-width: 34em;
+  font-size: var(--step-body);
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.tag {
+  justify-self: start;
+  padding: 7px 14px;
+  border: var(--hairline) solid var(--gold-edge);
+  border-radius: var(--radius-pill);
+  background: var(--gold-wash);
+  font-size: var(--step-small);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.end {
+  display: grid;
+  gap: 14px;
+  padding: 40px 0 0;
+  border-top: var(--hairline) solid var(--edge);
+}
+
+.endLine {
+  font-size: var(--step-lead);
+  color: var(--ink);
+}
+
+.endLink {
+  justify-self: start;
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- Tablets and phones: one column, no sticky ---------- */
+
+@media (max-width: 1023px) {
+  .rail,
+  .steps {
+    grid-column: 1 / -1;
+  }
+  .railInner {
+    position: static;
+  }
+  .index,
+  .progress {
+    display: none;
+  }
+  .step {
+    min-height: 0;
+    opacity: 1;
+    padding: 28px 0;
+  }
+  /* Without the sticky rail, the drawing shows the whole method at once. */
+  .layers .layer {
+    --lit: 1;
+  }
+  .layers .gap,
+  .layers .target {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layers[data-step='5'] .checks circle {
+    animation: none;
+    opacity: 1;
+  }
+  .step {
+    opacity: 1;
+  }
+}
+
+/* Desktop with the 3D scene: the scene draws the layers here, so the drawing steps aside. */
+:global(html[data-scene='on']) .layers {
+  visibility: hidden;
+  height: min(50vh, 520px);
+}
+
+/* WCAG 2.5.8: at least 24 px tall to tap. */
+.endLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}

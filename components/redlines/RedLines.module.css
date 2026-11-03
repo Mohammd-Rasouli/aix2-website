@@ -1,0 +1,358 @@
+.section {
+  position: relative;
+  padding: clamp(72px, 11vw, 160px) var(--margin) clamp(72px, 9vw, 128px);
+  background: var(--ground);
+  /* Below the fold: skip layout and paint until it nears the viewport. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 2200px;
+}
+
+/* ---------- Head (SectionHead) and the reading guide ---------- */
+
+.guide {
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+/* Over the scan, the guide reads from a glass strip. */
+.c .guide {
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 16px 10px 12px;
+  border: var(--hairline) solid var(--edge);
+  border-radius: var(--radius-m);
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* ---------- Cards ---------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+/* The card says what it is first: a finding, and where it was found. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding: 14px 20px 12px;
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--ink) 8%, transparent);
+  font-size: var(--step-label);
+  line-height: 1.35;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--red-wash, color-mix(in srgb, var(--red) 12%, transparent));
+  color: var(--red-text);
+  font-weight: 500;
+}
+
+.tagDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.client {
+  color: var(--ink-2);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.fragment {
+  position: relative;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 24px 26px;
+  flex: 1;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.figure {
+  font-family: var(--font-mono);
+  font-size: var(--step-figure-m);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--red-text);
+}
+
+.cardTitle {
+  font-size: var(--step-h3);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: var(--track-h3);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.cardLine {
+  font-size: var(--step-body);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.pending {
+  align-self: flex-start;
+  padding: 3px 8px;
+  border: 1px dashed var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* The red mark of each card draws a beat after the card arrives. */
+.card {
+  --mark-delay: calc(140ms + var(--i) * 0ms);
+}
+
+/* ---------- After the cards ---------- */
+
+.after {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  margin-top: clamp(64px, 8vw, 120px);
+}
+
+.highlight {
+  grid-column: 1 / span 9;
+  font-size: var(--step-h2);
+  font-weight: 460;
+  line-height: 1.1;
+  letter-spacing: var(--track-h2);
+  text-wrap: balance;
+}
+
+.highlightA {
+  color: var(--ink-2);
+}
+
+.highlightB {
+  color: var(--ink);
+}
+
+.market {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  margin-top: clamp(48px, 6vw, 80px);
+}
+
+.marketItem {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: var(--hairline) solid color-mix(in srgb, var(--line-soft) 70%, transparent);
+}
+
+.marketFigure {
+  font-family: var(--font-mono);
+  font-size: var(--step-figure-m);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+}
+
+.marketText {
+  max-width: 26em;
+  font-size: var(--step-body);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.marketSource a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--step-label);
+  color: var(--ink-2);
+}
+
+.marketSource svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.endLink {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 48px;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- A · separate fragments on the sheet, with crop marks ---------- */
+
+.a .cards {
+  gap: clamp(20px, 2.2vw, 32px);
+}
+
+.a .card {
+  background: var(--ground-raised);
+  border: var(--hairline) solid color-mix(in srgb, var(--line-soft) 55%, transparent);
+}
+
+.a .card::before,
+.a .card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--ink);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.a .card::before {
+  top: -5px;
+  left: -5px;
+  border-width: 1.5px 0 0 1.5px;
+}
+
+.a .card::after {
+  right: -5px;
+  bottom: -5px;
+  border-width: 0 1.5px 1.5px 0;
+}
+
+.a .fragment {
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--line-soft) 55%, transparent);
+}
+
+/* ---------- B · one drawing cut into six tiles; the route runs through all of them ---------- */
+
+.b {
+  background: var(--ground);
+}
+
+.b .cards {
+  gap: 0;
+  border-top: var(--hairline) solid color-mix(in srgb, var(--line) 22%, transparent);
+  border-left: var(--hairline) solid color-mix(in srgb, var(--line) 22%, transparent);
+}
+
+.b .card {
+  border-right: var(--hairline) solid color-mix(in srgb, var(--line) 22%, transparent);
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--line) 22%, transparent);
+  --frag-fill: var(--ground-sunk);
+}
+
+.b .fragment {
+  background: var(--ground-sunk);
+}
+
+.b .marketItem {
+  border-top-color: color-mix(in srgb, var(--line) 30%, transparent);
+}
+
+/* ---------- C · night: the Δ forms beside the heading; cards are glass over the scan ---------- */
+
+.c {
+  background: transparent;
+}
+
+@media (min-width: 1024px) {
+  .c .head {
+    position: relative;
+    min-height: 62vh;
+    align-content: center;
+  }
+  /* The scan rests to the right; a veil keeps the heading readable where they meet. */
+  .c .head::before {
+    content: '';
+    position: absolute;
+    inset: -20% 30% -20% calc(-1 * var(--margin));
+    z-index: -1;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--ground) 94%, transparent) 0%, color-mix(in srgb, var(--ground) 82%, transparent) 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+    pointer-events: none;
+  }
+}
+
+.c .cards {
+  gap: 14px;
+}
+
+.c .card {
+  --frag-fill: var(--ground-raised);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--ground-raised) 84%, transparent);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(10px);
+}
+
+.c .fragment {
+  background: color-mix(in srgb, var(--ground-sunk) 70%, transparent);
+}
+
+.c .marketItem {
+  border-top-color: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1023px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .highlight {
+    grid-column: 1 / -1;
+  }
+  .market {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 639px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cardBody {
+    padding: 18px 18px 22px;
+  }
+}
+
+/* WCAG 2.5.8: at least 24 px tall to tap. */
+.endLink,
+.marketSource a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}

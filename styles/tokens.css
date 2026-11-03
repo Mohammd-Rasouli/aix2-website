@@ -1,0 +1,458 @@
+/*
+ * AIx2 design tokens (finalised in step 4). Rules for each token: docs/design-tokens.md.
+ * Raw values first, then semantic roles per theme. Components use roles only.
+ * The site theme is `warm` (direction C, the AIx2 lens), set on <html>.
+ * paper, blueprint, night and day remain only for the step 3 direction prototypes.
+ * Contrast was checked with aix2-tools/contrast-warm.mjs (WCAG 2.x).
+ */
+
+:root {
+  /* Raw palette. Use semantic roles in components, never these directly. */
+  --c-coal: #0e0c09;
+  --c-coal-raised: #17140f;
+  --c-coal-sunk: #090806;
+  --c-cream: #f2ebdd;
+  --c-sand: #b8ad98;
+  --c-gold: #c9a35b;
+  --c-gold-light: #d8b26a;
+  --c-vermilion: #e5533d;
+  /* Step 3 prototype palette (directions A and B) */
+  --c-navy: #0e2240;
+  --c-navy-deep: #0a1a33;
+  --c-navy-raised: #142c51;
+  --c-paper: #f5f3ee;
+  --c-paper-light: #fbfaf7;
+  --c-paper-sunk: #ece9e1;
+  --c-grey: #c9ced6;
+  --c-red: #d2302c;
+
+  /* Type: Geist for everything on the site. Plex Mono only in the step 3 prototypes. */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Fluid type steps (1440 px → 390 px) */
+  --step-hero: clamp(2.75rem, 1rem + 4.5vw, 5.5rem);
+  --step-display: clamp(2.5rem, 1.1rem + 3.9vw, 4.5rem);
+  --step-h2: clamp(1.875rem, 1.15rem + 2.3vw, 3.25rem);
+  --step-h3: clamp(1.1875rem, 1.06rem + 0.42vw, 1.5rem);
+  --step-lead: clamp(1.0625rem, 0.99rem + 0.3vw, 1.25rem);
+  --step-body: 1.0625rem;
+  --step-small: 0.9375rem;
+  --step-label: 0.8125rem; /* 13 px: smallest text on the site */
+  --step-figure-xl: clamp(3rem, 2rem + 3.2vw, 5rem);
+  --step-figure-l: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
+  --step-figure-m: clamp(1.75rem, 1.4rem + 1.1vw, 2.5rem);
+
+  /* Tracking tightens as size grows */
+  --track-hero: -0.045em;
+  --track-display: -0.032em;
+  --track-h2: -0.024em;
+  --track-h3: -0.012em;
+  --track-label: 0.01em;
+  --track-caps: 0.06em;
+
+  /* Space (4 px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --section-y: clamp(72px, 10vw, 152px);
+
+  /* Layout: 12 columns inside equal outer margins */
+  --cols: 12;
+  --margin: clamp(20px, 3.4vw, 56px);
+  --gutter: clamp(16px, 1.7vw, 24px);
+  --page-max: 1560px;
+  --measure: 38em;
+  --header-h: 64px;
+  --bar-h: 36px;
+  --chrome-h: calc(var(--bar-h) + var(--header-h));
+
+  /* Lines */
+  --hairline: 1px;
+  --rule: 1.5px;
+
+  /* Radii: drawn things stay square; objects you hold are round. */
+  --radius: 2px; /* drawing marks, title block, the step 3 prototypes */
+  --radius-s: 8px; /* chips, small tiles */
+  --radius-m: 14px; /* tiles inside a card */
+  --radius-l: 20px; /* cards and panels */
+  --radius-pill: 999px; /* buttons, tags, the lens */
+
+  /* Layers */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-overlay: 4;
+  --z-header: 10;
+  --z-menu: 40;
+  --z-drawer: 60;
+  --z-skip: 100;
+
+  /* Motion (BRIEF §5) */
+  --dur-fast: 150ms; /* hover, press, colour */
+  --dur-base: 300ms; /* menus, toggles, card depth */
+  --dur-slow: 600ms; /* red lines drawing, counts, section entries */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* camera moves only */
+  --stagger: 60ms; /* per item, capped at 8 items */
+  --hover-intent: 120ms; /* mega menu opens after this delay on hover */
+}
+
+/* ---------- The site theme: warm dark. Charcoal, cream and gold; red for findings only. ---------- */
+
+[data-theme='warm'] {
+  color-scheme: dark;
+  --ground: var(--c-coal);
+  --ground-raised: var(--c-coal-raised);
+  --ground-sunk: var(--c-coal-sunk);
+  --ink: var(--c-cream); /* 16.5:1 on ground, 15.5:1 on raised */
+  --ink-2: var(--c-sand); /* 8.8:1 on ground, 8.3:1 on raised */
+  --line: var(--c-cream);
+  --line-soft: #6f6656; /* 3.5:1: control borders and meaningful graphics */
+  --plan: #d9cdb4; /* the drawn layer: 12.4:1 */
+  --grid: #3a3328; /* decorative only */
+  --grid-alpha: 0.6;
+  --red: var(--c-vermilion); /* red ink: findings only. 5.2:1, 4.9:1 on raised */
+  --red-text: #f07a63; /* small red text: 7.1:1 */
+  --red-wash: color-mix(in srgb, var(--c-vermilion) 14%, transparent);
+  --positive: var(--c-gold-light); /* the improvement in From → To: 9.8:1 */
+  --gold: var(--c-gold); /* the lens and the built layer: 8.3:1 */
+  --gold-edge: color-mix(in srgb, var(--c-gold) 45%, transparent);
+  --gold-wash: color-mix(in srgb, var(--c-gold) 12%, transparent);
+  --brand: var(--c-gold);
+  --focus: var(--c-cream);
+  --on-ink: var(--c-coal); /* text on cream or gold fills: 16.5:1 and 8.3:1 */
+  --edge: color-mix(in srgb, var(--c-cream) 8%, transparent); /* card outlines (decorative) */
+  --edge-strong: color-mix(in srgb, var(--c-cream) 14%, transparent);
+  --surface-glass: color-mix(in srgb, var(--c-coal-raised) 84%, transparent);
+  --surface-tile: linear-gradient(160deg, color-mix(in srgb, var(--c-cream) 6%, transparent), color-mix(in srgb, var(--c-cream) 2%, transparent));
+  --blur: 12px;
+  --shadow-1: 0 18px 44px rgba(0, 0, 0, 0.28);
+  --shadow-2: 0 28px 70px rgba(0, 0, 0, 0.38);
+  --face-top: #e9e1d0;
+  --face-left: #cfc5b1;
+  --face-right: #b8ad98;
+  --bar-ground: var(--c-coal-sunk);
+  --bar-ink: #d9cdb4;
+  --font-mono: var(--font-sans); /* no monospace on the site */
+  /* Primary button: cream on charcoal here, a gold fill in the light theme. */
+  --btn-bg: var(--ink);
+  --btn-ink: var(--on-ink);
+  /* The 3D stage and the labels drawn over it. */
+  --scene-a: #1a1611;
+  --scene-b: #0b0907;
+  --scene-vignette: rgba(5, 4, 3, 0.6);
+  --scene-pill: rgba(14, 12, 9, 0.72);
+  --scene-note: rgba(16, 13, 10, 0.88);
+  --scene-pill-line: rgba(242, 235, 221, 0.14);
+  --scene-label: #e9e1d0;
+  --scene-flow: #e9c98a;
+  --scene-red-ink: #ef5f45;
+  --lens-rim: rgba(214, 178, 108, 0.9);
+  --lens-glow: rgba(201, 163, 91, 0.18);
+  --logo-filter: none;
+  /* The footer's name and the lens light behind it (decorative). */
+  --footer-word: color-mix(in srgb, var(--c-cream) 8%, transparent);
+  --footer-word-lit: color-mix(in srgb, var(--c-gold-light) 34%, transparent);
+  --footer-glow: color-mix(in srgb, var(--c-gold) 22%, transparent);
+}
+
+/* ---------- The light theme: cream paper, dark brown ink, gold kept; red for findings only.
+   Approved by the user on 2026-10-29. Ratios are on ground / raised / sunk. ---------- */
+
+[data-theme='light'] {
+  color-scheme: light;
+  --ground: #f5f0e6;
+  --ground-raised: #fbf8f1;
+  --ground-sunk: #ece4d4;
+  --ink: #1c1812; /* 15.6 / 16.7 / 14.0 */
+  --ink-2: #5b5244; /* 6.8 / 7.2 / 6.1 */
+  --line: #1c1812;
+  --line-soft: #8a7f6c; /* 3.5 / 3.7 / 3.1: control borders and meaningful graphics */
+  --plan: #3a332a; /* 11.0 */
+  --grid: #d9cfbc; /* decorative only */
+  --grid-alpha: 0.7;
+  --red: #c23b26; /* strokes and large red text: 4.7 / 5.0 */
+  --red-text: #a93421; /* small red text: 5.8 / 6.2 / 5.2 */
+  --red-wash: color-mix(in srgb, #c23b26 10%, transparent);
+  --positive: #7a5a1e; /* 5.6 / 6.0 / 5.0 */
+  --gold: #7e5d26; /* gold as text and lines: 5.3 / 5.7 / 4.8 */
+  --gold-edge: color-mix(in srgb, #b8913f 55%, transparent);
+  --gold-wash: color-mix(in srgb, #b8913f 16%, transparent);
+  --brand: #b8913f;
+  --focus: #1c1812;
+  --on-ink: #fbf8f1; /* text on ink fills: 16.7 */
+  --edge: color-mix(in srgb, #1c1812 10%, transparent);
+  --edge-strong: color-mix(in srgb, #1c1812 18%, transparent);
+  --surface-glass: color-mix(in srgb, #fbf8f1 86%, transparent);
+  --surface-tile: linear-gradient(160deg, #fbf8f1, color-mix(in srgb, #fbf8f1 55%, #f5f0e6));
+  --blur: 12px;
+  --shadow-1: 0 18px 44px rgba(60, 44, 20, 0.1);
+  --shadow-2: 0 28px 70px rgba(60, 44, 20, 0.14);
+  --face-top: #fbf8f1;
+  --face-left: #e6dccb;
+  --face-right: #d3c6ae;
+  --bar-ground: #1c1812;
+  --bar-ink: #ece4d4;
+  --font-mono: var(--font-sans);
+  --btn-bg: #b8913f; /* ink on gold: 6.0 */
+  --btn-ink: #1c1812;
+  --scene-a: #f7f2e9;
+  --scene-b: #e9e1d1;
+  --scene-vignette: rgba(120, 96, 60, 0.12);
+  --scene-pill: rgba(251, 248, 241, 0.86);
+  --scene-note: rgba(251, 248, 241, 0.94);
+  --scene-pill-line: rgba(28, 24, 18, 0.14);
+  --scene-label: #1c1812;
+  --scene-flow: #7e5d26;
+  --scene-red-ink: #c23b26;
+  --lens-rim: rgba(126, 93, 38, 0.85);
+  --lens-glow: rgba(184, 145, 63, 0.16);
+  /* The 38 marks are cream files; in the light theme they print in ink. */
+  --logo-filter: brightness(0) saturate(0);
+  --footer-word: color-mix(in srgb, #1c1812 7%, transparent);
+  --footer-word-lit: color-mix(in srgb, #b8913f 38%, transparent);
+  --footer-glow: color-mix(in srgb, #d8b26a 26%, transparent);
+}
+
+/* ---------- The AIx2 brand theme (default since 2026-10-30, the user's palette: AIx2_20240206_default
+   color scheme.pdf): Black #000000 for text, Deep Blue #004D80 for style elements (lines, numbers, boxes,
+   arrows), Grey #D5D5D5 to de-emphasise, Gold #C9A35B to emphasise. Dark mode on a deep-blue night,
+   light mode on white. The warm themes above stay for later use. Ratios: ground / raised / sunk. ---------- */
+
+[data-theme='brand'] {
+  color-scheme: dark;
+  /* Metallic sheen on gold fills (buttons): light and shadow on the previous design's gold. */
+  --btn-sheen: linear-gradient(160deg, #efdba6 0%, #d8b26a 26%, #c9a35b 48%, #a8823f 74%, #d8b26a 100%);
+  --btn-sheen-edge: inset 0 1px 0 rgba(255, 246, 220, 0.55), inset 0 -1px 0 rgba(80, 55, 15, 0.35);
+  --logo-mark: #d8b26a;
+  --ground: #061420;
+  --ground-raised: #0b1d2d;
+  --ground-sunk: #040d16;
+  --ink: #f3f6f9; /* 17.2 / 15.8 / 18.0 */
+  --ink-2: #d5d5d5; /* brand Grey: 12.7 / 11.7 / 13.3 */
+  --line: #f3f6f9;
+  --line-soft: #55728b; /* 3.7 / 3.4 / 3.9 */
+  --plan: #8bbbe3; /* Deep Blue, lightened for the night: the drawn layer, 9.1 */
+  --grid: #16324a;
+  --grid-alpha: 0.6;
+  --red: #e5533d; /* findings only: 5.0 */
+  --red-text: #f07a63; /* 6.8 */
+  --red-wash: color-mix(in srgb, #e5533d 14%, transparent);
+  --positive: #c9a35b; /* brand Gold: 10.0 */
+  --gold: #c9a35b; /* emphasis: numbers, ticks, the lens */
+  --gold-edge: color-mix(in srgb, #c9a35b 45%, transparent);
+  --gold-wash: color-mix(in srgb, #c9a35b 12%, transparent);
+  --brand: #c9a35b;
+  --focus: #f3f6f9;
+  --on-ink: #061420;
+  --edge: color-mix(in srgb, #8bbbe3 10%, transparent);
+  --edge-strong: color-mix(in srgb, #8bbbe3 18%, transparent);
+  --surface-glass: color-mix(in srgb, #0b1d2d 86%, transparent);
+  --surface-tile: linear-gradient(160deg, color-mix(in srgb, #8bbbe3 7%, transparent), color-mix(in srgb, #8bbbe3 2%, transparent));
+  --blur: 12px;
+  --shadow-1: 0 18px 44px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 28px 70px rgba(0, 0, 0, 0.45);
+  --face-top: #e4ecf3;
+  --face-left: #c4d3e0;
+  --face-right: #a9bccc;
+  --bar-ground: #004d80; /* brand Deep Blue bar */
+  --bar-ink: #ffffff;
+  --font-mono: var(--font-sans);
+  --btn-bg: #c9a35b; /* black on gold: 11.3 */
+  --btn-ink: #000000;
+  --scene-a: #0a1e30;
+  --scene-b: #040d16;
+  --scene-vignette: rgba(2, 6, 12, 0.6);
+  --scene-pill: rgba(6, 20, 32, 0.78);
+  --scene-note: rgba(8, 24, 38, 0.92);
+  --scene-pill-line: rgba(139, 187, 227, 0.18);
+  --scene-label: #e4ecf3;
+  --scene-flow: #c9a35b;
+  --scene-red-ink: #ef5f45;
+  --lens-rim: rgba(201, 163, 91, 0.9);
+  --lens-glow: rgba(201, 163, 91, 0.18);
+  --logo-filter: brightness(0) invert(1);
+  --footer-word: color-mix(in srgb, #8bbbe3 8%, transparent);
+  --footer-word-lit: color-mix(in srgb, #c9a35b 32%, transparent);
+  --footer-glow: color-mix(in srgb, #004d80 55%, transparent);
+}
+
+[data-theme='brand-light'] {
+  color-scheme: light;
+  /* Metallic sheen on gold fills (buttons): light and shadow on the previous design's gold. */
+  --btn-sheen: linear-gradient(160deg, #efdba6 0%, #d8b26a 26%, #c9a35b 48%, #a8823f 74%, #d8b26a 100%);
+  --btn-sheen-edge: inset 0 1px 0 rgba(255, 246, 220, 0.55), inset 0 -1px 0 rgba(80, 55, 15, 0.35);
+  --logo-mark: #004d80; /* the logo's own Deep Blue on white */
+  --ground: #ffffff;
+  --ground-raised: #f6f8fa;
+  --ground-sunk: #edf1f5;
+  --ink: #000000; /* brand Black: 21.0 / 19.7 / 18.5 */
+  --ink-2: #3d4a57; /* 9.1 / 8.5 / 8.0 */
+  --line: #000000;
+  --line-soft: #7d8c9b; /* 3.4 / 3.2 / 3.0 */
+  --plan: #004d80; /* brand Deep Blue: 8.9 */
+  --grid: #d5d5d5; /* brand Grey */
+  --grid-alpha: 0.8;
+  --red: #c23b26; /* findings only: 5.3 */
+  --red-text: #a93421; /* 6.6 */
+  --red-wash: color-mix(in srgb, #c23b26 9%, transparent);
+  --positive: #004d80; /* the improvement, in Deep Blue: 8.9 */
+  --gold: #004d80; /* style elements are Deep Blue on white (the palette's rule) */
+  --gold-edge: color-mix(in srgb, #004d80 40%, transparent);
+  --gold-wash: color-mix(in srgb, #c9a35b 18%, transparent); /* emphasis wash in brand Gold */
+  --brand: #c9a35b;
+  --focus: #004d80;
+  --on-ink: #ffffff;
+  --edge: color-mix(in srgb, #004d80 12%, transparent);
+  --edge-strong: color-mix(in srgb, #004d80 22%, transparent);
+  --surface-glass: color-mix(in srgb, #ffffff 88%, transparent);
+  --surface-tile: linear-gradient(160deg, #ffffff, #f6f8fa);
+  --blur: 12px;
+  --shadow-1: 0 18px 44px rgba(0, 40, 80, 0.08);
+  --shadow-2: 0 28px 70px rgba(0, 40, 80, 0.12);
+  --face-top: #ffffff;
+  --face-left: #e3eaf1;
+  --face-right: #cdd8e3;
+  --bar-ground: #004d80;
+  --bar-ink: #ffffff;
+  --font-mono: var(--font-sans);
+  --btn-bg: #c9a35b; /* black on gold: 11.3 */
+  --btn-ink: #000000;
+  --scene-a: #f7f9fb;
+  --scene-b: #e8eef4;
+  --scene-vignette: rgba(0, 40, 80, 0.08);
+  --scene-pill: rgba(255, 255, 255, 0.9);
+  --scene-note: rgba(255, 255, 255, 0.96);
+  --scene-pill-line: rgba(0, 77, 128, 0.18);
+  --scene-label: #000000;
+  --scene-flow: #004d80;
+  --scene-red-ink: #c23b26;
+  --lens-rim: rgba(0, 77, 128, 0.85);
+  --lens-glow: rgba(201, 163, 91, 0.2);
+  --logo-filter: brightness(0) saturate(0);
+  --footer-word: color-mix(in srgb, #004d80 7%, transparent);
+  --footer-word-lit: color-mix(in srgb, #c9a35b 42%, transparent);
+  --footer-glow: color-mix(in srgb, #c9a35b 24%, transparent);
+}
+
+/* ---------- Step 3 prototype themes (directions A and B, and the first take on C) ---------- */
+
+/* A · navy ink on light paper */
+[data-theme='paper'] {
+  color-scheme: light;
+  --ground: var(--c-paper);
+  --ground-raised: var(--c-paper-light);
+  --ground-sunk: var(--c-paper-sunk);
+  --ink: var(--c-navy); /* 14.3:1 on paper */
+  --ink-2: #4b5872; /* 6.5:1 on paper, 5.9:1 on sunk */
+  --line: var(--c-navy);
+  --line-soft: #7d889c; /* 3.2:1, meets the 3:1 graphics rule */
+  --grid: #c9ced6;
+  --grid-alpha: 0.55;
+  --red: var(--c-red); /* strokes; 4.5:1 on paper */
+  --red-text: #b92a25; /* small red text; 5.5:1 on paper */
+  --positive: #2f6b4f; /* green ink for improvements; 5.7:1 */
+  --focus: var(--c-navy);
+  --on-ink: var(--c-paper);
+  --face-top: var(--c-paper-light);
+  --face-left: #e7e3da;
+  --face-right: #d9d5cb;
+  --bar-ground: var(--c-navy);
+  --bar-ink: var(--c-paper);
+  --brand: #2f3a8f;
+  --edge: color-mix(in srgb, var(--c-navy) 12%, transparent);
+  --edge-strong: color-mix(in srgb, var(--c-navy) 22%, transparent);
+  --surface-glass: var(--c-paper-light);
+  --shadow-1: none;
+  --shadow-2: none;
+}
+
+/* B · white lines on a dark navy blueprint */
+[data-theme='blueprint'] {
+  color-scheme: dark;
+  --ground: var(--c-navy);
+  --ground-raised: var(--c-navy-raised);
+  --ground-sunk: var(--c-navy-deep);
+  --ink: var(--c-paper); /* 14.3:1 on navy */
+  --ink-2: #b7c0cf; /* 8.7:1 on navy */
+  --line: var(--c-paper);
+  --line-soft: #8d95a0; /* 5.3:1 */
+  --grid: #c9ced6;
+  --grid-alpha: 0.13;
+  --red: #e8473c; /* strokes; 4.1:1 on navy. Brand #D2302C is 3.2:1 here */
+  --red-text: #f86b5f; /* red text; 5.5:1 on navy, 4.9:1 on raised */
+  --positive: #86cfa8; /* 8.7:1 */
+  --focus: var(--c-paper);
+  --on-ink: var(--c-navy);
+  --face-top: #17305a;
+  --face-left: #0f2446;
+  --face-right: #0b1c38;
+  --bar-ground: var(--c-navy-deep);
+  --bar-ink: var(--c-paper);
+  --brand: #8f9cff;
+  --edge: color-mix(in srgb, var(--c-paper) 14%, transparent);
+  --edge-strong: color-mix(in srgb, var(--c-paper) 24%, transparent);
+  --surface-glass: var(--c-navy-raised);
+  --shadow-1: none;
+  --shadow-2: none;
+}
+
+/* C, first take: night hero (ink and vermilion), day sections after it. */
+[data-theme='night'] {
+  color-scheme: dark;
+  --ground: #070b13;
+  --ground-raised: #0d1424;
+  --ground-sunk: #05080e;
+  --ink: #f3f1ec; /* 17.5:1 */
+  --ink-2: #a9b1c1; /* 9.1:1 */
+  --line: #f3f1ec;
+  --line-soft: #5d6b88; /* 3.7:1 */
+  --plan: #8ea6de; /* the drawing's blueprint line, 8.1:1 */
+  --grid: #2a3a5e;
+  --grid-alpha: 0.5;
+  --red: #ff5a36; /* vermilion: findings and the logo; 6.4:1 */
+  --red-text: #ff6b4a; /* 7.0:1 */
+  --positive: #5fe3b5; /* 12.3:1 */
+  --focus: #f3f1ec;
+  --on-ink: #070b13;
+  --face-top: #ece9e2;
+  --face-left: #d6d2c8;
+  --face-right: #c3bfb5;
+  --bar-ground: #05080e;
+  --bar-ink: #f3f1ec;
+  --brand: #8f9cff;
+}
+
+[data-theme='day'] {
+  color-scheme: light;
+  --ground: #f4f2ed;
+  --ground-raised: #fbfaf7;
+  --ground-sunk: #eae7e0;
+  --ink: #0b1220; /* 16.7:1 */
+  --ink-2: #4a5468; /* 6.8:1 */
+  --line: #0b1220;
+  --line-soft: #7c879b; /* 3.2:1 */
+  --plan: #4b62a3;
+  --grid: #c9ced6;
+  --grid-alpha: 0.55;
+  --red: #e0452a; /* strokes */
+  --red-text: #c2381b; /* 4.8:1 */
+  --positive: #24704f; /* 5.4:1 */
+  --focus: #0b1220;
+  --on-ink: #f4f2ed;
+  --face-top: #fbfaf7;
+  --face-left: #e7e3da;
+  --face-right: #d9d5cb;
+  --bar-ground: #0b1220;
+  --bar-ink: #f4f2ed;
+  --brand: #2f3a8f; /* deep indigo: the logo's built square */
+  --font-mono: var(--font-sans);
+}

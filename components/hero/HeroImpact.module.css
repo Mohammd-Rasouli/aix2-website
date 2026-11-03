@@ -1,0 +1,343 @@
+/*
+ * The first screen's title block (CC-76): ruled off from the drawing by one hairline, no box, no fill.
+ * Cells are divided by hairlines as on a drawing sheet. Line work and figures use the theme's accent ink
+ * (Deep Blue on white, gold on the dark ground), the same ink as the plan above; the solid parts of the
+ * bars are the brand's metallic gold in both modes.
+ */
+.block {
+  --b-ink: var(--gold);
+  --b-line: color-mix(in srgb, var(--gold) 50%, transparent);
+  display: grid;
+  grid-template-columns: minmax(200px, 1.1fr) minmax(0, 3fr);
+  grid-template-areas:
+    'intro measures'
+    'notes notes';
+  column-gap: var(--gutter);
+  row-gap: clamp(10px, 1.6vh, 16px);
+  padding-top: clamp(12px, 2vh, 20px);
+  border-top: 1px solid var(--edge-strong);
+}
+
+.intro {
+  grid-area: intro;
+  max-width: 22em;
+  font-size: var(--step-small);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.introLead {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Three measured cells. */
+.measures {
+  grid-area: measures;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.measures {
+  gap: clamp(10px, 1.2vw, 16px);
+}
+
+/* Each figure on a light glass card (CC-77). */
+.measure {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: clamp(12px, 1.6vh, 16px) clamp(16px, 1.6vw, 22px) clamp(14px, 1.8vh, 18px);
+  border: 1px solid var(--edge);
+  border-radius: 16px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--gold) 6%, transparent), transparent 55%), var(--surface-glass);
+  backdrop-filter: blur(var(--blur));
+  box-shadow: 0 10px 30px -22px rgba(4, 30, 52, 0.45);
+  overflow: hidden;
+  transition:
+    translate var(--dur-base) var(--ease-out-quint),
+    border-color var(--dur-base) var(--ease-out-quint),
+    box-shadow var(--dur-base) var(--ease-out-quint);
+}
+
+.measure:hover {
+  translate: 0 -3px;
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  box-shadow: 0 18px 36px -24px rgba(4, 30, 52, 0.55);
+}
+
+.what {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.small {
+  font-size: var(--step-small);
+  color: var(--ink-2);
+}
+
+.fig {
+  font-size: clamp(1.75rem, min(1.1rem + 1.6vw, 5.4vh), 2.75rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  color: var(--b-ink);
+}
+
+/* The measured bar, with its dimension line above the part that changed. */
+.track {
+  position: relative;
+  display: flex;
+  height: 10px;
+  margin-top: 22px;
+}
+
+.solid {
+  position: relative;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #f6e3b4, #c9a35b 60%, #9a7a3c);
+  box-shadow: 0 0 12px rgba(201, 163, 91, 0.45);
+}
+
+.solid[data-part='keep'] {
+  flex: 0 0 var(--keep);
+}
+
+.solid[data-part='add'] {
+  flex: 1;
+  margin-left: 3px;
+}
+
+.cut {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  margin-left: 3px;
+  border: 1px solid var(--b-line);
+  border-radius: 2px;
+  /* Hatched, as a drawing marks what is taken out. */
+  background: repeating-linear-gradient(135deg, var(--b-line) 0 1px, transparent 1px 6px);
+}
+
+/* Extension lines: from both ends of the part that changed, up through the dimension line. */
+.cut::before,
+.cut::after,
+.solid[data-part='add']::before,
+.solid[data-part='add']::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  width: 1px;
+  height: 18px;
+  background: var(--b-line);
+}
+
+.cut::before,
+.solid[data-part='add']::before {
+  left: -1px;
+}
+
+.cut::after,
+.solid[data-part='add']::after {
+  right: -1px;
+}
+
+.base {
+  flex: 0 0 var(--base);
+  height: 100%;
+  border: 1px solid var(--b-line);
+  border-radius: 2px;
+}
+
+.dim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 11px);
+  height: 0;
+  border-top: 1px solid var(--b-ink);
+}
+
+.dim::before,
+.dim::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  width: 1px;
+  height: 10px;
+  background: var(--b-ink);
+  transform: rotate(45deg);
+}
+
+.dim::before {
+  left: 0;
+}
+
+.dim::after {
+  right: 0;
+}
+
+/* The sheet's notes, numbered as on a drawing, in one line. */
+.notes {
+  grid-area: notes;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px clamp(18px, 2.4vw, 36px);
+  counter-reset: note;
+}
+
+.notes li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.8125rem;
+  color: var(--ink);
+  counter-increment: note;
+}
+
+.notes li::before {
+  content: counter(note);
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--b-ink);
+  border-radius: 50%;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--b-ink);
+}
+
+/* One sequence per card (CC-77): the bar fills, the part removed is trimmed away (hatching shows what went)
+   while the figure counts up, then the dimension is drawn. A gain: the baseline, then the gold extension. */
+@media (prefers-reduced-motion: no-preference) {
+  .measure {
+    --t: calc(var(--i, 0) * 250ms);
+  }
+  .solid[data-part='keep'] {
+    animation:
+      fillAll 0.6s var(--ease-out-quint) calc(500ms + var(--t)) both,
+      trim 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(1200ms + var(--t)) forwards;
+  }
+  .cut {
+    animation: appear 0.9s ease calc(1200ms + var(--t)) both;
+  }
+  .base {
+    animation: draw 0.6s var(--ease-out-quint) calc(500ms + var(--t)) both;
+    transform-origin: left center;
+  }
+  .solid[data-part='add'] {
+    animation: draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) calc(1200ms + var(--t)) both;
+    transform-origin: left center;
+  }
+  .cut::before,
+  .cut::after,
+  .solid[data-part='add']::before,
+  .solid[data-part='add']::after {
+    animation: rise 0.4s var(--ease-out-quint) calc(2100ms + var(--t)) both;
+    transform-origin: bottom center;
+  }
+  .dim {
+    animation: draw 0.6s var(--ease-out-quint) calc(2300ms + var(--t)) both;
+    transform-origin: left center;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes fillAll {
+  from {
+    flex-basis: 0%;
+  }
+  to {
+    flex-basis: 100%;
+  }
+}
+
+@keyframes trim {
+  from {
+    flex-basis: 100%;
+  }
+  to {
+    flex-basis: var(--keep);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes set {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Short windows: the notes give way first, so the block always fits the first screen. */
+@media (min-width: 1024px) and (max-height: 700px) {
+  .notes {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .block {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'intro'
+      'measures'
+      'notes';
+    row-gap: 18px;
+  }
+  .intro {
+    max-width: none;
+  }
+
+}
+
+@media (max-width: 599px) {
+  .measures {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+}
+
+/* Before and after, named under the bar (CC-81): the outline is how it was, the gold is how it is now. */
+.ba {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ba {
+    animation: appear 0.5s ease calc(2300ms + var(--t, 0ms)) both;
+  }
+}
