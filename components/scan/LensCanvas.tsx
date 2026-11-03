@@ -88,7 +88,7 @@ const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 const noRaycast = () => {};
 
-function RoundedBox({
+function RoundedBoxMesh({
   args,
   radius,
   smoothness,
@@ -1045,7 +1045,7 @@ function Scene({ hero, next, mid, frames, overlay, sides, onReady, phases }: Pro
                   const sh = (b.h - gap * (n - 1)) / n;
                   return Array.from({ length: n }, (_, k) => (
                     <group key={k}>
-                      <RoundedBox args={[b.w, sh, b.d]} radius={Math.min(0.12, sh / 3)} smoothness={3} position-y={k * (sh + gap) + sh / 2} material={mat} raycast={noRaycast} />
+                      <RoundedBoxMesh args={[b.w, sh, b.d]} radius={Math.min(0.12, sh / 3)} smoothness={3} position-y={k * (sh + gap) + sh / 2} material={mat} raycast={noRaycast} />
                       {k < n - 1 && (
                         <mesh position-y={(k + 1) * (sh + gap) - gap / 2} material={mats.seam} raycast={noRaycast}>
                           <boxGeometry args={[b.w * 0.86, gap * 0.55, b.d * 0.86]} />
@@ -1054,17 +1054,17 @@ function Scene({ hero, next, mid, frames, overlay, sides, onReady, phases }: Pro
                     </group>
                   ));
                 })()}
-                <RoundedBox args={[Math.max(0.1, b.w - 0.3), 0.05, Math.max(0.1, b.d - 0.3)]} radius={0.02} smoothness={2} position-y={b.h + 0.012} material={mats.lidSys} raycast={noRaycast} />
+                <RoundedBoxMesh args={[Math.max(0.1, b.w - 0.3), 0.05, Math.max(0.1, b.d - 0.3)]} radius={0.02} smoothness={2} position-y={b.h + 0.012} material={mats.lidSys} raycast={noRaycast} />
               </>
             ) : id === 'register' ? (
               /* The change register: a gold tablet. */
-              <RoundedBox args={[b.w * 1.25, b.h * 0.55, b.d * 1.25]} radius={0.1} smoothness={4} position-y={(b.h * 0.55) / 2} material={mat} raycast={noRaycast} />
+              <RoundedBoxMesh args={[b.w * 1.25, b.h * 0.55, b.d * 1.25]} radius={0.1} smoothness={4} position-y={(b.h * 0.55) / 2} material={mat} raycast={noRaycast} />
             ) : (
               <>
                 {/* A team (or the vendor): a soft module with an inset top, on a thin plinth (CC-71). */}
-                <RoundedBox args={[b.w, b.h, b.d]} radius={Math.min(0.32, b.h / 3, b.w / 4)} smoothness={6} position-y={b.h / 2 + 0.06} material={mat} raycast={noRaycast} />
-                <RoundedBox args={[Math.max(0.1, b.w - 0.44), 0.04, Math.max(0.1, b.d - 0.44)]} radius={0.02} smoothness={2} position-y={b.h + 0.07} material={mats.lid} raycast={noRaycast} />
-                <RoundedBox args={[b.w + 0.22, 0.07, b.d + 0.22]} radius={0.035} smoothness={2} position-y={0.035} material={mats.plinth} raycast={noRaycast} />
+                <RoundedBoxMesh args={[b.w, b.h, b.d]} radius={Math.min(0.32, b.h / 3, b.w / 4)} smoothness={6} position-y={b.h / 2 + 0.06} material={mat} raycast={noRaycast} />
+                <RoundedBoxMesh args={[Math.max(0.1, b.w - 0.44), 0.04, Math.max(0.1, b.d - 0.44)]} radius={0.02} smoothness={2} position-y={b.h + 0.07} material={mats.lid} raycast={noRaycast} />
+                <RoundedBoxMesh args={[b.w + 0.22, 0.07, b.d + 0.22]} radius={0.035} smoothness={2} position-y={0.035} material={mats.plinth} raycast={noRaycast} />
               </>
             )}
             <mesh rotation-x={-Math.PI / 2} position={[0.25, 0.006, 0.3]} scale={[b.w * 1.7 + 0.6, b.d * 1.7 + 0.6, 1]} material={mats.shadow} raycast={noRaycast}>
