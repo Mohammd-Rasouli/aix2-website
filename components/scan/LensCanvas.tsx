@@ -105,7 +105,11 @@ function RoundedBoxMesh({
   'position-y'?: number;
   raycast?: THREE.Object3D['raycast'];
 }) {
-  const geometry = useMemo(() => new RoundedBoxGeometry(...args, smoothness, radius), [args, radius, smoothness]);
+  const geometry = useMemo(() => {
+    const roundedGeometry = new RoundedBoxGeometry(...args, smoothness, radius);
+    roundedGeometry.computeVertexNormals();
+    return roundedGeometry;
+  }, [args, radius, smoothness]);
   return <mesh geometry={geometry} material={material} position={position} position-y={positionY} raycast={noRaycast} />;
 }
 
