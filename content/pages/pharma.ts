@@ -90,7 +90,7 @@ export const pharma: PageContent = {
       title: 'Bring us one process.',
       subhead: 'We’ll show you how it really runs, what to fix, and what to do next.',
       actions: [
-        { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team', variant: 'primary' },
+        { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6', variant: 'primary' },
         { label: 'Ask about your process', href: '/contact?topic=pharma', variant: 'secondary' },
       ],
     },

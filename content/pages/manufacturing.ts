@@ -100,7 +100,7 @@ export const manufacturing: PageContent = {
       subhead: 'We’ll show you how it really runs, what to fix, and what to do next.',
       actions: [
         { label: 'Read the full case', href: '/proof/industrial-manufacturer-istanbul', variant: 'primary' },
-        { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team', variant: 'secondary' },
+        { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6', variant: 'secondary' },
       ],
     },
   ],

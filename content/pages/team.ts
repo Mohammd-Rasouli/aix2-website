@@ -93,7 +93,7 @@ export const team: PageContent = {
       name: 'Next step',
       what: 'Your first step',
       title: 'Book a call.',
-      actions: [{ label: 'Book a call', href: '/contact', variant: 'primary' }],
+      actions: [{ label: 'Book a call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6', variant: 'primary' }],
     },
   ],
 };

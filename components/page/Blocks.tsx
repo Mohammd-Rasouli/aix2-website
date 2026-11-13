@@ -399,7 +399,7 @@ function BlockBody({ b }: { b: Exclude<Block, { type: 'home' }> }) {
 
 /** Renders a page's blocks in order; each opens with the shared section head. */
 /** A contact action (the contact page or the calendar). The footer carries the one call to action (CC-53). */
-const isContact = (href: string) => href.startsWith('/contact') || href.includes('meetings.hubspot.com');
+const isContact = (href: string) => href.startsWith('/contact') || href.includes('calendar.app.google');
 
 /** A CTA block that offers a contact action is dropped: the footer carries the one call to action (CC-53). */
 function withoutContactCtas(blocks: Block[]): Block[] {

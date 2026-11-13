@@ -59,7 +59,7 @@ export default function ConsultancyPage() {
           <h1 id="consultancy-title">From strategy to the <em>shop floor.</em></h1>
           <div className={styles.heroBottom}>
             <p className={styles.intro}>When you need more than software, we are your consultancy. Our strategy consultants and PhD engineers design the strategy and the transformation, including AI transformation, then stay with you through implementation until it holds.</p>
-            <ButtonLink href="https://meetings.hubspot.com/aix2/aix2-team" variant="primary" size="lg" cta="book_call" location="consultancy-hero">
+            <ButtonLink href="https://calendar.app.google/NFXFr2FhHQkvWNMM6" variant="primary" size="lg" cta="book_call" location="consultancy-hero">
               Book a 30-minute call
             </ButtonLink>
           </div>
@@ -166,7 +166,7 @@ export default function ConsultancyPage() {
         <section className={styles.close} aria-label="Start a consultancy conversation">
           <p className={styles.index}>Strategy to implementation</p>
           <h2>Build a transformation that holds.</h2>
-          <ButtonLink href="https://meetings.hubspot.com/aix2/aix2-team" variant="primary" size="lg" cta="book_call" location="consultancy-footer">
+          <ButtonLink href="https://calendar.app.google/NFXFr2FhHQkvWNMM6" variant="primary" size="lg" cta="book_call" location="consultancy-footer">
             Book a 30-minute call
           </ButtonLink>
         </section>

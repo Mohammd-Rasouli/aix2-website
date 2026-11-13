@@ -534,7 +534,7 @@ export const start = {
   // CC-66: the One-Week Proof is the first step.
   subhead: 'One process, one week: we show you how it really runs, what to fix and what it is worth. If it is useful, we continue.',
   offer: 'The One-Week Proof: one process with its complete data; in one week, its as-built map, first findings with owners and the value at stake.',
-  primary: { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team' },
+  primary: { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
   investor: { label: 'Ask for a Portfolio X-ray', href: '/contact?topic=portfolio-xray' },
   secondary: { label: 'Request the security overview', href: '/trust#security-overview' },
   contact: 'Or write to us: info@aix2.ai',
@@ -623,7 +623,7 @@ export const selector = {
       headline: 'Management presentations tell one story. The systems tell another.',
       start: 'We run a read-only diligence of the target’s processes and data: variants, controls, red flags and real cost-to-serve, each with a count and an owner.',
       proof: 'Nearly one in four PE deals runs into risks that due diligence did not identify (EY, 2025).',
-      button: { label: 'Talk to us about a deal', href: '/contact?topic=deal' },
+      button: { label: 'Talk to us about a deal', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
       facts: ['M-03'],
     },
     'build one baseline across a portfolio': {
@@ -725,7 +725,7 @@ export const audiences = {
         'Value creation: one comparable baseline across every portfolio company',
         'Exit: an equity story buyers can verify',
       ],
-      button: { label: 'Talk to us about a deal', href: '/investors' },
+      button: { label: 'Talk to us about a deal', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
     },
     {
       id: 'partners',
