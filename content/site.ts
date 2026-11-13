@@ -34,7 +34,7 @@ export const site: SiteContent = {
     { label: 'Company', href: '/company/team', hasMenu: true },
   ],
   // CC-53 (user, 2026-11-01): one simple call to action everywhere, straight to the team calendar.
-  navButton: { label: 'Book a call', href: 'https://meetings.hubspot.com/aix2/aix2-team' },
+  navButton: { label: 'Book a call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
   /** Homepage sections as drawing sheets, in LC order (section 0, the announcement bar, is not a sheet). */
   sheets: [
     { id: 'hero', number: 1, name: 'As built, not as drawn' },
@@ -237,7 +237,7 @@ export const footer: FooterContent = {
 export const contactCta = {
   title: 'Bring us one process.',
   line: 'One process, one week: see it as built, with the first findings and what they are worth. If it is useful, we continue.', // CC-66
-  book: { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team' },
+  book: { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
   emailLabel: 'Or e-mail',
   email: 'info@aix2.ai',
 };

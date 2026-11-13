@@ -189,7 +189,7 @@ export const utilities: PageContent = {
       "actions": [
         {
           "label": "Book a 30-minute call",
-          "href": "https://meetings.hubspot.com/aix2/aix2-team",
+          "href": "https://calendar.app.google/NFXFr2FhHQkvWNMM6",
           "variant": "primary"
         },
         {
@@ -389,7 +389,7 @@ export const oilAndGas: PageContent = {
       "actions": [
         {
           "label": "Book a 30-minute call",
-          "href": "https://meetings.hubspot.com/aix2/aix2-team",
+          "href": "https://calendar.app.google/NFXFr2FhHQkvWNMM6",
           "variant": "primary"
         },
         {
@@ -563,7 +563,7 @@ export const insurance: PageContent = {
       "actions": [
         {
           "label": "Book a 30-minute call",
-          "href": "https://meetings.hubspot.com/aix2/aix2-team",
+          "href": "https://calendar.app.google/NFXFr2FhHQkvWNMM6",
           "variant": "primary"
         },
         {
@@ -763,7 +763,7 @@ export const banking: PageContent = {
       "actions": [
         {
           "label": "Book a 30-minute call",
-          "href": "https://meetings.hubspot.com/aix2/aix2-team",
+          "href": "https://calendar.app.google/NFXFr2FhHQkvWNMM6",
           "variant": "primary"
         },
         {
@@ -963,7 +963,7 @@ export const supplyChain: PageContent = {
       "actions": [
         {
           "label": "Book a 30-minute call",
-          "href": "https://meetings.hubspot.com/aix2/aix2-team",
+          "href": "https://calendar.app.google/NFXFr2FhHQkvWNMM6",
           "variant": "primary"
         },
         {

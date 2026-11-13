@@ -90,7 +90,7 @@ export const healthcare: PageContent = {
       title: 'Bring us one pathway.',
       subhead: 'We’ll show you how it really runs, what to fix, and what to do next.',
       actions: [
-        { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team', variant: 'primary' },
+        { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6', variant: 'primary' },
         { label: 'Ask about your pathway', href: '/contact?topic=healthcare', variant: 'secondary' },
       ],
     },

@@ -23,7 +23,7 @@ export const contact: PageContent = {
 /** Contact, on one screen (CC-51): two ways to reach us, what happens next, the form. */
 export const contactPage = {
   email: { label: 'E-mail', address: 'info@aix2.ai' },
-  call: { label: 'Book a 30-minute call', href: 'https://meetings.hubspot.com/aix2/aix2-team' },
+  call: { label: 'Book a 30-minute call', href: 'https://calendar.app.google/NFXFr2FhHQkvWNMM6' },
   stepsTitle: 'What happens next',
   steps: [
     'A 30-minute call to choose one process and check its data',
