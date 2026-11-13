@@ -29,6 +29,7 @@ export const site: SiteContent = {
     { label: 'For investors', href: '/investors', hasMenu: true },
     { label: 'How it works', href: '/how-it-works', hasMenu: true },
     { label: 'Customers', href: '/proof', hasMenu: false },
+    { label: 'Consultancy', href: '/consultancy', hasMenu: false },
     { label: 'Insights', href: '/insights', hasMenu: true },
     { label: 'Company', href: '/company/team', hasMenu: true },
   ],
@@ -163,6 +164,7 @@ export const menus: MegaMenu[] = [
     ],
   },
   { id: 'proof', label: 'Customers', href: '/proof', columns: [] },
+  { id: 'consultancy', label: 'Consultancy', href: '/consultancy', columns: [] },
   {
     id: 'insights',
     label: 'Insights',
