@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 };
 
 const services = [
-  { group: 'Strategy', title: 'Strategy design', copy: 'Where to play and how to win, set against how the company really runs. A strategy your leaders sign and your data can track.' },
-  { group: 'AI', title: 'AI transformation', copy: 'The AI moves worth funding, the data and controls they need, and the build, in an order your operations can carry.' },
-  { group: 'Organization', title: 'Operating model and organization', copy: 'Structures, roles, decision rights and governance, designed around the work as it is really done.' },
-  { group: 'Operations', title: 'Process and data-governance redesign', copy: 'The optimal processes and data flows, measured against best practice, gap by gap.' },
-  { group: 'Delivery', title: 'Implementation and transformation office', copy: 'We run the program with your teams: owners, milestones, and a live check on every case that the change holds.' },
-  { group: 'Investors', title: 'Operational diligence and value creation', copy: 'Before you price a company, how it really runs. After you own it, the plan that lifts its value, and the people to deliver it.' },
+  { id: 'strategy-design', group: 'Strategy', title: 'Strategy design', copy: 'Where to play and how to win, set against how the company really runs. A strategy your leaders sign and your data can track.' },
+  { id: 'ai-transformation', group: 'AI', title: 'AI transformation', copy: 'The AI moves worth funding, the data and controls they need, and the build, in an order your operations can carry.' },
+  { id: 'operating-model-and-organization', group: 'Organization', title: 'Operating model and organization', copy: 'Structures, roles, decision rights and governance, designed around the work as it is really done.' },
+  { id: 'process-and-data-governance-redesign', group: 'Operations', title: 'Process and data-governance redesign', copy: 'The optimal processes and data flows, measured against best practice, gap by gap.' },
+  { id: 'implementation-and-transformation-office', group: 'Delivery', title: 'Implementation and transformation office', copy: 'We run the program with your teams: owners, milestones, and a live check on every case that the change holds.' },
+  { id: 'operational-diligence-and-value-creation', group: 'Investors', title: 'Operational diligence and value creation', copy: 'Before you price a company, how it really runs. After you own it, the plan that lifts its value, and the people to deliver it.' },
 ];
 
 const phases = [
@@ -114,7 +114,7 @@ export default function ConsultancyPage() {
             <p>One team for the whole transformation. Take one service or all of them. Each one stands on the same evidence: how your company really runs, read from its own systems.</p>
           </div>
           <div className={styles.serviceGrid}>
-            {services.map((service, index) => <article className={styles.service} key={service.title}>
+            {services.map((service, index) => <article className={styles.service} id={service.id} key={service.title}>
               <p className={styles.serviceGroup}>{service.group} <span>0{index + 1}</span></p>
               <h3>{service.title}</h3>
               <p>{service.copy}</p>

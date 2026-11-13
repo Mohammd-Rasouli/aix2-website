@@ -6,12 +6,12 @@ export const site: SiteContent = {
   locale: 'en-US',
   dir: 'ltr',
   seo: {
-    title: 'AIx2 · As-built due diligence from your company’s own data',
+    title: 'AIx2 - Operational Diligence and Transformation in the Age of AI',
     description:
-      'AIx2 shows operators and investors how a company really runs, from its own data, then stays until the change holds. As built, not as drawn.',
-    shareTitle: 'See the company as built, not as drawn.',
+      'AIx2 provides operators and investors with operational diligence and transformation including AI transformation, from actual data as-built.',
+    shareTitle: 'AIx2 - Operational Diligence and Transformation in the Age of AI',
     shareDescription:
-      'Due diligence, redesign and live assurance from a company’s own data, by engineers and strategists who stay until it holds.',
+      'AIx2 provides operators and investors with operational diligence and transformation including AI transformation, from actual data as-built.',
   },
   announcement: {
     label: 'Watch the latest Stanford AI & Investment session',
@@ -29,7 +29,7 @@ export const site: SiteContent = {
     { label: 'For investors', href: '/investors', hasMenu: true },
     { label: 'How it works', href: '/how-it-works', hasMenu: true },
     { label: 'Customers', href: '/proof', hasMenu: false },
-    { label: 'Consultancy', href: '/consultancy', hasMenu: false },
+    { label: 'Consultancy', href: '/consultancy', hasMenu: true },
     { label: 'Insights', href: '/insights', hasMenu: true },
     { label: 'Company', href: '/company/team', hasMenu: true },
   ],
@@ -164,7 +164,32 @@ export const menus: MegaMenu[] = [
     ],
   },
   { id: 'proof', label: 'Customers', href: '/proof', columns: [] },
-  { id: 'consultancy', label: 'Consultancy', href: '/consultancy', columns: [] },
+  {
+    id: 'consultancy',
+    label: 'Consultancy',
+    href: '/consultancy',
+    summary:
+      'When you need more than software: strategy design, transformation including AI transformation, and implementation, by strategy consultants and PhD engineers who stay until it holds.',
+    columns: [
+      {
+        title: 'What we do',
+        items: [
+          { label: 'Strategy design', href: '/consultancy#strategy-design' },
+          { label: 'AI transformation', href: '/consultancy#ai-transformation' },
+          { label: 'Operating model and organization', href: '/consultancy#operating-model-and-organization' },
+          { label: 'Implementation and transformation office', href: '/consultancy#implementation-and-transformation-office' },
+        ],
+      },
+      {
+        title: 'Working with us',
+        items: [
+          { label: 'Who you work with', href: '/consultancy#people-title' },
+          { label: 'How an engagement runs', href: '/consultancy#engagement' },
+          { label: 'Atlas or the full consultancy', href: '/consultancy#compare-title' },
+        ],
+      },
+    ],
+  },
   {
     id: 'insights',
     label: 'Insights',
